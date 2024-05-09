@@ -1,5 +1,5 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
 
 
-class UserInfo(Screen):
+class UserInfoScreen(Screen):
     pass
