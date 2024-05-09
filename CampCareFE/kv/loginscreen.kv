@@ -62,22 +62,43 @@
                 height: dp(60)
                 #background_normal: ''
                 background_color: 0.1, 0.384, 0.588, 0.5
+                on_release: app.sm.current = 'dailyquiz'
 
-        Label:
+        #Label:
+        #    text: "Forgot password?"
+        #    markup: True
+        #    size_hint_y: None
+        #    height: dp(30)
+        #    color: 1, 1, 1, 1
+        #    pos_hint: {'center_x': 0.5}
+
+        Button:
             text: "Forgot password?"
-            markup: True
+            background_normal: ''
+            background_color: 0, 0, 0, 0
+            color: 1, 1, 1, 1
             size_hint_y: None
             height: dp(30)
-            color: 1, 1, 1, 1
             pos_hint: {'center_x': 0.5}
+            on_release: app.sm.current = 'resetpassword'
 
-        Label:
+        #Label:
+        #    text: "Sign up"
+        #    markup: True
+        #    size_hint_y: None
+        #    height: dp(30)
+        #    color: 1, 1, 1, 1
+        #    pos_hint: {'center_x': 0.5}
+        #    on_release: app.sm.current = 'signup'
+        Button:
             text: "Sign up"
-            markup: True
+            background_normal: ''
+            background_color: 0, 0, 0, 0
+            color: 1, 1, 1, 1
             size_hint_y: None
             height: dp(30)
-            color: 1, 1, 1, 1
             pos_hint: {'center_x': 0.5}
+            on_release: app.sm.current = 'signup'
 
         Widget:
             # Another spacer at the bottom, adjust size_hint_y as needed
