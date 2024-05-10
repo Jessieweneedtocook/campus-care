@@ -1,7 +1,8 @@
-# syntax=docker/dockerfile:1
-FROM python:3.10-alpine
-WORKDIR /app
-COPY requirements.txt /app
-RUN pip install -r requirements.txt
-COPY . /app
-CMD ["flask", "run", "--host=0.0.0.0"]
+FROM mysql:latest
+
+ENV MYSQL_DATABASE campus_care
+ENV MYSQL_ROOT_PASSWORD team37
+
+ADD schema.sql /docker-entrypoint-initdb.d
+
+EXPOSE 3306
