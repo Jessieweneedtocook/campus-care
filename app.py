@@ -1,23 +1,27 @@
-import time
-
-import redis
-from flask import Flask
+from flask import Flask, request, jsonify
+from flask_sqlalchemy import MySQL
 
 app = Flask(__name__)
-cache = redis.Redis(host='redis', port=6379)
 
-def get_hit_count():
-    retries = 5
-    while True:
-        try:
-            return cache.incr('hits')
-        except redis.exceptions.ConnectionError as exc:
-            if retries == 0:
-                raise exc
-            retries -= 1
-            time.sleep(0.5)
+app.config['MYSQL_DATABASE_USER'] = 'root'
+app.config['MYSQL_DATABASE_PASSWORD'] = 'team37'
+app.config['MYSQL_DATABASE_DB'] = 'campus_care'
+app.config['MYSQL_DATABASE_HOST'] = 'localhost'
 
-@app.route('/')
-def hello():
-    count = get_hit_count()
-    return 'Hello World! I have been seen {} times.\n'.format(count)
+mysql = MySQL(app)
+
+@app.route('/users', methods=['POST'])
+def add_user():
+    cur = mysql.get_db().cursor()
+    username = request.json['username']
+    password = request.json['password']
+    email = request.json['email']
+    dob = request.json['dob']
+    role = request.json.get('role', 'User')
+    cur.execute("INSERT INTO Users (Username, Password, Email, DateOfBirth, Role) VALUES (%s, %s, %s, %s, %s)", (username, password, email, dob, role))
+    mysql.get_db().commit()
+    cur.close()
+    return jsonify({'message': 'User added successfully'})
+
+if __name__ == '__main__':
+    app.run(debug=True)
