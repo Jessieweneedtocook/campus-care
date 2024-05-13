@@ -4,6 +4,8 @@ from screens.login import LoginScreen
 from screens.signup import SignupScreen
 from screens.reset_password import ResetPasswordScreen
 from screens.daily_quiz import DailyQuizScreen
+from screens.home import HomeScreen
+from screens.wellness_progress import WellnessProgressScreen
 from kivy.core.window import Window
 from quiz_questions import questions
 
@@ -15,6 +17,8 @@ class MyApp(App):
         self.sm.add_widget(LoginScreen(name='login'))
         self.sm.add_widget(SignupScreen(name='signup'))
         self.sm.add_widget(ResetPasswordScreen(name='resetpassword'))
+        self.sm.add_widget(HomeScreen(name='home'))
+        self.sm.add_widget(WellnessProgressScreen(name='wellnessprogress'))
 
         self.sm.current_question_index = 0
         self.sm.get_current_question = lambda: questions[self.sm.current_question_index]
@@ -28,5 +32,5 @@ class MyApp(App):
             self.sm.current_question_index += 1
             self.sm.current = 'dailyquiz'
         else:
-            self.sm.current = 'login'
+            self.sm.current = 'home'
 
