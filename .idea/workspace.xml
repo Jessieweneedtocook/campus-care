@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a5c43f-d18e-4df1-bcaa-8a41f193927e" name="Changes" comment="changing file names">
+    <list default="true" id="04a5c43f-d18e-4df1-bcaa-8a41f193927e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/signup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
