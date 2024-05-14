@@ -13,6 +13,7 @@ Builder.load_file('kv/dailyquizscreen.kv')
 script_dir = os.path.dirname(os.path.abspath(__file__))
 db_path = os.path.join(script_dir, '../../db/UserActivities.db')
 
+
 class DailyQuizScreen(Screen):
     def on_enter(self):
         super(DailyQuizScreen, self).on_enter()  # Ensure the superclass method is called

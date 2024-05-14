@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="04a5c43f-d18e-4df1-bcaa-8a41f193927e" name="Changes" comment="changing file names">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+    <list default="true" id="04a5c43f-d18e-4df1-bcaa-8a41f193927e" name="Changes" comment="quiz function works fully with the main app now but gets stuck and crashes after last question is asked.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CampCareFE/screens/daily_quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/daily_quiz.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,7 +51,6 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
     "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
@@ -221,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715617813268</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="quiz function works fully with the main app now but gets stuck and crashes after last question is asked.">
+      <created>1715691332956</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715691332956</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -258,11 +264,12 @@
     <MESSAGE value="changing file names" />
     <MESSAGE value="adding functionality to the quiz, answers now save to the UserASctivitys DB" />
     <MESSAGE value="adding quiz functionality" />
-    <option name="LAST_COMMIT_MESSAGE" value="adding quiz functionality" />
+    <MESSAGE value="quiz function works fully with the main app now but gets stuck and crashes after last question is asked." />
+    <option name="LAST_COMMIT_MESSAGE" value="quiz function works fully with the main app now but gets stuck and crashes after last question is asked." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz__1_.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715617574822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/kv" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1715691205673" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1715692517730" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$app.coverage" NAME="app Coverage Results" MODIFIED="1715597427713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715690665388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1715598690367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
