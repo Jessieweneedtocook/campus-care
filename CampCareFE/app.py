@@ -29,14 +29,22 @@ class MyApp(App):
         self.sm.add_widget(OptionsScreen(name='options'))
 
         self.sm.current_question_index = 0
-        self.sm.get_current_question = lambda: questions[self.sm.current_question_index]
+        self.selected_activities = []
+        self.sm.get_current_question = self.get_filtered_question
         self.sm.next_question = self.next_question
         self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
         self.sm.current = 'login'
         return self.sm
 
+    def get_filtered_question(self):
+        filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
+        if filtered_questions:
+            return filtered_questions[self.sm.current_question_index]
+        return None
+
     def next_question(self, instance=None):
-        if self.sm.current_question_index < len(questions) - 1:
+        filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
+        if self.sm.current_question_index < len(filtered_questions) - 1:
             self.sm.current_question_index += 1
             self.sm.current = 'dailyquiz'
         else:
