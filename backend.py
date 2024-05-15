@@ -6,12 +6,15 @@ app = Flask(__name__)
 CORS(app)
 
 def get_db_connection():
+    #Makes connection to database when needed
     db = mysql.connector.connect(host='localhost', user='root', password='team37', port=32001)
     return db
 
 def execute_query(query, data=None):
+    #Code for executing queries
     conn = get_db_connection()
     cursor = conn.cursor()
+    #If statement allows for queries whether inputting data or not
     if data:
         cursor.execute(query, data)
     else:
@@ -21,6 +24,7 @@ def execute_query(query, data=None):
     conn.close()
 def register_user(data):
     try:
+        #Gonna need to add some verification to ensure no overlapping usernames/ emails
         username = data.get("username")
         password = data.get("password")
         email = data.get("email")
@@ -32,15 +36,23 @@ def register_user(data):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+def login_user(data):
+    username = data.get("username")
+    password = data.get("password")
+
+#Dictionary acting like switch statement for our different request handling functions
 actions = {
     "register_user": register_user,
     "login_user": login_user
 }
 @app.route("/api", methods=["POST","GET"])
 def api():
+    #Pulls data from request
     data = request.json
+    #Action held within json file determines what action server performs
     action = data.get("action")
 
+    #Calls functions
     if action in actions:
         return actions[action](data)
     else:
