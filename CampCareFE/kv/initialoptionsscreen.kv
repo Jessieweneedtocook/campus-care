@@ -1,0 +1,98 @@
+<InitialOptionsScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        spacing: 10
+        size_hint: (1, 1)  # Fill the entire screen
+
+        canvas.before:
+            Color:
+                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'top'
+            size_hint_y: None
+            height: dp(50)
+
+            Button:
+                text: 'Back >'
+                size_hint: None, None
+                size: dp(100), dp(50)
+                on_release: app.sm.current = 'login'
+        Label:
+            text: "Activity Options"
+            font_size: '40sp'
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+
+        Widget:
+
+        BoxLayout:
+            orientation: 'vertical'
+            size_hint_y: None
+            height: self.minimum_height
+            spacing: dp(10)
+            padding: dp(10)
+
+            ToggleButton:
+                text: "Studying"
+                size_hint_y: None
+                height: dp(30)
+                width: dp(80)
+                on_press: root.toggle_activity(self)
+
+            ToggleButton:
+                text: "Exercise"
+                size_hint_y: None
+                height: dp(30)
+                width: dp(80)
+                on_press: root.toggle_activity(self)
+
+            ToggleButton:
+                text: "Socialising"
+                size_hint_y: None
+                height: dp(30)
+                width: dp(80)
+                on_press: root.toggle_activity(self)
+
+            ToggleButton:
+                text: "Drinking"
+                size_hint_y: None
+                height: dp(30)
+                width: dp(80)
+                on_press: root.toggle_activity(self)
+
+            ToggleButton:
+                text: "Sleeping"
+                size_hint_y: None
+                height: dp(30)
+                width: dp(80)
+                on_press: root.toggle_activity(self)
+
+            ToggleButton:
+                text: "Hobbies"
+                size_hint_y: None
+                height: dp(30)
+                width: dp(80)
+                on_press: root.toggle_activity(self)
+
+            ToggleButton:
+                text: "Outside time"
+                size_hint_y: None
+                height: dp(30)
+                width: dp(80)
+                on_press: root.toggle_activity(self)
+
+        Widget:
+
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Button:
+                text: "Daily Quiz"
+                on_release: root.manager.current = 'dailyquiz'
