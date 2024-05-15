@@ -1,5 +1,4 @@
 import os
-import sqlite3
 
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.uix.button import Button
