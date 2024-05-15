@@ -21,7 +21,7 @@
                 text: 'User Info'
                 size_hint: None, None
                 size: dp(100), dp(50)
-                on_release: app.sm.current = 'home'
+                on_release: app.sm.current = 'userinfo'
         Label:
             text: "CampusCare"
             font_size: '40sp'
@@ -54,10 +54,10 @@
                 on_release: root.manager.current = 'home'
             Button:
                 text: "Wellness Help"
-                on_release: root.manager.current = 'home'
+                on_release: root.manager.current = 'wellnesshelp'
             Button:
                 text: "Options Menu"
-                on_release: root.manager.current = 'home'
+                on_release: root.manager.current = 'options'
 
         # Footer or additional controls
         BoxLayout:
