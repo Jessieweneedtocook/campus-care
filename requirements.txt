@@ -3,5 +3,8 @@ flask_sqlalchemy
 flask_login
 flask_wtf
 WTForms
+mysql~=0.0.3
+mysql-connector-python~=8.4.
 mysql
 flask_cors
+email_validator
