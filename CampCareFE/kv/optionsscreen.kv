@@ -21,7 +21,7 @@
                 text: 'Back >'
                 size_hint: None, None
                 size: dp(100), dp(50)
-                on_release: app.sm.current = 'login'
+                on_release: app.sm.current = 'home'
         Label:
             text: "Activity Options"
             font_size: '40sp'
@@ -54,7 +54,7 @@
                 on_press: root.toggle_activity(self)
 
             ToggleButton:
-                text: "Socialising"
+                text: "Socialisation"
                 size_hint_y: None
                 height: dp(30)
                 width: dp(80)

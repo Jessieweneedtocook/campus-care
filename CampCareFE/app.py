@@ -18,6 +18,7 @@ from screens.options import OptionsScreen
 from kivy.core.window import Window
 from quiz_questions import questions
 
+
 class MyApp(App):
     def __init__(self, **kwargs):
         super(MyApp, self).__init__(**kwargs)
@@ -49,8 +50,6 @@ class MyApp(App):
         self.all_questions_asked = False  # Flag to track if all questions have been asked
         return self.sm
 
-    def next_question(self):
-        if not self.all_questions_asked:
     def get_filtered_question(self):
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
         if filtered_questions:
@@ -59,6 +58,7 @@ class MyApp(App):
 
     def next_question(self, instance=None):
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
+        print(self.sm.current_question_index)
         if self.sm.current_question_index < len(filtered_questions) - 1:
             self.sm.current_question_index += 1
             if self.sm.current_question_index >= len(self.questions):
@@ -97,9 +97,7 @@ class MyApp(App):
         cursor.execute(query, data)
         conn.commit()
         conn.close()
-            self.sm.current = 'dailyquiz'
-        else:
-            self.sm.current = 'home'
+
 
 
 
