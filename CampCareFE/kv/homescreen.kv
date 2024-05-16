@@ -1,0 +1,68 @@
+<HomeScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        spacing: 10
+        size_hint: (1, 1)  # Fill the entire screen
+
+        canvas.before:
+            Color:
+                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'top'
+            size_hint_y: None
+            height: dp(50)
+
+            Button:
+                text: 'User Info'
+                size_hint: None, None
+                size: dp(100), dp(50)
+                on_release: app.sm.current = 'userinfo'
+        Label:
+            text: "CampusCare"
+            font_size: '40sp'
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+
+
+        # Radar diagram area (Placeholder for now)
+        BoxLayout:
+            size_hint_y: None
+            height: 200
+            Image:
+                source: 'assets/health.png'  # Replace with dynamic image generation
+
+        # Statistics and options buttons
+        GridLayout:
+            cols: 2
+            row_force_default: True
+            row_default_height: 40
+            spacing: 10
+            padding: 10
+
+            Button:
+                text: "Wellness Progress"
+                on_release: root.manager.current = 'wellnessprogress'
+            Button:
+                text: "Wellness Scheduler"
+                on_release: root.manager.current = 'home'
+            Button:
+                text: "Wellness Help"
+                on_release: root.manager.current = 'wellnesshelp'
+            Button:
+                text: "Options Menu"
+                on_release: root.manager.current = 'options'
+
+        # Footer or additional controls
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Button:
+                text: "Daily Quiz"
+                on_release: root.manager.current = 'dailyquiz'
