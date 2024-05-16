@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="e0f43567-0d46-4cb5-b36f-24e77e334b38" name="Changes" comment="added on_release to call submit_signup_data" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="Frontend" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2g8OELpMIi3fdhcO9AgBYRs718U" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jessi/PycharmProjects/CSC2033_Team37_23_24&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\jessi\PycharmProjects\CSC2033_Team37_23_24" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="app" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="CSC2033_Team37_23_24" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/app.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="docker-compose.yml: Compose Deployment" type="docker-deploy" factoryName="docker-compose.yml" temporary="true" server-name="Docker">
+      <deployment type="docker-compose.yml">
+        <settings>
+          <option name="envFilePath" value="" />
+          <option name="sourceFilePath" value="docker-compose.yml" />
+        </settings>
+      </deployment>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.app" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+        <item itemvalue="Python.app" />
+        <item itemvalue="Python.app" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="e0f43567-0d46-4cb5-b36f-24e77e334b38" name="Changes" comment="" />
+      <created>1715075626913</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1715075626913</updated>
+      <workItem from="1715075629625" duration="4414000" />
+      <workItem from="1715089459993" duration="2570000" />
+      <workItem from="1715092573606" duration="2997000" />
+      <workItem from="1715164911367" duration="2308000" />
+      <workItem from="1715212847830" duration="2024000" />
+      <workItem from="1715247654430" duration="3951000" />
+      <workItem from="1715254745691" duration="4401000" />
+      <workItem from="1715344519982" duration="1069000" />
+      <workItem from="1715347533578" duration="1162000" />
+      <workItem from="1715526113454" duration="6181000" />
+      <workItem from="1715543972440" duration="2288000" />
+      <workItem from="1715600665650" duration="1114000" />
+      <workItem from="1715604922378" duration="5505000" />
+      <workItem from="1715686835878" duration="5984000" />
+      <workItem from="1715693624264" duration="7907000" />
+      <workItem from="1715793231747" duration="2795000" />
+      <workItem from="1715848429055" duration="8876000" />
+    </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <created>1715077919549</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715077919549</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Set up main screen classes, imported kivy Builder and now loads linked kivy files">
+      <created>1715213269326</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1715213269326</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Set up main screen classes">
+      <created>1715213377456</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1715213377456</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Set up screen manager and adding screen widgets in MyApp() class">
+      <created>1715213450320</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1715213450320</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Added basic gui design code">
+      <created>1715213521702</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1715213521702</updated>
+    </task>
+    <task id="LOCAL-00006" summary="python file created for storing all daily quiz questions">
+      <created>1715213847581</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1715213847581</updated>
+    </task>
+    <task id="LOCAL-00007" summary="main now runs the MyApp() class">
+      <created>1715213899898</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1715213899898</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Added some example questions for quiz screens to display">
+      <created>1715214295443</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1715214295443</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Each quiz screen now built sequentially using next_question() by extracting each question and answer set from quiz_questions.py">
+      <created>1715257259871</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1715257259871</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Instance of DailyQuizScreen() created in on_enter(), update_content() changes the question and answer sets displayed on the screen, advance_quiz() enables the screen to automatically update to the next question when an answer is selected">
+      <created>1715257474609</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715257474609</updated>
+    </task>
+    <task id="LOCAL-00011" summary="added code for daily quiz gui">
+      <created>1715257578840</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1715257578840</updated>
+    </task>
+    <task id="LOCAL-00012" summary="removed new line">
+      <created>1715257611486</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1715257611486</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Added home screen and wellness progress screen to screen manager">
+      <created>1715600744622</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1715600744622</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Added builder for homescreen.kv and wellnessprogressscreen.kv">
+      <created>1715600796303</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1715600796303</updated>
+    </task>
+    <task id="LOCAL-00015" summary="added gui code for home screen and wellness progress screen">
+      <created>1715600834741</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1715600834741</updated>
+    </task>
+    <task id="LOCAL-00016" summary="removed line">
+      <created>1715600862320</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715600862320</updated>
+    </task>
+    <task id="LOCAL-00017" summary="Added all the quiz questions to quiz_questions.py">
+      <created>1715600884353</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715600884353</updated>
+    </task>
+    <task id="LOCAL-00018" summary="corrected screen reference">
+      <created>1715600910924</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715600910924</updated>
+    </task>
+    <task id="LOCAL-00019" summary="unversioned files">
+      <created>1715600952170</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1715600952170</updated>
+    </task>
+    <task id="LOCAL-00020" summary="Added screens UserInfoScreen, InitialOptionsScreen, WellnessHelpScreen and OptionsScreen to the screen manager">
+      <created>1715793992182</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1715793992182</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Added get_filtered_question function which ensures only users activity preferences are asked about in the daily quiz">
+      <created>1715794172565</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1715794172565</updated>
+    </task>
+    <task id="LOCAL-00022" summary="'User Info' not links to user info screen, 'Wellness Help' button leads to wellness help screen and 'Options' button leads to options screen">
+      <created>1715794288359</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1715794288359</updated>
+    </task>
+    <task id="LOCAL-00023" summary="Added functionality in initial_options that enables a user to select their activity preferences (what activities they want the quiz to ask about)">
+      <created>1715794590496</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1715794590496</updated>
+    </task>
+    <task id="LOCAL-00024" summary="added gui screen design for initial options screen">
+      <created>1715795247488</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795247488</updated>
+    </task>
+    <task id="LOCAL-00025" summary="Temporarily made login link to initial options screen (will be changed when there is a place to store user activity preferences for quiz)">
+      <created>1715795316800</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795316800</updated>
+    </task>
+    <task id="LOCAL-00026" summary="deleted mainscreen.kv">
+      <created>1715795337461</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795337461</updated>
+    </task>
+    <task id="LOCAL-00027" summary="Copied and pasted code from initial options screen for options screen, but with a button that will eventually enable user to pause the daily quiz">
+      <created>1715795398231</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795398231</updated>
+    </task>
+    <task id="LOCAL-00028" summary="Copied and pasted gui design from initial options kivy file to options kivy file, but with a button that will eventually enable user to pause the daily quiz">
+      <created>1715795442992</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795442992</updated>
+    </task>
+    <task id="LOCAL-00029" summary="reference quiz questions now have and activity id, so they can be filtered easily">
+      <created>1715795486682</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795486682</updated>
+    </task>
+    <task id="LOCAL-00030" summary="signup screen now links to initial options screen instead of going straight to daily quiz">
+      <created>1715795520724</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795520724</updated>
+    </task>
+    <task id="LOCAL-00031" summary="builder added to user info screen so links to userinfoscreen.kv">
+      <created>1715795572666</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795572666</updated>
+    </task>
+    <task id="LOCAL-00032" summary="user info gui design implemented">
+      <created>1715795597748</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795597748</updated>
+    </task>
+    <task id="LOCAL-00033" summary="Wellness help screen builder added so links to wellnesshelpscreen.kv, and also adds show_details function which enables popups">
+      <created>1715795737298</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795737298</updated>
+    </task>
+    <task id="LOCAL-00034" summary="wellness help screen gui design implemented">
+      <created>1715795760966</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1715795760966</updated>
+    </task>
+    <task id="LOCAL-00035" summary="removed print statement">
+      <created>1715851823330</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1715851823330</updated>
+    </task>
+    <task id="LOCAL-00036" summary="Corrected activity preference names">
+      <created>1715851847322</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1715851847322</updated>
+    </task>
+    <task id="LOCAL-00037" summary="Corrected activity names">
+      <created>1715851917593</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1715851917593</updated>
+    </task>
+    <task id="LOCAL-00038" summary="Corrected activity names">
+      <created>1715851929808</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1715851929808</updated>
+    </task>
+    <task id="LOCAL-00039" summary="Change email repeat corrected to change password">
+      <created>1715851957336</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1715851957336</updated>
+    </task>
+    <task id="LOCAL-00040" summary="Started implementing URL requests for signup to send data to database">
+      <created>1715855469416</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1715855469416</updated>
+    </task>
+    <task id="LOCAL-00041" summary="Implemented condition to check if data sent correctly">
+      <created>1715856904614</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1715856904614</updated>
+    </task>
+    <task id="LOCAL-00042" summary="added on_release to call submit_signup_data">
+      <created>1715856998064</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1715856998064</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="origin/Frontend" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added all the quiz questions to quiz_questions.py" />
+    <MESSAGE value="corrected screen reference" />
+    <MESSAGE value="unversioned files" />
+    <MESSAGE value="Added screens UserInfoScreen, InitialOptionsScreen, WellnessHelpScreen and OptionsScreen to the screen manager" />
+    <MESSAGE value="Added get_filtered_question function which ensures only users activity preferences are asked about in the daily quiz" />
+    <MESSAGE value="'User Info' not links to user info screen, 'Wellness Help' button leads to wellness help screen and 'Options' button leads to options screen" />
+    <MESSAGE value="Added functionality in initial_options that enables a user to select their activity preferences (what activities they want the quiz to ask about)" />
+    <MESSAGE value="added gui screen design for initial options screen" />
+    <MESSAGE value="Temporarily made login link to initial options screen (will be changed when there is a place to store user activity preferences for quiz)" />
+    <MESSAGE value="deleted mainscreen.kv" />
+    <MESSAGE value="Copied and pasted code from initial options screen for options screen, but with a button that will eventually enable user to pause the daily quiz" />
+    <MESSAGE value="Copied and pasted gui design from initial options kivy file to options kivy file, but with a button that will eventually enable user to pause the daily quiz" />
+    <MESSAGE value="reference quiz questions now have and activity id, so they can be filtered easily" />
+    <MESSAGE value="signup screen now links to initial options screen instead of going straight to daily quiz" />
+    <MESSAGE value="builder added to user info screen so links to userinfoscreen.kv" />
+    <MESSAGE value="user info gui design implemented" />
+    <MESSAGE value="Wellness help screen builder added so links to wellnesshelpscreen.kv, and also adds show_details function which enables popups" />
+    <MESSAGE value="wellness help screen gui design implemented" />
+    <MESSAGE value="removed print statement" />
+    <MESSAGE value="Corrected activity preference names" />
+    <MESSAGE value="Corrected activity names" />
+    <MESSAGE value="Change email repeat corrected to change password" />
+    <MESSAGE value="Started implementing URL requests for signup to send data to database" />
+    <MESSAGE value="Implemented condition to check if data sent correctly" />
+    <MESSAGE value="added on_release to call submit_signup_data" />
+    <option name="LAST_COMMIT_MESSAGE" value="added on_release to call submit_signup_data" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1715848511139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$app.coverage" NAME="app Coverage Results" MODIFIED="1715601424149" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715851729783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1715854048362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+  </component>
+</project>
