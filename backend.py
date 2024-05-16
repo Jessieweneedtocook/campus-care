@@ -1,9 +1,16 @@
 from flask import Flask, render_template, request, jsonify
 from flask_cors import CORS
 import mysql.connector
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+import os
+import dotenv
 
+dotenv.load_dotenv()
 app = Flask(__name__)
 CORS(app)
+
+app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
+jwt = JWTManager(app)
 
 def get_db_connection():
     #Makes connection to database when needed
