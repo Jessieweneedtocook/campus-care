@@ -6,6 +6,10 @@ import re
 from wtforms.validators import Length
 from wtforms.validators import DataRequired
 
+def password_checker(form, password):
+    p = re.compile(r'(?=.*\d)(?=.*[a-zA-Z])(?=.*\W)')
+    if not p.match(password.data):
+        raise ValidationError()
 
 class SignupForm(FlaskForm):
     username = StringField(validators=[DataRequired()])
@@ -14,3 +18,5 @@ class SignupForm(FlaskForm):
     dob = DateField(validators=[DataRequired()])
     password = PasswordField(validators=[DataRequired(), Length(min=6, max=12)])
     confirm_password = PasswordField(validators=[DataRequired(), EqualTo("password")])
+
+    submit = SubmitField()
