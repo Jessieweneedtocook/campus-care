@@ -16,16 +16,15 @@ class SignupScreen(Screen):
             "number": self.ids.number_input.text
         }
         # authentication here
-        self.send_to_server(user_data)
+        if self.send_to_server(user_data):
+            print("Success in sending data!")
+            self.manager.current = 'initialoptions'
+        else:
+            print('failed to send data')
 
     def send_to_server(self, user_data):
         url = ""
         headers = {}
         send = requests.post(url, json=user_data)
-        if send.status_code == 200:
-            print("Signup successful!")
-
-        else:
-            print("Failed to sign up. Status code:", send.status_code)
-
+        return send.status_code == 200
 
