@@ -11,6 +11,16 @@ def password_checker(form, password):
     if not p.match(password.data):
         raise ValidationError()
 
+def phone_checker(form, phone):
+    p = re.compile(r'^(?:(?:\+|00)44|0) '
+                   r'?(?:\d{4} ?\d{3} '
+                   r'?\d{3}|\d{3} ?\d{4} '
+                   r'?\d{4}|\d{5} '
+                   r'?\d{4} '
+                   r'?\d{2})$')
+    if not p.match(phone.data):
+        raise ValidationError()
+
 class SignupForm(FlaskForm):
     username = StringField(validators=[DataRequired()])
     email = StringField(validators=[DataRequired(), Email()])
