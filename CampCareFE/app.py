@@ -53,7 +53,9 @@ class MyApp(App):
     def get_filtered_question(self):
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
         if filtered_questions:
-            return filtered_questions[self.sm.current_question_index]
+            question = filtered_questions[self.sm.current_question_index]
+            question['index'] = self.sm.current_question_index  # Add the current question index to the question dictionary
+            return question
         return None
 
     def next_question(self, instance=None):

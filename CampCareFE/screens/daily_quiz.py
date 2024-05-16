@@ -14,12 +14,12 @@ db_path = os.path.join(script_dir, '../../db/UserActivities.db')
 
 class DailyQuizScreen(Screen):
     def on_enter(self):
-        super(DailyQuizScreen, self).on_enter()
-        self.update_content(self.manager.current_question_index)
+        super(DailyQuizScreen, self).on_enter()  # Ensure the superclass method is called
+        self.update_content()
 
-    def update_content(self, current_question_index):
+    def update_content(self):
         self.ids.answers_container.clear_widgets()
-        question = App.get_running_app().questions[current_question_index]
+        question = self.manager.get_current_question()
         self.ids.question_label.text = question['question']
         for answer in question['answers']:
             btn = Button(text=answer)
@@ -28,8 +28,9 @@ class DailyQuizScreen(Screen):
 
     def advance_quiz(self, instance):
         user_id = 1  # Replace with actual user ID
-        current_question_index = self.manager.current_question_index
-        question = App.get_running_app().questions[current_question_index]
+        question = self.manager.get_current_question()
         user_answer = instance.text
         App.get_running_app().update_activities(user_id, question['question'], user_answer)
-        App.get_running_app().next_question()
+
+        self.manager.next_question()
+        self.update_content()
