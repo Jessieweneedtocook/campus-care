@@ -29,11 +29,11 @@ def symbol_checker(form, field):
             raise ValidationError()
 
 class SignupForm(FlaskForm):
-    username = StringField(validators=[DataRequired()])
+    username = StringField(validators=[DataRequired(), symbol_checker])
     email = StringField(validators=[DataRequired(), Email()])
-    phone = StringField(validators=[DataRequired()])
+    phone = StringField(validators=[DataRequired(), phone_checker])
     dob = DateField(validators=[DataRequired()])
-    password = PasswordField(validators=[DataRequired(), Length(min=6, max=12)])
+    password = PasswordField(validators=[DataRequired(), Length(min=6, max=12), password_checker])
     confirm_password = PasswordField(validators=[DataRequired(), EqualTo("password")])
 
     submit = SubmitField()
