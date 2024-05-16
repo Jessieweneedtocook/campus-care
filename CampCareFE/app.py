@@ -15,6 +15,7 @@ from quiz_questions import questions
 
 
 class MyApp(App):
+
     def build(self):
         Window.size = (375, 667)
         self.sm = ScreenManager()
@@ -44,6 +45,7 @@ class MyApp(App):
 
     def next_question(self, instance=None):
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
+        print(self.sm.current_question_index)
         if self.sm.current_question_index < len(filtered_questions) - 1:
             self.sm.current_question_index += 1
             self.sm.current = 'dailyquiz'
