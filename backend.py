@@ -37,13 +37,29 @@ def register_user(data):
         return jsonify({"status": "error", "message": str(e)}), 500
 
 def login_user(data):
-    username = data.get("username")
-    password = data.get("password")
+    try:
+        username = data.get("username")
+        password = data.get("password")
+
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+def change_email(data):
+
+def change_password(data):
+
+def delete_account(data):
+
 
 #Dictionary acting like switch statement for our different request handling functions
 actions = {
     "register_user": register_user,
-    "login_user": login_user
+    "login_user": login_user,
+    "change_email":change_email,
+    "change_password": change_password,
+    "delete_account": delete_account,
+
+
 }
 @app.route("/api", methods=["POST","GET"])
 def api():
