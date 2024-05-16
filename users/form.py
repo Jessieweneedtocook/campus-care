@@ -44,3 +44,10 @@ class LoginForm(FlaskForm):
     password = PasswordField(validators=[DataRequired()])
 
     submit = SubmitField()
+
+
+class PasswordForm(FlaskForm):
+    current_password = PasswordField(id='password', validators=[DataRequired()])
+    show_password = BooleanField('Show password', id='check')
+    new_password = PasswordField(validators=[DataRequired(), Length(min=8, max=15, ), password_checker])
+    confirm_new_password = PasswordField(validators=[DataRequired(), EqualTo('new_password')])
