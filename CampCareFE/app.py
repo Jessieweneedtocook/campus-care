@@ -12,6 +12,10 @@ from kivy.core.window import Window
 from quiz_questions import questions
 
 class MyApp(App):
+    def __init__(self, **kwargs):
+        super(MyApp, self).__init__(**kwargs)
+        self.questions = questions
+
     def build(self):
         self.create_database()
 
@@ -31,12 +35,12 @@ class MyApp(App):
     def next_question(self):
         if not self.all_questions_asked:
             self.sm.current_question_index += 1
-            if self.sm.current_question_index >= len(questions) - 1:
+            if self.sm.current_question_index >= len(self.questions):
                 self.sm.current_question_index = 0
                 self.all_questions_asked = True
-            self.daily_quiz_screen.update_content(self.sm.current_question_index)
-        else:
-            self.sm.current = 'home'
+                self.sm.current = 'home'
+            else:
+                self.daily_quiz_screen.update_content(self.sm.current_question_index)
 
     def create_database(self):
         conn = sqlite3.connect(db_path)
@@ -67,11 +71,4 @@ class MyApp(App):
         cursor.execute(query, data)
         conn.commit()
         conn.close()
-
-    # Sample questions for testing
-    questions = [
-        {"question": "Hours spent socialising?", "answers": ["Less than 1", "1-3", "More than 4"]},
-        {"question": "Hours spent sleeping", "answers": ["Less than 5", "5-7", "More than 7"]},
-        {"question": "Hours spent touching grass?", "answers": ["Less than 1", "1-3", "More than 4"]}
-    ]
 
