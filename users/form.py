@@ -51,3 +51,9 @@ class PasswordForm(FlaskForm):
     show_password = BooleanField('Show password', id='check')
     new_password = PasswordField(validators=[DataRequired(), Length(min=6, max=12), password_checker])
     confirm_new_password = PasswordField(validators=[DataRequired(), EqualTo('new_password')])
+
+
+class EmailForm(FlaskForm):
+    current_email = StringField(id='email' , validators=[DataRequired()])
+    show_email = BooleanField('Show email', id='check')
+    new_email = StringField(validators=[DataRequired, Email()])
