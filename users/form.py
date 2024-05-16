@@ -21,6 +21,13 @@ def phone_checker(form, phone):
     if not p.match(phone.data):
         raise ValidationError()
 
+def symbol_checker(form, field):
+    excluded_symbol = r'[!@#$%^&*()+=\[\]{};:\'"\\|,.<>?]'
+
+    for char in field.data:
+        if char in excluded_symbol:
+            raise ValidationError()
+
 class SignupForm(FlaskForm):
     username = StringField(validators=[DataRequired()])
     email = StringField(validators=[DataRequired(), Email()])
