@@ -12,5 +12,5 @@ class SignupForm(FlaskForm):
     email = StringField(validators=[DataRequired(), Email()])
     phone = StringField(validators=[DataRequired()])
     dob = DateField(validators=[DataRequired()])
-    password = PasswordField(validators=[DataRequired(), Length])
+    password = PasswordField(validators=[DataRequired(), Length(min=6, max=12)])
     confirm_password = PasswordField(validators=[DataRequired()])
