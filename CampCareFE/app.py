@@ -61,12 +61,9 @@ class MyApp(App):
         print(self.sm.current_question_index)
         if self.sm.current_question_index < len(filtered_questions) - 1:
             self.sm.current_question_index += 1
-            if self.sm.current_question_index >= len(self.questions):
-                self.sm.current_question_index = 0
-                self.all_questions_asked = True
-                self.sm.current = 'home'
-            else:
-                self.daily_quiz_screen.update_content(self.sm.current_question_index)
+            self.sm.current = 'dailyquiz'
+        else:
+            self.sm.current = 'home'
 
     def create_database(self):
         conn = sqlite3.connect(db_path)
