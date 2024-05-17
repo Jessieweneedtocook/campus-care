@@ -58,6 +58,12 @@ class WellnessProgressScreen(Screen):
                     total_value += 2
                 elif time_spent_str == "More than 4":
                     total_value += 5
+                elif time_spent_str == "Less than 5":
+                    total_value += 4
+                elif time_spent_str == "5-7":
+                    total_value += 6
+                elif time_spent_str == "More than 7":
+                    total_value += 8
 
             # Calculate the average
             average_value = total_value / count if count > 0 else 0
