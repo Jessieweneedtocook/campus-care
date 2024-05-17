@@ -30,4 +30,12 @@ class InitialOptionsScreen(Screen):
 
 
 
+    def insert_preference(self, activity):
+        # You need to replace UserID with the actual user ID
+        user_id = 1  # Replace this with the actual user ID
+        self.cursor.execute("""
+                INSERT INTO UserActivityPreferences (UserID, Activity) VALUES (?, ?)""", (user_id, activity))
+        self.db_connection.commit()
+
+
 

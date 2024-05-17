@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="04a5c43f-d18e-4df1-bcaa-8a41f193927e" name="Changes" comment="changing file names">
+    <list default="true" id="04a5c43f-d18e-4df1-bcaa-8a41f193927e" name="Changes" comment="Adding preference table to docker.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/db-connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/db-connection.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/initial_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/initial_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/wellness_progress.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/wellness_progress.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +35,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="quiz" />
+        <entry key="$PROJECT_DIR$" value="main" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -67,7 +68,7 @@
       <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\db" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.db-connection (1)">
+  <component name="RunManager" selected="Python.main">
     <configuration name="daily_quiz" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC2033_Team37_23_24" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -172,9 +173,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.main" />
         <item itemvalue="Python.db-connection (1)" />
         <item itemvalue="Docker.db: Compose Deployment" />
-        <item itemvalue="Python.main" />
         <item itemvalue="Python.home" />
         <item itemvalue="Python.daily_quiz" />
       </list>
@@ -256,7 +257,14 @@
       <option name="project" value="LOCAL" />
       <updated>1715794132171</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Adding preference table to docker.">
+      <created>1715858314019</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1715858314019</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,11 +303,12 @@
     <MESSAGE value="adding quiz functionality" />
     <MESSAGE value="quiz function works fully with the main app now but gets stuck and crashes after last question is asked." />
     <MESSAGE value="removing unneeded imports" />
-    <option name="LAST_COMMIT_MESSAGE" value="removing unneeded imports" />
+    <MESSAGE value="Adding preference table to docker." />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding preference table to docker." />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$home.coverage" NAME="home Coverage Results" MODIFIED="1715794681228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection__1_.coverage" NAME="db-connection (1) Coverage Results" MODIFIED="1715857942442" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection__1_.coverage" NAME="db-connection (1) Coverage Results" MODIFIED="1715858170720" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz__1_.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715617574822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/kv" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1715857450028" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$app.coverage" NAME="app Coverage Results" MODIFIED="1715597427713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
