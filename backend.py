@@ -12,6 +12,12 @@ CORS(app)
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
 jwt = JWTManager(app)
 
+from users.views import users_blueprint
+from admin.views import admin_blueprint
+
+app.register_blueprint(users_blueprint)
+app.register_blueprint(admin_blueprint)
+
 def get_db_connection():
     #Makes connection to database when needed
     db = mysql.connector.connect(host='localhost', user='root', password='team37', port=32001)
