@@ -13,13 +13,13 @@ from CampCareFE.screens.daily_quiz import db_path
 Builder.load_file('kv/wellnessprogressscreen.kv')
 
 class WellnessProgressScreen(Screen):
-    def get_last_week_data(self):
+    def get_data_for_period(self, days):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        cursor.execute("""
+        cursor.execute(f"""
             SELECT * FROM UserActivities
-            WHERE ActivityDate >= date('now','-7 days')
+            WHERE ActivityDate >= date('now','-{days} days')
         """)
 
         data = cursor.fetchall()
@@ -105,3 +105,31 @@ class WellnessProgressScreen(Screen):
 
         plt.savefig('assets/output.png')
 
+
+    def most_improved(self):
+        # Get data for the last two weeks
+        data_past_week = self.get_data_for_period(7)
+        data_week_before = self.get_data_for_period(14)
+
+        # Calculate stats for each period
+        stats_past_week = self.calculate_stats(data_past_week)
+        stats_week_before = self.calculate_stats(data_week_before)
+
+        # Calculate the difference in averages between the two periods
+        differences = {activity: stats_past_week.get(activity, 0) - stats_week_before.get(activity, 0)
+        for activity in set(stats_past_week) | set(stats_week_before)}
+        return max(differences, key=differences.get)
+
+    def needs_improvement(self):
+        # Get data for the last two weeks
+        data_past_week = self.get_data_for_period(7)
+        data_week_before = self.get_data_for_period(14)
+
+        # Calculate stats for each period
+        stats_past_week = self.calculate_stats(data_past_week)
+        stats_week_before = self.calculate_stats(data_week_before)
+
+        # Calculate the difference in averages between the two periods
+        differences = {activity: stats_past_week.get(activity, 0) - stats_week_before.get(activity, 0)
+        for activity in set(stats_past_week) | set(stats_week_before)}
+        return min(differences, key=differences.get)
