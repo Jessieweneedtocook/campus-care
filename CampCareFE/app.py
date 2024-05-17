@@ -25,6 +25,11 @@ class MyApp(App):
         self.questions = questions
 
     def build(self):
+        screen = WellnessProgressScreen()
+        data_by_activity_type = screen.get_last_week_data()
+        stats_by_activity_type = screen.calculate_stats(data_by_activity_type)
+        screen.plot_stats(stats_by_activity_type)
+
         self.create_database()
 
         Window.size = (375, 667)

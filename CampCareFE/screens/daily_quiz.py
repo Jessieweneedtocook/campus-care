@@ -30,7 +30,7 @@ class DailyQuizScreen(Screen):
         user_id = 1  # Replace with actual user ID
         question = self.manager.get_current_question()
         user_answer = instance.text
-        App.get_running_app().update_activities(user_id, question['question'], user_answer)
+        App.get_running_app().update_activities(user_id, question['activity'], user_answer)
 
         self.manager.next_question()
         self.update_content()
