@@ -27,11 +27,6 @@ class MyApp(App):
     def build(self):
         self.create_database()
 
-        screen = WellnessProgressScreen()
-        data_by_activity_type = screen.get_last_week_data()
-        stats_by_activity_type = screen.calculate_stats(data_by_activity_type)
-        screen.plot_stats(stats_by_activity_type)
-
         Window.size = (375, 667)
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
@@ -102,6 +97,11 @@ class MyApp(App):
         conn.commit()
         conn.close()
 
+    def plot_graph(self):
+        screen = WellnessProgressScreen()
+        data_by_activity_type = screen.get_last_week_data()
+        stats_by_activity_type = screen.calculate_stats(data_by_activity_type)
+        screen.plot_stats(stats_by_activity_type)
 
 
 
