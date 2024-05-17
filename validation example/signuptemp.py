@@ -1,7 +1,7 @@
 import requests
 from kivy.uix.screenmanager import Screen
 from kivy.uix.label import Label
-from validation import (
+from validationtemp import (
     validate_username, validate_email, validate_phone,
     validate_password, validate_confirm_password
 )
