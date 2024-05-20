@@ -55,6 +55,12 @@ def confirm_password_checker (password, confirm_password):
     return True
 
 
+def dob_checker(dob):
+    p =re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$')
+    if not p.match(dob.data):
+        return False, "invalid phone number format try dd/mm/yyyy"
+    return True
+
 # form for the register page
 class SignupForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), symbol_checker])
