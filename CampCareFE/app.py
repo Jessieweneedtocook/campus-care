@@ -3,6 +3,8 @@ from datetime import datetime
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 
 from CampCareFE.screens.daily_quiz import db_path, DailyQuizScreen
 from screens.login import LoginScreen
@@ -59,6 +61,12 @@ class MyApp(App):
         return None
 
     def next_question(self, instance=None):
+        user_id = 1
+        if not self.daily_quiz_comp(user_id):
+            print('quiz complete')
+            self.show_popup("You have already completed the quiz today.")
+            return
+
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
         print(self.sm.current_question_index)
         if self.sm.current_question_index < len(filtered_questions) - 1:
@@ -102,6 +110,26 @@ class MyApp(App):
         data_by_activity_type = screen.get_data_for_period(7)
         stats_by_activity_type = screen.calculate_stats(data_by_activity_type)
         screen.plot_stats(stats_by_activity_type)
+
+    def daily_quiz_comp(self, user_id):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        query = """
+            SELECT * FROM UserActivities
+            WHERE UserID = ? AND ActivityDate = ?
+            """
+        cursor.execute(query, (user_id, datetime.now().date()))
+        entry = cursor.fetchone()
+        conn.close()
+
+        return entry is None
+
+    def show_popup(self, message):
+        popup = Popup(title='Info',
+                      content=Label(text=message),
+                      size_hint=(None, None), size=(400, 200))
+        popup.open()
 
 
 
