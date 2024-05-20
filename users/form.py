@@ -27,7 +27,7 @@ def phone_checker(phone):
                    r'?\d{4}|\d{5} '
                    r'?\d{4} '
                    r'?\d{2})$')
-    if not p.match(phone.data):
+    if not p.match(phone):
         return False, "invalid phone number"
     return True
 
@@ -45,7 +45,7 @@ def email_checker(email):
     p = re.compile(r'(?=.*[a-zA-Z0-9_.+-])'
                    r'(?=.*[@])(?=.*[a-zA-Z0-9-])'
                    r'(?=.*[.])(?=.*[a-zA-Z0-9-.])')
-    if not p.match(email.data):
+    if not p.match(email):
         return False, "invalid email"
     return True
 
@@ -57,7 +57,7 @@ def confirm_password_checker (password, confirm_password):
 
 def dob_checker(dob):
     p =re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$')
-    if not p.match(dob.data):
+    if not p.match(dob):
         return False, "invalid phone number format try dd/mm/yyyy"
     return True
 
