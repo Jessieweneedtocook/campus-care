@@ -8,7 +8,7 @@ from wtforms.validators import DataRequired
 
 # makes sure that the password contains a number, uppercase and lower case letter and one symbol
 def password_checker(password):
-    if len(password) < 6:
+    if len(password) < 6 or len(password) > 12:
         return False, "Password must be minimum 6 characters in length"
     if not re.search(r'(?=.*\d)', password):
         return False, "Password must contain at least one digit"
