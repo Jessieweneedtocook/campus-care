@@ -18,9 +18,6 @@ def password_checker(password):
         return False, "Password must contain a symbol"
     return True
 
-    p = re.compile(r'(?=.*\d)(?=.*[a-zA-Z])')
-    if not p.match(field.data):
-        raise ValidationError()
 
 # makes sure the phone number is in Uk number format
 def phone_checker(phone):
@@ -31,10 +28,10 @@ def phone_checker(phone):
                    r'?\d{4} '
                    r'?\d{2})$')
     if not p.match(phone.data):
-        return False, "invalid email address"
+        return False, "invalid phone number"
     return True
 
-# makes sure the username cannot contain these symbols
+# makes sure the username cannot contain these symbols and is present
 def username_checker(username):
     excluded_symbol = r'[!@#$%^&*()+=\[\]{};:\'"\\|,.<>?]'
 
@@ -43,6 +40,16 @@ def username_checker(username):
     if not username:
         return False, "Please fill in this field"
     return True
+
+def email_checker(email):
+    p = re.compile(r'(?=.*[a-zA-Z0-9_.+-])'
+                   r'(?=.*[@])(?=.*[a-zA-Z0-9-])'
+                   r'(?=.*[.])(?=.*[a-zA-Z0-9-.])')
+    if not p.match(email.data):
+        return False, "invalid email"
+    return True
+
+
 # form for the register page
 class SignupForm(FlaskForm):
     username = StringField('Username', validators=[DataRequired(), symbol_checker])
