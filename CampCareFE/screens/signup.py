@@ -13,15 +13,16 @@ Builder.load_file('kv/signupscreen.kv')
 
 
 class SignupScreen(Screen):
+
     def sign_up(self):
         self.ids.error_message.text = ""
         data = {
-            'username': self.ids.username_input.text,
-            'email': self.ids.email_input.text,
-            'phone': self.ids.phone_input.text,
-            'dob': self.ids.dob_input.text,
-            'password': self.ids.password_input.text,
-            'confirm_password': self.ids.confirm_password_input.text
+            'username': self.ids.username.text,
+            'email': self.ids.email.text,
+            'phone': self.ids.number.text,
+            'dob': self.ids.dob.text,
+            'password': self.ids.password.text,
+            'confirm_password': self.ids.confirm_password.text
         }
 
         validations = [
@@ -35,23 +36,19 @@ class SignupScreen(Screen):
 
         for valid, message in validations:
             if not valid:
+                print('error message')
                 self.ids.error_message.text = message
                 return
 
-        if self.send_to_server(data):
-            print("Success in sending data!")
-            self.manager.current = 'initialoptions'
-        else:
-            self.ids.error_message.text = 'Failed to send data'
 
-    def send_to_server(self, user_data):
-        url = "http://127.0.0.1:5000"
-        headers = {"Content-Type": "application/json"}
-        try:
-            response = requests.post(url, json=user_data, headers=headers)
-            return response.status_code == 200
-        except requests.exceptions.RequestException as e:
-            print(f"Error sending data to server: {e}")
-            return False
+
+        #url = 'http://localhost:5000/register'
+
+        #response = requests.post(url, json=data)
+        #if response.status_code == 201:
+        #    print('User registered successfully')
+        #else:
+        #    print('Registration failed:', response.json().get('message'))
+
 
 
