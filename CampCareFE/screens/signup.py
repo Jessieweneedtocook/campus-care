@@ -13,15 +13,16 @@ Builder.load_file('kv/signupscreen.kv')
 
 
 class SignupScreen(Screen):
+
     def sign_up(self):
         self.ids.error_message.text = ""
         data = {
-            'username': self.ids.username_input.text,
-            'email': self.ids.email_input.text,
-            'phone': self.ids.phone_input.text,
-            'dob': self.ids.dob_input.text,
-            'password': self.ids.password_input.text,
-            'confirm_password': self.ids.confirm_password_input.text
+            'username': self.ids.username.text,
+            'email': self.ids.email.text,
+            'phone': self.ids.number.text,
+            'dob': self.ids.dob.text,
+            'password': self.ids.password.text,
+            'confirm_password': self.ids.confirm_password.text
         }
 
         validations = [
@@ -35,17 +36,19 @@ class SignupScreen(Screen):
 
         for valid, message in validations:
             if not valid:
+                print('error message')
                 self.ids.error_message.text = message
                 return
 
 
 
-        url = 'http://localhost:5000/register'
+        #url = 'http://localhost:5000/register'
 
-        response = requests.post(url, json=data)
-        if response.status_code == 201:
-            print('User registered successfully')
-        else:
-            print('Registration failed:', response.json().get('message'))
+        #response = requests.post(url, json=data)
+        #if response.status_code == 201:
+        #    print('User registered successfully')
+        #else:
+        #    print('Registration failed:', response.json().get('message'))
+
 
 
