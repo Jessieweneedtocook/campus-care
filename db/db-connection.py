@@ -44,6 +44,7 @@ def test_table(cursor):
     assert ('Users',) in tables, "Table 'Users' not found"
     assert ('UserActivityPreferences',) in tables, "Table 'UserActivityPreferences' not found"
 
+
 def test_data(cursor):
     cursor.execute("SELECT * FROM Users")
     users = cursor.fetchall()
@@ -52,6 +53,7 @@ def test_data(cursor):
     cursor.execute("SELECT * FROM UserActivityPreferences")
     preferences = cursor.fetchall()
     assert len(preferences) >= 0, "Error occurred while fetching data from 'UserActivityPreferences' table"
+
 
 def main():
     db = mysql.connector.connect(host='localhost', user='root', password='team37', port=32001)
