@@ -16,7 +16,7 @@ def password_checker(password):
         return False, "Password must contain at least one uppercase and one lowercase character"
     if not re.search(r'(?=.*\W)', password):
         return False, "Password must contain a symbol"
-    return True
+    return True, ''
 
 
 # makes sure the phone number is in Uk number format
@@ -29,7 +29,7 @@ def phone_checker(phone):
                    r'?\d{2})$')
     if not p.match(phone):
         return False, "invalid phone number"
-    return True
+    return True, ''
 
 # makes sure the username cannot contain these symbols and is present
 def username_checker(username):
@@ -39,7 +39,7 @@ def username_checker(username):
         return False, "invalid symbols"
     if not username:
         return False, "Please fill in this field"
-    return True
+    return True, ''
 
 def email_checker(email):
     p = re.compile(r'(?=.*[a-zA-Z0-9_.+-])'
@@ -47,19 +47,19 @@ def email_checker(email):
                    r'(?=.*[.])(?=.*[a-zA-Z0-9-.])')
     if not p.match(email):
         return False, "invalid email"
-    return True
+    return True, ''
 
 def confirm_password_checker (password, confirm_password):
     if password != confirm_password:
         return False, "Passwords do not match."
-    return True
+    return True, ''
 
 
 def dob_checker(dob):
     p =re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$')
     if not p.match(dob):
         return False, "invalid phone number format try dd/mm/yyyy"
-    return True
+    return True, ''
 
 # form for the register page
 class SignupForm(FlaskForm):
