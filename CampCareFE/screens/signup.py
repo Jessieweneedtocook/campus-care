@@ -13,19 +13,8 @@ Builder.load_file('kv/signupscreen.kv')
 
 
 class SignupScreen(Screen):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.signup_form = SignupForm()
-
     def sign_up(self):
-        self.signup_form.username.data = self.ids.username_input.text
-        self.signup_form.email.data = self.ids.email_input.text
-        self.signup_form.phone.data = self.ids.phone_input.text
-        self.signup_form.dob.data = self.ids.dob_input.text
-        self.signup_form.password.data = self.ids.password_input.text
-        self.signup_form.confirm_password.data = self.ids.confirm_password_input.text
-
-        url = 'http://localhost:5000/register'
+        self.ids.error_message.text = ""
         data = {
             'username': self.ids.username_input.text,
             'email': self.ids.email_input.text,
@@ -34,6 +23,25 @@ class SignupScreen(Screen):
             'password': self.ids.password_input.text,
             'confirm_password': self.ids.confirm_password_input.text
         }
+
+        validations = [
+            username_checker(data["username"]),
+            email_checker(data["email"]),
+            phone_checker(data["phone"]),
+            dob_checker(data["dob"]),
+            password_checker(data["password"]),
+            confirm_password_checker(data["password"], data["confirm_password"])
+           ]
+
+        for valid, message in validations:
+            if not valid:
+                self.ids.error_message.text = message
+                return
+
+
+
+        url = 'http://localhost:5000/register'
+
         response = requests.post(url, json=data)
         if response.status_code == 201:
             print('User registered successfully')
