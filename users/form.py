@@ -1,0 +1,63 @@
+from flask_wtf import FlaskForm
+from wtforms import StringField, SubmitField, PasswordField, DateField, BooleanField, validators
+from wtforms.validators import Email, EqualTo
+from wtforms.validators import ValidationError
+import re
+from wtforms.validators import Length
+from wtforms.validators import DataRequired
+
+# makes sure that the password contains a number, uppercase and lower case letter and one symbol
+def password_checker(form, field):
+    p = re.compile(r'(?=.*\d)(?=.*[a-zA-Z])(?=.*\W)')
+    if not p.match(field.data):
+        raise ValidationError()
+
+# makes sure the phone number is in Uk number format
+def phone_checker(form, field):
+    p = re.compile(r'^(?:(?:\+|00)44|0) '
+                   r'?(?:\d{4} ?\d{3} '
+                   r'?\d{3}|\d{3} ?\d{4} '
+                   r'?\d{4}|\d{5} '
+                   r'?\d{4} '
+                   r'?\d{2})$')
+    if not p.match(field.data):
+        raise ValidationError()
+
+# makes sure the username cannot contain these symbols
+def symbol_checker(form, field):
+    excluded_symbol = r'[!@#$%^&*()+=\[\]{};:\'"\\|,.<>?]'
+
+    for char in field.data:
+        if char in excluded_symbol:
+            raise ValidationError()
+
+# form for the register page
+class SignupForm(FlaskForm):
+    username = StringField('Username', validators=[DataRequired(), symbol_checker])
+    email = StringField('Email', validators=[DataRequired(), Email()])
+    phone = StringField('Phone', validators=[DataRequired(), phone_checker])
+    dob = DateField('Date of Birth', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired(), Length(min=6, max=12), password_checker])
+    confirm_password = PasswordField('Confirm Password', validators=[DataRequired(), EqualTo("password")])
+
+    submit = SubmitField()
+
+# form for the login page
+class LoginForm(FlaskForm):
+    username = StringField(validators=[DataRequired()])
+    password = PasswordField(validators=[DataRequired()])
+
+    submit = SubmitField()
+
+# form for changing the password
+class PasswordForm(FlaskForm):
+    current_password = PasswordField(id='password', validators=[DataRequired()])
+    show_password = BooleanField('Show password', id='check')
+    new_password = PasswordField(validators=[DataRequired(), Length(min=6, max=12), password_checker])
+    confirm_new_password = PasswordField(validators=[DataRequired(), EqualTo('new_password')])
+
+# form for changing the email
+class EmailForm(FlaskForm):
+    current_email = StringField(id='email' , validators=[DataRequired()])
+    show_email = BooleanField('Show email', id='check')
+    new_email = StringField(validators=[DataRequired(), Email()])
