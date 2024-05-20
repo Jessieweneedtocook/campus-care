@@ -11,13 +11,15 @@ from screens.initial_options import InitialOptionsScreen
 from screens.wellness_help import WellnessHelpScreen
 from screens.options import OptionsScreen
 from kivy.core.window import Window
-from quiz_questions import questions
+from quiz_questions import questions, user_preferences
 
 
 class MyApp(App):
 
     def build(self):
         Window.size = (375, 667)
+        self.questions = questions
+        self.selected_activities = user_preferences["selected_activities"]
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
         self.sm.add_widget(SignupScreen(name='signup'))
@@ -30,7 +32,6 @@ class MyApp(App):
         self.sm.add_widget(OptionsScreen(name='options'))
 
         self.sm.current_question_index = 0
-        self.selected_activities = []
         self.sm.get_current_question = self.get_filtered_question
         self.sm.next_question = self.next_question
         self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
@@ -38,13 +39,13 @@ class MyApp(App):
         return self.sm
 
     def get_filtered_question(self):
-        filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
+        filtered_questions = [q for q in self.questions if q['activity'] in self.selected_activities]
         if filtered_questions:
             return filtered_questions[self.sm.current_question_index]
         return None
 
     def next_question(self, instance=None):
-        filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
+        filtered_questions = [q for q in self.questions if q['activity'] in self.selected_activities]
         print(self.sm.current_question_index)
         if self.sm.current_question_index < len(filtered_questions) - 1:
             self.sm.current_question_index += 1
@@ -52,5 +53,10 @@ class MyApp(App):
         else:
             self.sm.current = 'home'
 
+    def save_preferences(self):
+        user_preferences["selected_activities"] = self.selected_activities
+        with open('quiz_questions.py', 'w') as file:
+            file.write(f"questions = {questions}\n\n")
+            file.write(f"user_preferences = {user_preferences}")
 
 
