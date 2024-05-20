@@ -49,6 +49,11 @@ def email_checker(email):
         return False, "invalid email"
     return True
 
+def confirm_password_checker (password, confirm_password):
+    if password != confirm_password:
+        return False, "Passwords do not match."
+    return True
+
 
 # form for the register page
 class SignupForm(FlaskForm):
