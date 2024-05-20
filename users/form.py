@@ -7,8 +7,18 @@ from wtforms.validators import Length
 from wtforms.validators import DataRequired
 
 # makes sure that the password contains a number, uppercase and lower case letter and one symbol
-def password_checker(form, field):
-    p = re.compile(r'(?=.*\d)(?=.*[a-zA-Z])(?=.*\W)')
+def password_checker(password):
+    if len(password) < 6:
+        return False, "Password must be minimum 6 characters in length"
+    if not re.search(r'(?=.*\d)', password):
+        return False, "Password must contain at least one digit"
+    if not re.search(r'(?=.*[a-zA-Z])', password):
+        return False, "Password must contain at least one uppercase and one lowercase character"
+    if not re.search(r'(?=.*\W)', password):
+        return False, "Password must contain a symbol"
+    return True
+
+    p = re.compile(r'(?=.*\d)(?=.*[a-zA-Z])')
     if not p.match(field.data):
         raise ValidationError()
 
