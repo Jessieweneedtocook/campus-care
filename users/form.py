@@ -63,7 +63,7 @@ def dob_checker(dob):
 
 # form for the register page
 class SignupForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), symbol_checker])
+    username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     phone = StringField('Phone', validators=[DataRequired(), phone_checker])
     dob = DateField('Date of Birth', validators=[DataRequired()])
