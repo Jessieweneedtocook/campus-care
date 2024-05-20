@@ -1,3 +1,14 @@
 mysql~=0.0.3
 mysql-connector-python~=8.4.0
 Kivy~=2.3.0
+numpy
+Flask
+matplotlib
+flask_sqlalchemy
+flask_login
+flask_wtf
+WTForms
+mysql-connector-python
+flask_cors
+flask_jwt_extended
+python-dotenv
