@@ -58,10 +58,13 @@ def login_user(data):
         return jsonify({"status": "error", "message": str(e)}), 500
 
 def change_email(data):
+    pass
 
 def change_password(data):
+    pass
 
 def delete_account(data):
+    pass
 
 
 #Dictionary acting like switch statement for our different request handling functions
@@ -92,3 +95,4 @@ def api():
 @app.route("/")
 def hello_world():
     return render_template("")
+
