@@ -18,7 +18,7 @@ from screens.initial_options import InitialOptionsScreen
 from screens.wellness_help import WellnessHelpScreen
 from screens.options import OptionsScreen
 from kivy.core.window import Window
-from quiz_questions import questions, user_preferences
+from quiz_questions import questions
 
 
 class MyApp(App):
@@ -31,7 +31,7 @@ class MyApp(App):
 
         Window.size = (375, 667)
         self.questions = questions
-        self.selected_activities = user_preferences["selected_activities"]
+        self.selected_activities = self.fetch_preferences(user_id=1)
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
         self.sm.add_widget(SignupScreen(name='signup'))
@@ -46,13 +46,30 @@ class MyApp(App):
         self.daily_quiz_screen = DailyQuizScreen(name='dailyquiz')
         self.sm.add_widget(self.daily_quiz_screen)
         self.sm.current_question_index = 0
-        self.selected_activities = []
+        #self.selected_activities = []
         self.sm.get_current_question = self.get_filtered_question
         self.sm.next_question = self.next_question
         self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
         self.sm.current = 'login'
         self.all_questions_asked = False  # Flag to track if all questions have been asked
         return self.sm
+
+    def fetch_preferences(self, user_id):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        query = """
+                SELECT Activities FROM UserActivityPreferences WHERE UserID = ?
+                """
+        cursor.execute(query, (user_id,))
+        result = cursor.fetchone()
+        conn.close()
+
+        if result is not None:
+            # Convert the string of activities back into a list
+            return result[0].strip('][').split(', ')
+        else:
+            return []
 
     def get_filtered_question(self):
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
@@ -77,11 +94,18 @@ class MyApp(App):
         else:
             self.sm.current = 'home'
 
-    def save_preferences(self):
-        user_preferences["selected_activities"] = self.selected_activities
-        with open('quiz_questions.py', 'w') as file:
-            file.write(f"questions = {questions}\n\n")
-            file.write(f"user_preferences = {user_preferences}")
+    def save_preferences(self, user_id):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        query = """
+                INSERT INTO UserActivityPreferences (UserID, Activities)
+                VALUES (?, ?)
+                """
+        data = (user_id, str(self.selected_activities))
+        cursor.execute(query, data)
+        conn.commit()
+        conn.close()
 
     def create_database(self):
         conn = sqlite3.connect(db_path)
@@ -94,6 +118,15 @@ class MyApp(App):
                 ActivityType TEXT NOT NULL,
                 TimeSpent INTEGER,
                 ActivityDate DATETIME NOT NULL
+            )
+        """)
+
+        cursor.execute("""
+            CREATE TABLE IF NOT EXISTS UserActivityPreferences (
+                PreferenceID INTEGER PRIMARY KEY AUTOINCREMENT,
+                UserID INTEGER,
+                Activities TEXT,
+                FOREIGN KEY(UserID) REFERENCES Users(UserID)
             )
         """)
 
