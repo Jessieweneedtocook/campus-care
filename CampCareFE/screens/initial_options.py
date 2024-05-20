@@ -1,5 +1,6 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
+from CampCareFE.quiz_questions import user_preferences, questions
 
 
 Builder.load_file('kv/initialoptionsscreen.kv')
@@ -8,7 +9,7 @@ Builder.load_file('kv/initialoptionsscreen.kv')
 class InitialOptionsScreen(Screen):
     def __init__(self, **kwargs):
         super(InitialOptionsScreen, self).__init__(**kwargs)
-        self.selected_activities = []
+        self.selected_activities = user_preferences["selected_activities"]
 
     def toggle_activity(self, instance):
         if instance.state == 'down':
@@ -27,6 +28,7 @@ class InitialOptionsScreen(Screen):
         from kivy.app import App
         app = App.get_running_app()
         app.selected_activities = self.get_selected_activities()
+        app.save_preferences()
 
 
 
