@@ -38,14 +38,20 @@ class SignupScreen(Screen):
                 self.ids.error_message.text = message
                 return
 
-
-
-        url = 'http://localhost:5000/register'
-
-        response = requests.post(url, json=data)
-        if response.status_code == 201:
-            print('User registered successfully')
+        if self.send_to_server(data):
+            print("Success in sending data!")
+            self.manager.current = 'initialoptions'
         else:
-            print('Registration failed:', response.json().get('message'))
+            self.ids.error_message.text = 'Failed to send data'
+
+    def send_to_server(self, user_data):
+        url = "http://127.0.0.1:5000"
+        headers = {"Content-Type": "application/json"}
+        try:
+            response = requests.post(url, json=user_data, headers=headers)
+            return response.status_code == 200
+        except requests.exceptions.RequestException as e:
+            print(f"Error sending data to server: {e}")
+            return False
 
 
