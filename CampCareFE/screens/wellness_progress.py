@@ -116,7 +116,7 @@ class WellnessProgressScreen(Screen):
         stats_week_before = self.calculate_stats(data_week_before)
 
         # Calculate the difference in averages between the two periods
-        differences = {activity: stats_past_week.get(activity, 0) - stats_week_before.get(activity, 0)
+        differences = {activity: (stats_week_before.get(activity, 0) - stats_past_week.get(activity, 0)) if activity == 'drinking' else (stats_past_week.get(activity, 0) - stats_week_before.get(activity, 0))
         for activity in set(stats_past_week) | set(stats_week_before)}
         return max(differences, key=differences.get)
 
@@ -130,6 +130,8 @@ class WellnessProgressScreen(Screen):
         stats_week_before = self.calculate_stats(data_week_before)
 
         # Calculate the difference in averages between the two periods
-        differences = {activity: stats_past_week.get(activity, 0) - stats_week_before.get(activity, 0)
+        differences = {activity: (stats_week_before.get(activity, 0) - stats_past_week.get(activity, 0)) if activity == 'drinking' else (stats_past_week.get(activity, 0) - stats_week_before.get(activity, 0))
         for activity in set(stats_past_week) | set(stats_week_before)}
         return min(differences, key=differences.get)
+
+
