@@ -1,5 +1,10 @@
+import sqlite3
+from datetime import datetime
+
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 
 from CampCareFE.screens.daily_quiz import db_path, DailyQuizScreen
 from screens.login import LoginScreen
@@ -17,8 +22,13 @@ from quiz_questions import questions, user_preferences
 
 
 class MyApp(App):
+    def __init__(self, **kwargs):
+        super(MyApp, self).__init__(**kwargs)
+        self.questions = questions
 
     def build(self):
+        self.create_database()
+
         Window.size = (375, 667)
         self.questions = questions
         self.selected_activities = user_preferences["selected_activities"]
@@ -33,22 +43,33 @@ class MyApp(App):
         self.sm.add_widget(WellnessHelpScreen(name='wellnesshelp'))
         self.sm.add_widget(OptionsScreen(name='options'))
 
+        self.daily_quiz_screen = DailyQuizScreen(name='dailyquiz')
+        self.sm.add_widget(self.daily_quiz_screen)
         self.sm.current_question_index = 0
         self.selected_activities = []
         self.sm.get_current_question = self.get_filtered_question
         self.sm.next_question = self.next_question
         self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
         self.sm.current = 'login'
+        self.all_questions_asked = False  # Flag to track if all questions have been asked
         return self.sm
 
     def get_filtered_question(self):
-        filtered_questions = [q for q in self.questions if q['activity'] in self.selected_activities]
+        filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
         if filtered_questions:
-            return filtered_questions[self.sm.current_question_index]
+            question = filtered_questions[self.sm.current_question_index]
+            question['index'] = self.sm.current_question_index  # Add the current question index to the question dictionary
+            return question
         return None
 
     def next_question(self, instance=None):
-        filtered_questions = [q for q in self.questions if q['activity'] in self.selected_activities]
+        user_id = 1
+        if not self.daily_quiz_comp(user_id):
+            print('quiz complete')
+            self.show_popup("You have already completed the quiz today.")
+            return
+
+        filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
         print(self.sm.current_question_index)
         if self.sm.current_question_index < len(filtered_questions) - 1:
             self.sm.current_question_index += 1
@@ -97,6 +118,26 @@ class MyApp(App):
         data_by_activity_type = screen.get_data_for_period(7)
         stats_by_activity_type = screen.calculate_stats(data_by_activity_type)
         screen.plot_stats(stats_by_activity_type)
+
+    def daily_quiz_comp(self, user_id):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        query = """
+            SELECT * FROM UserActivities
+            WHERE UserID = ? AND ActivityDate = ?
+            """
+        cursor.execute(query, (user_id, datetime.now().date()))
+        entry = cursor.fetchone()
+        conn.close()
+
+        return entry is None
+
+    def show_popup(self, message):
+        popup = Popup(title='Info',
+                      content=Label(text=message),
+                      size_hint=(None, None), size=(400, 200))
+        popup.open()
 
 
 
