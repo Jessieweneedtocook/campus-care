@@ -24,23 +24,26 @@ db.init_app(app)
 #app.register_blueprint(users_blueprint)
 #app.register_blueprint(admin_blueprint)
 
-def get_db_connection():
-    #Makes connection to database when needed
-    db = mysql.connector.connect(host='db', user='root', password='team37', port=3306)
-    return db
-
 @app.route("/register_user", methods=["POST"])
 def register_user(data):
     print("Received data:", data, flush=True)
     try:
-        #Gonna need to add some verification to ensure no overlapping usernames/ emails
-        username = data.get("username")
-        password = data.get("password")
-        email = data.get("email")
-        DateOfBirth = data.get("DateOfBirth")
-        role = data.get("role")
-        print("processed data:",username, password, email, DateOfBirth, role,flush=True)
 
+        username = data.get("username")
+        if db.session.query(User.username).filter(User.username == username).first():
+            return jsonify({"status": "error", "message": "Username already in use"}), 400
+
+        password = data.get("password")
+
+        email = data.get("email")
+        if db.session.query(User.email).filter(User.email == email).first():
+            return jsonify({"status": "error", "message": "Email already in use"}), 400
+
+        DateOfBirth = data.get("DateOfBirth")
+
+        role = data.get("role")
+
+        print("processed data:",username, password, email, DateOfBirth, role,flush=True)
         if not all([username, password, email, DateOfBirth, role]):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
         # Create a new User object
@@ -56,23 +59,34 @@ def register_user(data):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-@app.route("/login_user", methods=["POST"])
+@app.route("/login_user", methods=["GET"])
 def login_user(data):
     try:
         username = data.get("username")
         password = data.get("password")
+        user = db.session.query(User).filter(User.username == username).one()
+        if not user:
+            return jsonify({"status": "error", "message": "Username not found"}), 400
+        if user.password != password:
+            return jsonify({"status": "error", "message": "Username or Password incorrect"}), 400
+        else:
+            access_token = create_access_token(identity={'username': username})
+            return jsonify(access_token=access_token), 200
 
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@jwt_required()
 @app.route("/change_email", methods=["POST"])
 def change_email(data):
     pass
     return
+@jwt_required()
 @app.route("/change_account", methods=["POST"])
 def change_password(data):
     pass
     return
+@jwt_required()
 @app.route("/delete_account", methods=["POST"])
 def delete_account(data):
     pass
