@@ -108,6 +108,21 @@ class MyApp(App):
         conn.commit()
         conn.close()
 
+    def update_preferences(self, user_id):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        query = """
+                UPDATE UserActivityPreferences
+                SET Activities = ?
+                WHERE UserID = ?
+                """
+        data = (str(self.selected_activities), user_id)
+        cursor.execute(query, data)
+        conn.commit()
+        conn.close()
+
+
     def create_database(self):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
