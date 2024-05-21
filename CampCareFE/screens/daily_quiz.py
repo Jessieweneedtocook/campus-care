@@ -22,6 +22,7 @@ class DailyQuizScreen(Screen):
         super(DailyQuizScreen, self).on_enter()  # Ensure the superclass method is called
         self.update_content()
 
+
     def update_content(self):
         self.ids.answers_container.clear_widgets()
         question = self.manager.get_current_question()

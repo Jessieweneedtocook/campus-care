@@ -73,25 +73,27 @@ class MyApp(App):
 
     def get_filtered_question(self):
         print(f"Selected activities: {self.selected_activities}")
-        filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
+        # Strip the extra quotes from the selected activities
+        selected_activities = [activity.strip("'") for activity in self.selected_activities]
+        filtered_questions = [q for q in questions if q['activity'] in selected_activities]
         print(f"Filtered questions: {filtered_questions}")
-        if filtered_questions:
+        if self.sm.current_question_index < len(filtered_questions):
             question = filtered_questions[self.sm.current_question_index]
             question[
                 'index'] = self.sm.current_question_index  # Add the current question index to the question dictionary
             return question
-        return None
+        return {}
 
     def next_question(self, instance=None):
-        user_id = 1
-
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
         print(self.sm.current_question_index)
         if self.sm.current_question_index < len(filtered_questions) - 1:
             self.sm.current_question_index += 1
+            self.sm.get_screen('dailyquiz').update_content()  # Update the content of the 'dailyquiz' screen
             self.sm.current = 'dailyquiz'
         else:
             self.sm.current = 'home'
+            self.sm.current_question_index = 0  # Reset the question index for the next quiz
 
     def save_preferences(self, user_id):
         conn = sqlite3.connect(db_path)
