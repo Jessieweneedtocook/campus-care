@@ -39,7 +39,7 @@ def test_data(cursor):
     assert len(users) > 0, "No data found in 'Users' table"
 
 def main():
-    db = mysql.connector.connect(host='localhost', user='root', password='team37', port=32001)
+    db = mysql.connector.connect(host='db', user='root', password='team37', port=3306)
 
     cursor = db.cursor()
 
