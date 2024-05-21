@@ -1,32 +1,34 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 import os
-import dotenv
+from dotenv import load_dotenv
 
-dotenv.load_dotenv()
+load_dotenv()
+
 app = Flask(__name__)
 CORS(app)
 
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
 jwt = JWTManager(app)
 
-from users.views import users_blueprint
-from admin.views import admin_blueprint
+#from users.views import users_blueprint
+#from admin.views import admin_blueprint
 
-app.register_blueprint(users_blueprint)
-app.register_blueprint(admin_blueprint)
+#app.register_blueprint(users_blueprint)
+#app.register_blueprint(admin_blueprint)
 
 def get_db_connection():
     #Makes connection to database when needed
-    db = mysql.connector.connect(host='localhost', user='root', password='team37', port=32001)
+    db = mysql.connector.connect(host='db', user='root', password='team37', port=3306)
     return db
 
 def execute_query(query, data=None):
     #Code for executing queries
     conn = get_db_connection()
     cursor = conn.cursor()
+    cursor.execute("USE campus_care")
     #If statement allows for queries whether inputting data or not
     if data:
         cursor.execute(query, data)
@@ -35,20 +37,28 @@ def execute_query(query, data=None):
     conn.commit()
     cursor.close()
     conn.close()
+
+@app.route("/register_user", methods=["POST"])
 def register_user(data):
+    print("Received data:", data, flush=True)
     try:
         #Gonna need to add some verification to ensure no overlapping usernames/ emails
         username = data.get("username")
         password = data.get("password")
         email = data.get("email")
-        DateOfBirth = data.get("DateofBirth")
+        DateOfBirth = data.get("DateOfBirth")
         role = data.get("role")
+        print("processed data:",username, password, email, DateOfBirth, role,flush=True)
+        if not all([username, password, email, DateOfBirth, role]):
+            return jsonify({"status": "error", "message": "Missing required fields"}), 400
+
         query = "INSERT INTO Users (Username, Password, Email, DateOfBirth, Role) VALUES (%s, %s, %s, %s, %s)"
         execute_query(query, (username, password, email, DateOfBirth, role))
         return jsonify({"status": "success"}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route("/login_user", methods=["POST"])
 def login_user(data):
     try:
         username = data.get("username")
@@ -57,15 +67,18 @@ def login_user(data):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route("/change_email", methods=["POST"])
 def change_email(data):
     pass
-
+    return
+@app.route("/change_account", methods=["POST"])
 def change_password(data):
     pass
-
+    return
+@app.route("/delete_account", methods=["POST"])
 def delete_account(data):
     pass
-
+    return
 
 #Dictionary acting like switch statement for our different request handling functions
 actions = {
@@ -81,6 +94,7 @@ actions = {
 def api():
     #Pulls data from request
     data = request.json
+    print ("received data:",data, flush=True)
     #Action held within json file determines what action server performs
     action = data.get("action")
 
@@ -92,7 +106,6 @@ def api():
 
 
 
-@app.route("/")
-def hello_world():
-    return render_template("")
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=5001, debug=True)
 
