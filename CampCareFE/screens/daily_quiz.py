@@ -19,12 +19,17 @@ class DailyQuizScreen(Screen):
 
     def update_content(self):
         self.ids.answers_container.clear_widgets()
-        question = self.manager.get_current_question()
-        self.ids.question_label.text = question['question']
-        for answer in question['answers']:
-            btn = Button(text=answer)
-            btn.bind(on_release=self.advance_quiz)
-            self.ids.answers_container.add_widget(btn)
+        question = self.manager.get_current_question()  # Call get_filtered_question on self.manager
+        if question is not None:
+            self.ids.question_label.text = question['question']
+            for answer in question['answers']:
+                btn = Button(text=answer)
+                btn.bind(on_release=self.advance_quiz)
+                self.ids.answers_container.add_widget(btn)
+        else:
+            # Handle the case when there are no more questions
+            # For example, you could show a message to the user
+            self.ids.question_label.text = "No more questions available."
 
     def advance_quiz(self, instance):
         user_id = 1  # Replace with actual user ID
