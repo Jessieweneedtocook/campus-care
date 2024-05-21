@@ -7,3 +7,4 @@ mysql-connector-python
 flask_cors
 flask_jwt_extended
 python-dotenv
+PyMySQL

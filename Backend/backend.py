@@ -4,6 +4,7 @@ import mysql.connector
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 import os
 from dotenv import load_dotenv
+from models import db, User
 
 load_dotenv()
 
@@ -11,7 +12,11 @@ app = Flask(__name__)
 CORS(app)
 
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
+app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
 jwt = JWTManager(app)
+db.init_app(app)
 
 #from users.views import users_blueprint
 #from admin.views import admin_blueprint
@@ -24,20 +29,6 @@ def get_db_connection():
     db = mysql.connector.connect(host='db', user='root', password='team37', port=3306)
     return db
 
-def execute_query(query, data=None):
-    #Code for executing queries
-    conn = get_db_connection()
-    cursor = conn.cursor()
-    cursor.execute("USE campus_care")
-    #If statement allows for queries whether inputting data or not
-    if data:
-        cursor.execute(query, data)
-    else:
-        cursor.execute(query)
-    conn.commit()
-    cursor.close()
-    conn.close()
-
 @app.route("/register_user", methods=["POST"])
 def register_user(data):
     print("Received data:", data, flush=True)
@@ -49,11 +40,18 @@ def register_user(data):
         DateOfBirth = data.get("DateOfBirth")
         role = data.get("role")
         print("processed data:",username, password, email, DateOfBirth, role,flush=True)
+
         if not all([username, password, email, DateOfBirth, role]):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
+        # Create a new User object
+        new_user = User(username=username, password=password, email=email, DateOfBirth=DateOfBirth, role=role)
 
-        query = "INSERT INTO Users (Username, Password, Email, DateOfBirth, Role) VALUES (%s, %s, %s, %s, %s)"
-        execute_query(query, (username, password, email, DateOfBirth, role))
+        # Add the new User object to the session
+        db.session.add(new_user)
+
+        # Commit the session to save the changes to the database
+        db.session.commit()
+
         return jsonify({"status": "success"}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
