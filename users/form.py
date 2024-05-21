@@ -41,6 +41,7 @@ def username_checker(username):
         return False, "Please fill in this field"
     return True, ''
 
+# makes sure that the email input is in the format of an email
 def email_checker(email):
     p = re.compile(r'(?=.*[a-zA-Z0-9_.+-])'
                    r'(?=.*[@])(?=.*[a-zA-Z0-9-])'
@@ -48,15 +49,15 @@ def email_checker(email):
     if not p.match(email):
         return False, "invalid email"
     return True, ''
-
+# checks to make sure the password and confirm password field are equal
 def confirm_password_checker (password, confirm_password):
     if password != confirm_password:
         return False, "Passwords do not match."
     return True, ''
 
-
+# checks to make sure the date of birth is entered in the format dd/mm/yyyy
 def dob_checker(dob):
-    p =re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$')
+    p = re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$')
     if not p.match(dob):
         return False, "invalid phone number format try dd/mm/yyyy"
     return True, ''
