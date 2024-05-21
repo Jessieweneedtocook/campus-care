@@ -72,10 +72,13 @@ class MyApp(App):
             return []
 
     def get_filtered_question(self):
+        print(f"Selected activities: {self.selected_activities}")
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
+        print(f"Filtered questions: {filtered_questions}")
         if filtered_questions:
             question = filtered_questions[self.sm.current_question_index]
-            question['index'] = self.sm.current_question_index  # Add the current question index to the question dictionary
+            question[
+                'index'] = self.sm.current_question_index  # Add the current question index to the question dictionary
             return question
         return None
 
@@ -158,13 +161,13 @@ class MyApp(App):
 
         query = """
             SELECT * FROM UserActivities
-            WHERE UserID = ? AND ActivityDate = ?
+            WHERE UserID = ? AND Date(ActivityDate) = ?
             """
         cursor.execute(query, (user_id, datetime.now().date()))
         entry = cursor.fetchone()
         conn.close()
 
-        return entry is False
+        return entry is None
 
     def show_popup(self, message):
         popup = Popup(title='Info',
