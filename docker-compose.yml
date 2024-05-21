@@ -1,0 +1,28 @@
+services:
+    backend:
+        container_name: campus_care_server
+        build:
+            context: Backend
+            dockerfile: Dockerfile
+        ports:
+            - "5001:5001"
+        depends_on:
+            - db
+            - db_init
+    db:
+        container_name: campus_care_db
+        hostname: db
+        image: mysql
+        ports:
+            - "32001:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: team37
+    db_init:
+        container_name: campus_care_db_init
+        build:
+            context: db
+            dockerfile: Dockerfile
+        depends_on:
+            - db
+
+
