@@ -84,10 +84,6 @@ class MyApp(App):
 
     def next_question(self, instance=None):
         user_id = 1
-        if not self.daily_quiz_comp(user_id):
-             print('quiz complete')
-             self.show_popup("You have already completed the quiz today.")
-             return
 
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
         print(self.sm.current_question_index)

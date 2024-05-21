@@ -14,6 +14,11 @@ db_path = os.path.join(script_dir, '../../db/UserActivities.db')
 
 class DailyQuizScreen(Screen):
     def on_enter(self):
+        user_id = 1
+        if not App.get_running_app().daily_quiz_comp(user_id):
+            print('quiz complete')
+            App.get_running_app().show_popup("You have already completed the quiz today.")
+            return
         super(DailyQuizScreen, self).on_enter()  # Ensure the superclass method is called
         self.update_content()
 
@@ -28,6 +33,7 @@ class DailyQuizScreen(Screen):
 
     def advance_quiz(self, instance):
         user_id = 1  # Replace with actual user ID
+
         question = self.manager.get_current_question()
         user_answer = instance.text
         App.get_running_app().update_activities(user_id, question['activity'], user_answer)
