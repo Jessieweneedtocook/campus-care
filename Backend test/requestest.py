@@ -30,5 +30,19 @@ def login():
     else:
         print(response.json())
 
+def logout(token):
+    url = 'http://localhost:5001/api'
+    headers = {'Authorization': f'Bearer {token}'}
+    response = requests.post(url, headers=headers)
+    if response.status_code == 200:
+        print(response.json())
+    else:
+        print(response.json())
 
 register()
+token = login()
+if token:
+    logout(token)
+    new_token = login()
+    if new_token:
+        print("Re-login successful, new token obtained.")
