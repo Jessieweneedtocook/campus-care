@@ -4,21 +4,27 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="files">
-      <change afterPath="$PROJECT_DIR$/CampCareFE/testing_app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="Adding tests for app.py">
+      <change afterPath="$PROJECT_DIR$/CampCareFE/testing_dailyquiz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/wellness_progress.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/wellness_progress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/testing_app.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/testing_app.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ExportToHTMLSettings">
+    <option name="OUTPUT_DIRECTORY" value="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\htmlReport" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Python Unit Test" />
       </list>
     </option>
   </component>
@@ -53,6 +59,9 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Python tests.Python tests for testing_app.TestDailyQuizScreen.test_advance_quiz_processes_answer.executor": "Run",
+    "Python tests.Python tests for testing_app.TestDailyQuizScreen.test_handle_corrupted_quiz_data.executor": "Run",
+    "Python tests.Python tests for testing_app.TestDailyQuizScreen.test_handle_no_more_questions_left.executor": "Run",
     "Python tests.Python tests for testing_app.TestMyApp.test_daily_quiz_completion_check.executor": "Run",
     "Python tests.Python tests for testing_app.TestMyApp.test_data_insertion_for_user_activities.executor": "Run",
     "Python tests.Python tests for testing_app.TestMyApp.test_database_creation_on_init.executor": "Run",
@@ -61,12 +70,29 @@
     "Python tests.Python tests for testing_app.TestMyApp.test_filtering_quiz_questions.executor": "Run",
     "Python tests.Python tests for testing_app.TestMyApp.test_handle_empty_user_preferences.executor": "Run",
     "Python tests.Python tests for testing_app.TestMyApp.test_handle_non_existent_user_ids.executor": "Run",
+    "Python tests.Python tests for testing_app.TestMyApp.test_increment_current_question_index.executor": "Coverage",
     "Python tests.Python tests for testing_app.TestMyApp.test_no_data_returned_from_db_queries.executor": "Run",
     "Python tests.Python tests for testing_app.TestMyApp.test_no_selected_activities_for_quiz.executor": "Run",
     "Python tests.Python tests for testing_app.TestMyApp.test_popup_display_functionality.executor": "Run",
+    "Python tests.Python tests for testing_app.TestMyApp.test_question_index_increments_correctly.executor": "Run",
+    "Python tests.Python tests for testing_app.TestMyApp.test_question_index_resets.executor": "Run",
     "Python tests.Python tests for testing_app.TestMyApp.test_screen_transitions.executor": "Run",
-    "Python tests.Python tests in testing_app.py.executor": "Run",
-    "Python.main.executor": "Run",
+    "Python tests.Python tests for testing_app.TestWellnessHelpScreen.executor": "Run",
+    "Python tests.Python tests for testing_app.TestWellnessHelpScreen.test_popup_opens_with_correct_title.executor": "Run",
+    "Python tests.Python tests for testing_dailyquiz.TestAdvanceQuiz.test_advance_quiz_updates_activities.executor": "Run",
+    "Python tests.Python tests for testing_dailyquiz.TestDailyQuizScreen.executor": "Run",
+    "Python tests.Python tests for testing_dailyquiz.TestDailyQuizScreen.test_on_enter_checks_quiz_completion.executor": "Run",
+    "Python tests.Python tests for testing_dailyquiz.TestDailyQuizScreen.test_update_content_no_questions_available.executor": "Run",
+    "Python tests.Python tests for testing_dailyquiz.TestSendToServer.test_send_to_server_failure.executor": "Coverage",
+    "Python tests.Python tests for testing_dailyquiz.TestSendToServer.test_send_to_server_success.executor": "Coverage",
+    "Python tests.Python tests for testing_dailyquiz.TestSignupScreen.test_submit_empty_or_partial_form.executor": "Run",
+    "Python tests.Python tests for testing_dailyquiz.TestSignupScreen.test_valid_user_data_sent_successfully.executor": "Coverage",
+    "Python tests.Python tests for wellness_progress.TestMostImproved.test_data_week_before_only.executor": "Run",
+    "Python tests.Python tests for wellness_progress.TestMostImproved.test_handles_negative_improvements.executor": "Run",
+    "Python tests.Python tests for wellness_progress.TestMostImproved.test_returns_highest_improvement.executor": "Run",
+    "Python tests.Python tests in testing_app.py.executor": "Coverage",
+    "Python tests.Python tests in testing_dailyquiz.py.executor": "Run",
+    "Python.main.executor": "Coverage",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -82,18 +108,19 @@
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\CampCareFE" />
+      <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\CampCareFE\tests" />
       <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24" />
       <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\db" />
     </key>
   </component>
-  <component name="RunManager" selected="Python tests.Python tests for testing_app.TestMyApp.test_filtering_quiz_questions">
+  <component name="RunManager" selected="Python tests.Python tests in testing_app.py">
     <configuration default="true" type="docker-deploy" factoryName="docker-compose.yml" temporary="true">
       <deployment type="docker-compose.yml">
         <settings />
       </deployment>
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for testing_app.TestMyApp.test_fetch_and_update_user_preferences" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for testing_app.TestDailyQuizScreen.test_advance_quiz_processes_answer" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CSC2033_Team37_23_24" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -105,11 +132,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testing_app.TestMyApp.test_fetch_and_update_user_preferences&quot;" />
+      <option name="_new_target" value="&quot;testing_app.TestDailyQuizScreen.test_advance_quiz_processes_answer&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for testing_app.TestMyApp.test_filtering_quiz_questions" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for testing_app.TestDailyQuizScreen.test_handle_corrupted_quiz_data" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CSC2033_Team37_23_24" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -121,11 +148,11 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testing_app.TestMyApp.test_filtering_quiz_questions&quot;" />
+      <option name="_new_target" value="&quot;testing_app.TestDailyQuizScreen.test_handle_corrupted_quiz_data&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests for testing_app.TestMyApp.test_no_data_returned_from_db_queries" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests for testing_app.TestDailyQuizScreen.test_handle_no_more_questions_left" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CSC2033_Team37_23_24" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -137,23 +164,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
       <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testing_app.TestMyApp.test_no_data_returned_from_db_queries&quot;" />
-      <option name="_new_targetType" value="&quot;PYTHON&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests for testing_app.TestMyApp.test_no_selected_activities_for_quiz" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="CSC2033_Team37_23_24" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CampCareFE" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;testing_app.TestMyApp.test_no_selected_activities_for_quiz&quot;" />
+      <option name="_new_target" value="&quot;testing_app.TestDailyQuizScreen.test_handle_no_more_questions_left&quot;" />
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
@@ -173,13 +184,29 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests in testing_dailyquiz.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="CSC2033_Team37_23_24" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CampCareFE" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/CampCareFE/testing_dailyquiz.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python tests.Python tests for testing_app.TestMyApp.test_filtering_quiz_questions" />
         <item itemvalue="Python tests.Python tests in testing_app.py" />
-        <item itemvalue="Python tests.Python tests for testing_app.TestMyApp.test_fetch_and_update_user_preferences" />
-        <item itemvalue="Python tests.Python tests for testing_app.TestMyApp.test_no_data_returned_from_db_queries" />
-        <item itemvalue="Python tests.Python tests for testing_app.TestMyApp.test_no_selected_activities_for_quiz" />
+        <item itemvalue="Python tests.Python tests for testing_app.TestDailyQuizScreen.test_advance_quiz_processes_answer" />
+        <item itemvalue="Python tests.Python tests for testing_app.TestDailyQuizScreen.test_handle_no_more_questions_left" />
+        <item itemvalue="Python tests.Python tests for testing_app.TestDailyQuizScreen.test_handle_corrupted_quiz_data" />
+        <item itemvalue="Python tests.Python tests in testing_dailyquiz.py" />
       </list>
     </recent_temporary>
   </component>
@@ -309,7 +336,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716285565667</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="Adding tests for app.py">
+      <option name="closed" value="true" />
+      <created>1716380651175</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1716380651175</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -355,19 +390,20 @@
     <MESSAGE value="moving create database above graph creation" />
     <MESSAGE value="homescreen now displays graph correctly, and graph (output.png) stored in assets" />
     <MESSAGE value="fixing quiz completed pop-up" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing quiz completed pop-up" />
+    <MESSAGE value="Adding tests for app.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding tests for app.py" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_progress.coverage" NAME="wellness_progress Coverage Results" MODIFIED="1715944319384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$home.coverage" NAME="home Coverage Results" MODIFIED="1715794681228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$app.coverage" NAME="app Coverage Results" MODIFIED="1715597427713" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1715848511139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716379219930" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716400450633" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection__1_.coverage" NAME="db-connection (1) Coverage Results" MODIFIED="1715942511771" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz__1_.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715617574822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/kv" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715690665388" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1715598690367" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$signup.coverage" NAME="signup Coverage Results" MODIFIED="1715955269841" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$.coverage" NAME=" Coverage Results" MODIFIED="1716380546741" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$.coverage" NAME=" Coverage Results" MODIFIED="1716402206753" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
   </component>
 </project>
