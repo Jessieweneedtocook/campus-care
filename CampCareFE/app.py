@@ -32,6 +32,7 @@ class MyApp(App):
         Window.size = (375, 667)
         self.questions = questions
         self.selected_activities = self.fetch_preferences(user_id=1)
+        self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
         self.sm.add_widget(SignupScreen(name='signup'))
