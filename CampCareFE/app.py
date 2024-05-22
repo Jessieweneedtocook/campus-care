@@ -87,7 +87,6 @@ class MyApp(App):
 
     def next_question(self, instance=None):
         filtered_questions = [q for q in questions if q['activity'] in self.selected_activities]
-        print(self.sm.current_question_index)
         if self.sm.current_question_index < len(filtered_questions) - 1:
             self.sm.current_question_index += 1
             self.sm.get_screen('dailyquiz').update_content()  # Update the content of the 'dailyquiz' screen
