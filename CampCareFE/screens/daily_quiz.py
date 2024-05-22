@@ -18,8 +18,9 @@ class DailyQuizScreen(Screen):
         if not App.get_running_app().daily_quiz_comp(user_id):
             print('quiz complete')
             App.get_running_app().show_popup("You have already completed the quiz today.")
+            self.manager.current = 'home'
             return
-        super(DailyQuizScreen, self).on_enter()  # Ensure the superclass method is called
+        #super(DailyQuizScreen, self).on_enter()  # Ensure the superclass method is called
         self.update_content()
 
 
