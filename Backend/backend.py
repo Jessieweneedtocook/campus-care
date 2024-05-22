@@ -1,9 +1,10 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import mysql.connector
-from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, get_jwt
 import os
 from dotenv import load_dotenv
+from datetime import datetime, timedelta
 from models import db, User
 
 load_dotenv()
@@ -14,15 +15,24 @@ CORS(app)
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES', 3600)))
 
 jwt = JWTManager(app)
 db.init_app(app)
+
+blacklist = set()
 
 #from users.views import users_blueprint
 #from admin.views import admin_blueprint
 
 #app.register_blueprint(users_blueprint)
 #app.register_blueprint(admin_blueprint)
+
+@jwt.token_in_blocklist_loader
+def check_if_token_revoked(jwt_header, jwt_payload):
+    jti = jwt_payload['jti']
+    return jti in blacklist
+
 
 @app.route("/register_user", methods=["POST"])
 def register_user(data):
@@ -92,10 +102,18 @@ def delete_account(data):
     pass
     return
 
+@app.route("/logout", methods=["POST"])
+@jwt_required()
+def logout(data):
+    jti = get_jwt()['jti']
+    blacklist.add(jti)
+    return jsonify({"status": "success", "message": "Successfully logged out"}), 200
+
 #Dictionary acting like switch statement for our different request handling functions
 actions = {
     "register_user": register_user,
     "login_user": login_user,
+    "logout": logout,
     "change_email":change_email,
     "change_password": change_password,
     "delete_account": delete_account,
