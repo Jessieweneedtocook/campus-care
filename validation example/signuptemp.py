@@ -1,10 +1,10 @@
-from kivy.uix.screenmanager import ScreenManager, Screen
-from kivy.lang import Builder
 import requests
-# import validation functions
-
-Builder.load_file('kv/signupscreen.kv')
-
+from kivy.uix.screenmanager import Screen
+from kivy.uix.label import Label
+from validationtemp import (
+    validate_username, validate_email, validate_phone,
+    validate_password, validate_confirm_password
+)
 
 class SignupScreen(Screen):
     def submit_signup_data(self):
@@ -23,11 +23,11 @@ class SignupScreen(Screen):
 
         # Perform validations
         validations = [
-            #username_validation(user_data["username"]),
-            #email_validation(user_data["email"]),
-            #phone_validation(user_data["phone"]),
-            #password_validation(user_data["password"]),
-            #confirm_password_validation(user_data["password"], user_data["confirm_password"])
+            validate_username(user_data["username"]),
+            validate_email(user_data["email"]),
+            validate_phone(user_data["phone"]),
+            validate_password(user_data["password"]),
+            validate_confirm_password(user_data["password"], user_data["confirm_password"])
         ]
 
         # Check for validation errors
@@ -42,7 +42,6 @@ class SignupScreen(Screen):
             self.manager.current = 'initialoptions'
         else:
             self.ids.error_message.text = 'Failed to send data'
-
 
     def send_to_server(self, user_data):
         url = "https://yourapiendpoint.com/signup"
