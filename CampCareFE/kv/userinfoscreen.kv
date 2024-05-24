@@ -1,0 +1,56 @@
+<UserInfoScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        spacing: 10
+        size_hint: (1, 1)  # Fill the entire screen
+
+        canvas.before:
+            Color:
+                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'top'
+            size_hint_y: None
+            height: dp(50)
+
+            Button:
+                text: 'back >'
+                size_hint: None, None
+                size: dp(100), dp(50)
+                on_release: app.sm.current = 'home'
+        Label:
+            text: "User Info"
+            font_size: '40sp'
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+
+
+        GridLayout:
+            cols: 1
+            row_force_default: True
+            row_default_height: 40
+            spacing: 10
+            padding: 10
+
+            Button:
+                text: "Change email"
+                on_release: root.manager.current = 'wellnessprogress'
+            Button:
+                text: "Change password"
+                on_release: root.manager.current = 'home'
+            Button:
+                text: "Delete account"
+                on_release: root.manager.current = 'home'
+            Button:
+                text: "Help/About"
+                on_release: root.manager.current = 'home'
+            Button:
+                text: "logout"
+                on_release: root.manager.current = 'login'
+
