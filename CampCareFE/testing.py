@@ -6,16 +6,16 @@ import requests
 from kivy.base import EventLoop
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
-
-from CampCareFE.quiz_questions import questions
-from CampCareFE.screens.daily_quiz import DailyQuizScreen
-
-# Set the working directory to the root of your project
-os.chdir(os.path.dirname(os.path.abspath(__file__)))
-
+from kivy.uix.button import Button
 from CampCareFE.app import MyApp
 from CampCareFE.screens.signup import SignupScreen
 from CampCareFE.screens.wellness_progress import WellnessProgressScreen
+from CampCareFE.quiz_questions import questions
+from CampCareFE.screens.daily_quiz import DailyQuizScreen
+from CampCareFE.screens.home import HomeScreen
+
+# Set the working directory to the root of your project
+os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
 # Initialize Kivy environment for testing
 if not App.get_running_app():
@@ -23,8 +23,6 @@ if not App.get_running_app():
 
 class TestMyApp(unittest.TestCase):
     def test_increment_current_question_index(self): #passes
-        from CampCareFE.screens.home import HomeScreen  # Assuming the "home" screen is imported
-        # Initialize the MyApp class
         my_app = MyApp()
         my_app.selected_activities = ['Socialisation', 'Sleeping']
         my_app.sm = ScreenManager()
@@ -35,7 +33,6 @@ class TestMyApp(unittest.TestCase):
         my_app.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
 
     def test_question_index_resets(self): #passes
-        from kivy.uix.screenmanager import ScreenManager
         app = MyApp()
         app.sm = ScreenManager()  # Initialize the screen manager
         app.selected_activities = ['Socialisation', 'Sleeping']
@@ -115,10 +112,6 @@ class TestMyApp(unittest.TestCase):
 
 class TestSignupScreen(unittest.TestCase):
     def test_valid_user_data_sent_successfully(self):
-        from unittest.mock import patch
-        from kivy.uix.screenmanager import ScreenManager
-        from CampCareFE.screens.signup import SignupScreen
-
         sm = ScreenManager()
         signup_screen = SignupScreen(name='signup')
         sm.add_widget(signup_screen)
@@ -142,8 +135,6 @@ class TestSignupScreen(unittest.TestCase):
 
     #  method returns True when server responds with status code 200
     def test_send_to_server_success(self):
-        from unittest.mock import patch
-        from CampCareFE.screens.signup import SignupScreen
         user_data = {
             "username": "test_user",
             "email": "test_user@example.com",
@@ -160,11 +151,7 @@ class TestSignupScreen(unittest.TestCase):
 
 
 class TestDailyQuizScreen(unittest.TestCase):
-
-    #  Verify on_enter checks if the daily quiz is completed for the user
     def test_on_enter_quiz_completion_check(self):
-        from unittest.mock import patch, MagicMock
-        from kivy.app import App
         with patch.object(App, 'get_running_app') as mock_app:
             mock_app.return_value.daily_quiz_comp.return_value = False
             screen = DailyQuizScreen()
@@ -174,9 +161,7 @@ class TestDailyQuizScreen(unittest.TestCase):
             mock_app.return_value.show_popup.assert_called_once_with("You have already completed the quiz today.")
             self.assertEqual(screen.manager.current, 'home')
 
-    #  Ensure update_content populates the quiz question and answers correctly
     def test_update_content_populates_correctly(self):
-        from kivy.uix.button import Button
         screen = DailyQuizScreen()
         screen.ids = {'answers_container': MagicMock(), 'question_label': MagicMock()}
         screen.manager = MagicMock()
@@ -188,9 +173,7 @@ class TestDailyQuizScreen(unittest.TestCase):
             self.assertIsInstance(call[0][0], Button)
             self.assertEqual(call[0][0].text, answer)
 
-    #  Manage scenarios where the quiz data for the current question is incomplete or corrupted
     def test_handle_corrupted_quiz_data(self):
-        from unittest.mock import MagicMock
         screen = DailyQuizScreen()
         screen.ids = {'answers_container': MagicMock(), 'question_label': MagicMock()}
         screen.manager = MagicMock()
@@ -202,8 +185,6 @@ class TestDailyQuizScreen(unittest.TestCase):
 
     #  Test behavior when the user's ID is invalid or not found
     def test_invalid_user_id_behavior(self):
-        from unittest.mock import patch, MagicMock
-        from kivy.app import App
         with patch.object(App, 'get_running_app') as mock_app:
             mock_app.return_value.daily_quiz_comp.return_value = True
             mock_app.return_value.update_activities.side_effect = Exception("Invalid user ID")
