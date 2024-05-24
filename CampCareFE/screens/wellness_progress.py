@@ -13,18 +13,7 @@ from CampCareFE.screens.daily_quiz import db_path
 Builder.load_file('kv/wellnessprogressscreen.kv')
 
 class WellnessProgressScreen(Screen):
-    def get_data_for_period(self, days):
-        conn = sqlite3.connect(db_path)
-        cursor = conn.cursor()
-
-        cursor.execute(f"""
-            SELECT * FROM UserActivities
-            WHERE ActivityDate >= date('now','-{days} days')
-        """)
-
-        data = cursor.fetchall()
-        conn.close()
-
+    def get_data_for_period(self, data):
         # Initialize an empty dictionary to store the data
         data_by_activity_type = {}
 
@@ -51,7 +40,7 @@ class WellnessProgressScreen(Screen):
 
             # Convert each time spent string to its corresponding numerical value
             for row in data:
-                time_spent_str = row[3]
+                time_spent_str = row[3]  # Assuming time_spent is the third column
                 if time_spent_str == "Less than 1":
                     total_value += 0
                 elif time_spent_str == "1-3":
@@ -105,33 +94,55 @@ class WellnessProgressScreen(Screen):
 
         plt.savefig('assets/output.png')
 
+    def get_last_week(self):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute(f"""
+            SELECT * FROM UserActivities
+            WHERE ActivityDate >= date('now', '-7 days')
+                AND ActivityDate < date('now')
+        """)
+
+        data = cursor.fetchall()
+        conn.close()
+        return data
+
+    def get_week_before(self):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute(f"""
+            SELECT * FROM UserActivities
+            WHERE ActivityDate >= date('now', '-14 days')
+                AND ActivityDate < date('now', '-7 days')
+        """)
+
+        data = cursor.fetchall()
+        conn.close()
+        return data
 
     def most_improved(self):
-        # Get data for the last two weeks
-        data_past_week = self.get_data_for_period(7)
-        data_week_before = self.get_data_for_period(14)
+        data_past_week = self.get_data_for_period(self.get_last_week())
+        data_week_before = self.get_data_for_period(self.get_week_before())
 
-        # Calculate stats for each period
-        stats_past_week = self.calculate_stats(data_past_week)
-        stats_week_before = self.calculate_stats(data_week_before)
+        current_stats = self.calculate_stats(data_past_week)
+        prev_stats = self.calculate_stats(data_week_before)
 
-        # Calculate the difference in averages between the two periods
-        differences = {activity: (stats_week_before.get(activity, 0) - stats_past_week.get(activity, 0)) if activity == 'drinking' else (stats_past_week.get(activity, 0) - stats_week_before.get(activity, 0))
-        for activity in set(stats_past_week) | set(stats_week_before)}
-        return max(differences, key=differences.get)
+        most_improved = max(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
+        return most_improved
 
     def needs_improvement(self):
-        # Get data for the last two weeks
-        data_past_week = self.get_data_for_period(7)
-        data_week_before = self.get_data_for_period(14)
+        data_past_week = self.get_data_for_period(self.get_last_week())
+        data_week_before = self.get_data_for_period(self.get_week_before())
 
-        # Calculate stats for each period
-        stats_past_week = self.calculate_stats(data_past_week)
-        stats_week_before = self.calculate_stats(data_week_before)
+        current_stats = self.calculate_stats(data_past_week)
+        prev_stats = self.calculate_stats(data_week_before)
 
-        # Calculate the difference in averages between the two periods
-        differences = {activity: (stats_week_before.get(activity, 0) - stats_past_week.get(activity, 0)) if activity == 'drinking' else (stats_past_week.get(activity, 0) - stats_week_before.get(activity, 0))
-        for activity in set(stats_past_week) | set(stats_week_before)}
-        return min(differences, key=differences.get)
+        needs_improvement = min(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
+        return needs_improvement
+
+
+
 
 
