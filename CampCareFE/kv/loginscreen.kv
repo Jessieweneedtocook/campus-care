@@ -1,0 +1,105 @@
+<LoginScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        spacing: 10
+        size_hint: (1, 1)  # Fill the entire screen
+
+        canvas.before:
+            Color:
+                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Widget:
+            # Spacer to push content up, adjust size_hint_y to control space
+            size_hint_y: 0.1
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [20, 5]
+            spacing: 10
+            size_hint_y: None
+            height: self.minimum_height
+
+            Label:
+                text: "CampusCare"
+                font_size: '40sp'
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(50)
+                pos_hint: {'center_x': 0.5}
+
+            Image:
+                source: 'assets/logo3.png'
+                size_hint: None, None
+                size: dp(110), dp(110)
+                pos_hint: {'center_x': 0.5}
+
+
+            TextInput:
+                id: username
+                hint_text: "Username"
+                multiline: False
+                size_hint_y: None
+                height: dp(40)
+                background_color: 1, 1, 1, 1
+                foreground_color: 0, 0, 0, 1
+
+            TextInput:
+                id: password
+                hint_text: "Password"
+                multiline: False
+                password: True
+                size_hint_y: None
+                height: dp(40)
+                background_color: 1, 1, 1, 1
+
+            Button:
+                text: "Login"
+                size_hint_y: None
+                height: dp(60)
+                #background_normal: ''
+                background_color: 0.1, 0.384, 0.588, 0.5
+                on_release: app.sm.current = 'initialoptions'
+
+        #Label:
+        #    text: "Forgot password?"
+        #    markup: True
+        #    size_hint_y: None
+        #    height: dp(30)
+        #    color: 1, 1, 1, 1
+        #    pos_hint: {'center_x': 0.5}
+
+        Button:
+            text: "Forgot password?"
+            background_normal: ''
+            background_color: 0, 0, 0, 0
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(30)
+            pos_hint: {'center_x': 0.5}
+            on_release: app.sm.current = 'resetpassword'
+
+        #Label:
+        #    text: "Sign up"
+        #    markup: True
+        #    size_hint_y: None
+        #    height: dp(30)
+        #    color: 1, 1, 1, 1
+        #    pos_hint: {'center_x': 0.5}
+        #    on_release: app.sm.current = 'signup'
+        Button:
+            text: "Sign up"
+            background_normal: ''
+            background_color: 0, 0, 0, 0
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(30)
+            pos_hint: {'center_x': 0.5}
+            on_release: app.sm.current = 'signup'
+
+        Widget:
+            # Another spacer at the bottom, adjust size_hint_y as needed
+            size_hint_y: 0.1
