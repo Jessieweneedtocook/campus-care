@@ -1,5 +1,5 @@
 import sqlite3
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
@@ -35,6 +35,17 @@ class MyApp(App):
         self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
+        # Create an instance of WellnessProgressScreen to call the methods
+        wellness_progress_screen = WellnessProgressScreen(name='wellnessprogress')
+
+        # Get and print the most improved activity
+        most_improved_activity = wellness_progress_screen.most_improved()
+        print("Most Improved Activity:", most_improved_activity)
+
+        # Get and print the activity that needs the most improvement
+        needs_improvement_activity = wellness_progress_screen.needs_improvement()
+        print("Activity Needing Improvement:", needs_improvement_activity)
+
         self.sm.add_widget(SignupScreen(name='signup'))
         self.sm.add_widget(ResetPasswordScreen(name='resetpassword'))
         self.sm.add_widget(HomeScreen(name='home'))
@@ -146,6 +157,15 @@ class MyApp(App):
             )
         """)
 
+        activities_alice = [
+            (1, 'Drinking', '1-3', datetime.now() - timedelta(days=2)),
+            (1, 'Socialisation', 'Less than 1', datetime.now() - timedelta(days=2)),
+            (1, 'Drinking', 'More than 4', datetime.now() - timedelta(days=8)),
+            (1, 'Socialisation', 'More than 4', datetime.now() - timedelta(days=8)),
+        ]
+        cursor.executemany(
+            "INSERT INTO UserActivities (UserID, ActivityType, TimeSpent, ActivityDate) VALUES (?, ?, ?, ?)",
+            activities_alice)
         conn.commit()
         conn.close()
 
