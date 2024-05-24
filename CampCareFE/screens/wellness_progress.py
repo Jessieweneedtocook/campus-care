@@ -13,7 +13,24 @@ from CampCareFE.screens.daily_quiz import db_path
 Builder.load_file('kv/wellnessprogressscreen.kv')
 
 class WellnessProgressScreen(Screen):
-    def get_data_for_period(self, data):
+    def get_data_for_period(self, days):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Get activities for the past 'days' days
+        cursor.execute(f"""
+                    SELECT * FROM UserActivities
+                    WHERE ActivityDate >= date('now', '-{days} days')
+                        AND ActivityDate < date('now')
+                """)
+
+        data = cursor.fetchall()
+        conn.close()
+
+        return self.data_by_activity_type(data)
+
+    def data_by_activity_type(self, data):
+
         # Initialize an empty dictionary to store the data
         data_by_activity_type = {}
 
@@ -123,8 +140,8 @@ class WellnessProgressScreen(Screen):
         return data
 
     def most_improved(self):
-        data_past_week = self.get_data_for_period(self.get_last_week())
-        data_week_before = self.get_data_for_period(self.get_week_before())
+        data_past_week = self.data_by_activity_type(self.get_last_week())
+        data_week_before = self.data_by_activity_type(self.get_week_before())
 
         current_stats = self.calculate_stats(data_past_week)
         prev_stats = self.calculate_stats(data_week_before)
@@ -133,14 +150,47 @@ class WellnessProgressScreen(Screen):
         return most_improved
 
     def needs_improvement(self):
-        data_past_week = self.get_data_for_period(self.get_last_week())
-        data_week_before = self.get_data_for_period(self.get_week_before())
+        data_past_week = self.data_by_activity_type(self.get_last_week())
+        data_week_before = self.data_by_activity_type(self.get_week_before())
 
         current_stats = self.calculate_stats(data_past_week)
         prev_stats = self.calculate_stats(data_week_before)
 
         needs_improvement = min(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
         return needs_improvement
+
+    def overall_progress(self):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute(f"""
+                    SELECT * FROM UserActivities
+                """)
+
+        data = cursor.fetchall()
+        conn.close()
+
+        stats_by_activity_type = self.calculate_stats(self.data_by_activity_type(data))
+        # Create a figure and a set of subplots
+        fig, ax = plt.subplots()
+
+        # Plot the data
+        activities = list(stats_by_activity_type.keys())
+        times = list(stats_by_activity_type.values())
+        y_pos = np.arange(len(activities))
+
+        ax.barh(y_pos, times, align='center')
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(activities, fontsize=10)  # Increase font size
+        ax.invert_yaxis()  # labels read top-to-bottom
+        ax.set_xlabel('Time Spent (Hours)', fontsize=12)  # Increase font size
+        ax.set_title('Overall Progress', fontsize=14)  # Increase font size
+
+        plt.tight_layout()  # Adjust layout to fit labels
+        plt.savefig('assets/overall_progress.png')
+
+
+
 
 
 
