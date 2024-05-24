@@ -188,6 +188,7 @@ class MyApp(App):
         stats_by_activity_type = screen.calculate_stats(data_by_activity_type)
         screen.plot_stats(stats_by_activity_type)
 
+
     def daily_quiz_comp(self, user_id):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
