@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from kivy.properties import StringProperty
 
 from math import pi
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -13,6 +14,13 @@ from CampCareFE.screens.daily_quiz import db_path
 Builder.load_file('kv/wellnessprogressscreen.kv')
 
 class WellnessProgressScreen(Screen):
+
+    needs_improvement_output = StringProperty('')
+    most_improved_output = StringProperty('')
+
+    def on_enter(self):
+        self.update_most_improved_text()
+        self.update_needs_improvement_text()
     def get_data_for_period(self, data):
         # Initialize an empty dictionary to store the data
         data_by_activity_type = {}
@@ -130,6 +138,7 @@ class WellnessProgressScreen(Screen):
         prev_stats = self.calculate_stats(data_week_before)
 
         most_improved = max(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
+        print(most_improved)
         return most_improved
 
     def needs_improvement(self):
@@ -140,8 +149,24 @@ class WellnessProgressScreen(Screen):
         prev_stats = self.calculate_stats(data_week_before)
 
         needs_improvement = min(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
+        print(needs_improvement)
         return needs_improvement
 
+    def update_needs_improvement_text(self):
+        needs_improvement_activity = self.needs_improvement()
+        if needs_improvement_activity:
+            self.needs_improvement_output = f"Needs Improvement:\n- {needs_improvement_activity}"
+        else:
+            self.needs_improvement_output = "Needs Improvement:\n- No data from previous week"
+
+    def update_most_improved_text(self):
+        most_improved_activity = self.most_improved()
+
+        if most_improved_activity:
+            self.most_improved_output = f"Most Improved:\n- {most_improved_activity}"
+
+        else:
+            self.most_improved_output = "Most Improved:\n- No data from previous week"
 
 
 
