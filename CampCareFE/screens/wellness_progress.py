@@ -149,8 +149,8 @@ class WellnessProgressScreen(Screen):
         return data
 
     def most_improved(self):
-        data_past_week = self.get_data_for_period(self.get_last_week())
-        data_week_before = self.get_data_for_period(self.get_week_before())
+        data_past_week = self.data_by_activity_type(self.get_last_week())
+        data_week_before = self.data_by_activity_type(self.get_week_before())
 
         current_stats = self.calculate_stats(data_past_week)
         prev_stats = self.calculate_stats(data_week_before)
@@ -159,8 +159,8 @@ class WellnessProgressScreen(Screen):
         return most_improved
 
     def needs_improvement(self):
-        data_past_week = self.get_data_for_period(self.get_last_week())
-        data_week_before = self.get_data_for_period(self.get_week_before())
+        data_past_week = self.data_by_activity_type(self.get_last_week())
+        data_week_before = self.data_by_activity_type(self.get_week_before())
 
         current_stats = self.calculate_stats(data_past_week)
         prev_stats = self.calculate_stats(data_week_before)
