@@ -21,7 +21,25 @@ class WellnessProgressScreen(Screen):
     def on_enter(self):
         self.update_most_improved_text()
         self.update_needs_improvement_text()
-    def get_data_for_period(self, data):
+
+    def get_data_for_period(self, days):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Get activities for the past 'days' days
+        cursor.execute(f"""
+                    SELECT * FROM UserActivities
+                    WHERE ActivityDate >= date('now', '-{days} days')
+                        AND ActivityDate < date('now')
+                """)
+
+        data = cursor.fetchall()
+        conn.close()
+
+        return self.data_by_activity_type(data)
+
+    def data_by_activity_type(self, data):
+
         # Initialize an empty dictionary to store the data
         data_by_activity_type = {}
 
@@ -138,7 +156,6 @@ class WellnessProgressScreen(Screen):
         prev_stats = self.calculate_stats(data_week_before)
 
         most_improved = max(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
-        print(most_improved)
         return most_improved
 
     def needs_improvement(self):
@@ -149,8 +166,40 @@ class WellnessProgressScreen(Screen):
         prev_stats = self.calculate_stats(data_week_before)
 
         needs_improvement = min(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
-        print(needs_improvement)
         return needs_improvement
+
+    def overall_progress(self):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute(f"""
+                    SELECT * FROM UserActivities
+                """)
+
+        data = cursor.fetchall()
+        conn.close()
+
+        stats_by_activity_type = self.calculate_stats(self.data_by_activity_type(data))
+        # Create a figure and a set of subplots
+        fig, ax = plt.subplots()
+
+        # Plot the data
+        activities = list(stats_by_activity_type.keys())
+        times = list(stats_by_activity_type.values())
+        y_pos = np.arange(len(activities))
+
+        ax.barh(y_pos, times, align='center')
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(activities, fontsize=10)  # Increase font size
+        ax.invert_yaxis()  # labels read top-to-bottom
+        ax.set_xlabel('Time Spent (Hours)', fontsize=12)  # Increase font size
+        ax.set_title('Overall Progress', fontsize=14)  # Increase font size
+
+        plt.tight_layout()  # Adjust layout to fit labels
+        plt.savefig('assets/overall_progress.png')
+
+
+
 
     def update_needs_improvement_text(self):
         needs_improvement_activity = self.needs_improvement()

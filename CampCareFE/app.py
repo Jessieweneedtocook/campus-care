@@ -189,6 +189,7 @@ class MyApp(App):
         data_by_activity_type = screen.get_data_for_period(7)
         stats_by_activity_type = screen.calculate_stats(data_by_activity_type)
         screen.plot_stats(stats_by_activity_type)
+        screen.overall_progress()
 
 
     def daily_quiz_comp(self, user_id):
