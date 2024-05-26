@@ -1,0 +1,58 @@
+<AdminScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        spacing: 10
+        size_hint: (1, 1)  # Fill the entire screen
+
+        canvas.before:
+            Color:
+                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        Label:
+            text: "Admin"
+            font_size: '40sp'
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+
+
+        # Log display
+        BoxLayout:
+            size_hint_y: None
+            height: 200
+            Image:
+                source: 'assets/health.png'  # Replace log display here
+
+        # Statistics and options buttons
+        GridLayout:
+            cols: 2
+            row_force_default: True
+            row_default_height: 40
+            spacing: 10
+            padding: 10
+
+            Button:
+                text: "Add new admin"
+                on_release: root.manager.current = 'admin' # replace with function to add new admin (through signup am assuming)
+            Button:
+                text: "Delete user"
+                on_release: root.manager.current = 'admin' # replace with function to delete a user
+            Button:
+                text: "Other function?"
+                on_release: root.manager.current = 'admin' # if the admin needs to do something else
+            Button:
+                text: "Other function?"
+                on_release: root.manager.current = 'admin' # if the admin needs to do something else
+
+        # Footer or additional controls
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Button:
+                text: "Return to home"
+                on_release: root.manager.current = 'home'
