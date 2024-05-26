@@ -217,6 +217,41 @@ class WellnessProgressScreen(Screen):
         else:
             self.most_improved_output = "Most Improved:\n- No data from previous week"
 
+from kivy.uix.button import Button
+import webbrowser
+class ShareTwitter(Button):
+    def on_release(self):
+        screen = self.get_screen()  # Find the screen that this button is part of
+        text = f'{screen.most_improved_output}\n{screen.needs_improvement_output}'
 
+        # The URL for sharing on Twitter
+        share_url = f'https://twitter.com/intent/tweet?text={text}'
 
+        webbrowser.open(share_url)
 
+    def get_screen(self):
+        # Traverse up the widget tree to find the WellnessProgressScreen
+        parent = self.parent
+        while parent:
+            if isinstance(parent, WellnessProgressScreen):
+                return parent
+            parent = parent.parent
+        return None
+
+class ShareFacebook(Button):
+    def on_release(self):
+        screen = self.get_screen()  # Find the screen that this button is part of
+        text = f'{screen.most_improved_output}\n{screen.needs_improvement_output}'
+
+        share_url = f'https://www.facebook.com/sharer/sharer.php?text={text}'
+
+        webbrowser.open(share_url)
+
+    def get_screen(self):
+        # Traverse up the widget tree to find the WellnessProgressScreen
+        parent = self.parent
+        while parent:
+            if isinstance(parent, WellnessProgressScreen):
+                return parent
+            parent = parent.parent
+        return None

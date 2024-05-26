@@ -81,6 +81,20 @@
                     text_size: self.size
                     size_hint_y: None
                     height: dp(100)
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: 20
+
+            ShareTwitter:
+                text: 'Share on Twitter'
+                size_hint: None, None
+                size: dp(175), dp(50)
+
+            ShareFacebook:
+                text: 'Share on Facebook'
+                size_hint: None, None
+                size: dp(175), dp(50)
 
         Widget:
             size_hint_y: 0.1
