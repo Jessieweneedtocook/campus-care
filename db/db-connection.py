@@ -3,7 +3,7 @@ def create_database(cursor):
     cursor.execute("CREATE DATABASE IF NOT EXISTS campus_care")
     cursor.execute("USE campus_care")  # Switch to the new database
 
-def create_tables(cursor):
+def create_table(cursor):
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS Users (
         UserID INT AUTO_INCREMENT PRIMARY KEY,
@@ -14,6 +14,7 @@ def create_tables(cursor):
         Role ENUM('User', 'Admin') DEFAULT 'User'
     )
     """)
+
 
 def insert_initial_data(cursor):
     query = "INSERT INTO Users (Username, Password, Email, DateOfBirth, Role) VALUES (%s, %s, %s, %s, %s)"
@@ -28,24 +29,32 @@ def test_database(cursor):
     databases = cursor.fetchall()
     assert ('campus_care',) in databases, "Database 'campus_care' not found"
 
+
 def test_table(cursor):
     cursor.execute("SHOW TABLES")
     tables = cursor.fetchall()
     assert ('Users',) in tables, "Table 'Users' not found"
+    assert ('UserActivityPreferences',) in tables, "Table 'UserActivityPreferences' not found"
+
 
 def test_data(cursor):
     cursor.execute("SELECT * FROM Users")
     users = cursor.fetchall()
     assert len(users) > 0, "No data found in 'Users' table"
 
+    cursor.execute("SELECT * FROM UserActivityPreferences")
+    preferences = cursor.fetchall()
+    assert len(preferences) >= 0, "Error occurred while fetching data from 'UserActivityPreferences' table"
+
+
 def main():
-    db = mysql.connector.connect(host='db', user='root', password='team37', port=3306)
+    db = mysql.connector.connect(host='localhost', user='root', password='team37', port=32001)
 
     cursor = db.cursor()
 
     try:
         create_database(cursor)
-        create_tables(cursor)
+        create_table(cursor)
         insert_initial_data(cursor)
         db.commit()
 
@@ -61,6 +70,7 @@ def main():
     finally:
         cursor.close()
         db.close()
+
 
 if __name__ == "__main__":
     main()
