@@ -74,14 +74,14 @@ def login_user(data):
     try:
         username = data.get("username")
         password = data.get("password")
-        user = db.session.query(User).filter(User.username == username).one()
+        user = db.session.query(User).filter(User.username == username).first()
         if not user:
             return jsonify({"status": "error", "message": "Username not found"}), 400
         if user.password != password:
             return jsonify({"status": "error", "message": "Username or Password incorrect"}), 400
         else:
             access_token = create_access_token(identity={'username': username})
-            return jsonify(access_token=access_token), 200
+            return jsonify({"status": "success", "access_token": access_token}), 200
 
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
@@ -94,8 +94,26 @@ def change_email(data):
 @jwt_required()
 @app.route("/change_account", methods=["POST"])
 def change_password(data):
-    pass
-    return
+    current_user = get_jwt_identity()['username']
+    current_password = data.get('current_password')
+    new_password = data.get('new_password')
+    confirm_new_password = data.get('confirm_new_password')
+
+    if not all([current_password, new_password, confirm_new_password]):
+        return jsonify({"status": "error", "message": "All fields are required"}), 400
+
+    if new_password != confirm_new_password:
+        return jsonify({"status": "error", "message": "New passwords do not match"}), 400
+
+    user = db.session.query(User).filter(User.username == current_user).first()
+
+    if not user or user.password != current_password:
+        return jsonify({"status": "error", "message": "Current password is incorrect"}), 400
+
+    user.password = new_password
+    db.session.commit()
+
+    return jsonify({"status": "success", "message": "Password updated successfully"}), 200
 @jwt_required()
 @app.route("/delete_account", methods=["POST"])
 def delete_account(data):
