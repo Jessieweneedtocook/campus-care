@@ -61,10 +61,6 @@ class MyApp(App):
         #self.selected_activities = []
         self.sm.get_current_question = self.get_filtered_question
         self.sm.next_question = self.next_question
-
-        self.sm.current_question_index = 0
-        self.sm.get_current_question = lambda: questions[self.sm.current_question_index]
-        self.sm.next_question = self.next_question
         self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
         self.sm.current = 'login'
         self.all_questions_asked = False  # Flag to track if all questions have been asked
@@ -214,12 +210,4 @@ class MyApp(App):
         popup.open()
 
 
-
-
-    def next_question(self, instance=None):
-        if self.sm.current_question_index < len(questions) - 1:
-            self.sm.current_question_index += 1
-            self.sm.current = 'dailyquiz'
-        else:
-            self.sm.current = 'login'
 
