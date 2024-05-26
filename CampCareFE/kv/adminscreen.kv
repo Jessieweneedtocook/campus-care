@@ -1,0 +1,65 @@
+<AdminScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        spacing: 10
+        size_hint: (1, 1)  # Fill the entire screen
+
+        canvas.before:
+            Color:
+                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'top'
+            size_hint_y: None
+            height: dp(50)
+
+        Label:
+            text: "Admin menu"
+            font_size: '40sp'
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+
+
+        # User log area
+        BoxLayout:
+            size_hint_y: None
+            height: 400
+            Image:
+                source: 'assets/output.png'  # Where user logs will be displayed
+                size: dp(400), dp(400)
+
+        # Statistics and options buttons
+        GridLayout:
+            cols: 2
+            row_force_default: True
+            row_default_height: 40
+            spacing: 10
+            padding: 10
+
+            Button:
+                text: "Add admin"
+                on_release: root.manager.current = 'admin' # replace with function linking to add admin screen
+            Button:
+                text: "Delete user"
+                on_release: root.manager.current = 'admin' # replace with function linking to add admin screen
+            Button:
+                text: "Other admin func"
+                on_release: root.manager.current = 'admin' # other admin function
+            Button:
+                text: "Other admin func"
+                on_release: root.manager.current = 'admin' # other amin function
+
+        # Footer or additional controls
+        BoxLayout:
+            size_hint_y: None
+            height: 50
+            Button:
+                text: "Return to home"
+                on_release: root.manager.current = 'home'
+
