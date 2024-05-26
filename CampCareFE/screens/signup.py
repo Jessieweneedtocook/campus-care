@@ -9,6 +9,7 @@ from users.form import (username_checker,
                         dob_checker,
                         confirm_password_checker,
                         email_checker)
+from kivy.app import App
 
 Builder.load_file('kv/signupscreen.kv')
 
@@ -41,18 +42,16 @@ class SignupScreen(Screen):
                 self.ids.error_message.text = message
                 return
 
-        self.manager.current = 'initialoptions'
 
-    def __init__(self, **kwargs):
-        super(SignupScreen, self).__init__(**kwargs)
 
-        #url = 'http://localhost:5000/register'
+        url = 'http://localhost:5001/api'
 
-        #response = requests.post(url, json=data)
-        #if response.status_code == 201:
-        #    print('User registered successfully')
-        #else:
-        #    print('Registration failed:', response.json().get('message'))
+        response = requests.post(url, json={"action": "register_user"})
+        if response.status_code == 201:
+            self.manager.current = 'initial_options'
+            print('User registered successfully')
+        else:
+           print('Registration failed:', response.json().get('message'))
 
 
 
