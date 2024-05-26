@@ -1,8 +1,6 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 import requests
-
-import requests
 from kivy.uix.boxlayout import BoxLayout
 from users.form import (username_checker,
                         password_checker,
@@ -64,10 +62,7 @@ class SignupScreen(Screen):
                 self.ids.error_message.text = message
                 return
 
-        self.manager.current = 'initialoptions'
 
-    def __init__(self, **kwargs):
-        super(SignupScreen, self).__init__(**kwargs)
 
         #url = 'http://localhost:5000/register'
 
