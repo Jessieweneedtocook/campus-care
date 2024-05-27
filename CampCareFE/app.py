@@ -5,6 +5,8 @@ from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
+from datetime import datetime, timedelta
+import sqlite3
 
 from CampCareFE.screens.daily_quiz import db_path, DailyQuizScreen
 from screens.login import LoginScreen
@@ -37,7 +39,6 @@ class MyApp(App):
         self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
-        # Create an instance of WellnessProgressScreen to call the methods
         wellness_progress_screen = WellnessProgressScreen(name='wellnessprogress')
 
         # Get and print the most improved activity
@@ -58,11 +59,9 @@ class MyApp(App):
         self.sm.add_widget(OptionsScreen(name='options'))
         self.sm.add_widget(AdminScreen(name='admin'))
         self.sm.add_widget(WellnessScheduleScreen(name='wellnessschedule'))
+        self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
 
-        self.daily_quiz_screen = DailyQuizScreen(name='dailyquiz')
-        self.sm.add_widget(self.daily_quiz_screen)
         self.sm.current_question_index = 0
-        #self.selected_activities = []
         self.sm.get_current_question = self.get_filtered_question
         self.sm.next_question = self.next_question
         self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
