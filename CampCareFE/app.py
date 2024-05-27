@@ -1,17 +1,16 @@
-import sqlite3
-from datetime import datetime, timedelta
-
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.popup import Popup
 from kivy.uix.label import Label
+from datetime import datetime, timedelta
+import sqlite3
 
 from CampCareFE.screens.daily_quiz import db_path, DailyQuizScreen
 from screens.login import LoginScreen
 from screens.signup import SignupScreen
 from screens.reset_password import ResetPasswordScreen
 from screens.daily_quiz import DailyQuizScreen
-from screens.home import HomeScreen
+from screens.home import HomeScreen  # Ensure HomeScreen is imported
 from screens.wellness_progress import WellnessProgressScreen
 from screens.user_info import UserInfoScreen
 from screens.initial_options import InitialOptionsScreen
@@ -35,7 +34,6 @@ class MyApp(App):
         self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
-        # Create an instance of WellnessProgressScreen to call the methods
         wellness_progress_screen = WellnessProgressScreen(name='wellnessprogress')
 
         # Get and print the most improved activity
@@ -48,17 +46,15 @@ class MyApp(App):
 
         self.sm.add_widget(SignupScreen(name='signup'))
         self.sm.add_widget(ResetPasswordScreen(name='resetpassword'))
-        self.sm.add_widget(HomeScreen(name='home'))
+        self.sm.add_widget(HomeScreen(name='home'))  # Ensure HomeScreen is registered
         self.sm.add_widget(WellnessProgressScreen(name='wellnessprogress'))
         self.sm.add_widget(UserInfoScreen(name='userinfo'))
         self.sm.add_widget(InitialOptionsScreen(name='initialoptions'))
         self.sm.add_widget(WellnessHelpScreen(name='wellnesshelp'))
         self.sm.add_widget(OptionsScreen(name='options'))
+        self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
 
-        self.daily_quiz_screen = DailyQuizScreen(name='dailyquiz')
-        self.sm.add_widget(self.daily_quiz_screen)
         self.sm.current_question_index = 0
-        #self.selected_activities = []
         self.sm.get_current_question = self.get_filtered_question
         self.sm.next_question = self.next_question
         self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
@@ -85,7 +81,6 @@ class MyApp(App):
 
     def get_filtered_question(self):
         print(f"Selected activities: {self.selected_activities}")
-        # Strip the extra quotes from the selected activities
         selected_activities = [activity.strip("'") for activity in self.selected_activities]
         filtered_questions = [q for q in questions if q['activity'] in selected_activities]
         print(f"Filtered questions: {filtered_questions}")
@@ -132,7 +127,6 @@ class MyApp(App):
         cursor.execute(query, data)
         conn.commit()
         conn.close()
-
 
     def create_database(self):
         conn = sqlite3.connect(db_path)
@@ -208,6 +202,5 @@ class MyApp(App):
                       content=Label(text=message),
                       size_hint=(None, None), size=(400, 200))
         popup.open()
-
 
 
