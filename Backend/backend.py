@@ -75,6 +75,8 @@ def login_user(data):
     try:
         username = data.get("username")
         password = data.get("password")
+        if not all([username, password]):
+            return jsonify({"status": "error", "message": "Missing required fields"}), 400
         user = db.session.query(User).filter(User.username == username).first()
         if not user:
             return jsonify({"status": "error", "message": "Username not found"}), 400
