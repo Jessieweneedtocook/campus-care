@@ -41,8 +41,9 @@ class SignupScreen(Screen):
                 return
 
         url = 'http://localhost:5001/api'
-
-        response = requests.post(url, json={"action": "register_user"})
+        json_data = {"action": "register_user", "role": "user"}
+        json_data.update(data)
+        response = requests.post(url, json=json_data)
         if response.status_code == 201:
             self.manager.current = 'initial_options'
             print('User registered successfully')
