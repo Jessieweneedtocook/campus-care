@@ -10,5 +10,5 @@ class User(db.Model):
     username = Column(String(255), nullable=False)
     password = Column(String(255), nullable=False)
     email = Column(String(255), nullable=False)
-    DateOfBirth = Column(DateTime, nullable=False)
+    DateOfBirth = Column(db.Date(), nullable=False)
     role = Column(Enum('User', 'Admin'), default='User')
