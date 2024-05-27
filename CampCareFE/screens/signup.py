@@ -22,7 +22,7 @@ class SignupScreen(Screen):
             'username': self.ids.username.text,
             'email': self.ids.email.text,
             'phone': self.ids.number.text,
-            'dob': self.ids.dob.text,
+            'DateOfBirth': self.ids.DateOfBirth.text,
             'password': self.ids.password.text,
             'confirm_password': self.ids.confirm_password.text
         }
@@ -31,10 +31,11 @@ class SignupScreen(Screen):
             username_checker(data["username"]),
             email_checker(data["email"]),
             phone_checker(data["phone"]),
-            dob_checker(data["dob"]),
+            dob_checker(data["DateOfBirth"]),
             password_checker(data["password"]),
             confirm_password_checker(data["password"], data["confirm_password"])
            ]
+        print("Data sent to backend:", data)
 
         for valid, message in validations:
             if not valid:
