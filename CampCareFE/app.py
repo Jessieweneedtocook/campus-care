@@ -18,6 +18,7 @@ from screens.initial_options import InitialOptionsScreen
 from screens.wellness_help import WellnessHelpScreen
 from screens.options import OptionsScreen
 from screens.admin import AdminScreen
+from screens.wellness_schedule import WellnessScheduleScreen
 from kivy.core.window import Window
 from quiz_questions import questions
 
@@ -56,6 +57,7 @@ class MyApp(App):
         self.sm.add_widget(WellnessHelpScreen(name='wellnesshelp'))
         self.sm.add_widget(OptionsScreen(name='options'))
         self.sm.add_widget(AdminScreen(name='admin'))
+        self.sm.add_widget(WellnessScheduleScreen(name='wellnessschedule'))
 
         self.daily_quiz_screen = DailyQuizScreen(name='dailyquiz')
         self.sm.add_widget(self.daily_quiz_screen)
