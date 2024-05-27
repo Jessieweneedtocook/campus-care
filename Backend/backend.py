@@ -3,7 +3,7 @@ from flask_cors import CORS
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, get_jwt
 import os
 from dotenv import load_dotenv
-from datetime import timedelta
+from datetime import timedelta, datetime
 from models import db, User
 from form import email_checker
 
@@ -51,6 +51,8 @@ def register_user(data):
             return jsonify({"status": "error", "message": "Email already in use"}), 400
 
         DateOfBirth = data.get("DateOfBirth")
+
+        DateOfBirth = datetime.strptime(DateOfBirth, "%d/%m/%Y")
 
         role = data.get("role")
 

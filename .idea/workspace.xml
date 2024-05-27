@@ -4,9 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="Changes to logout function">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/signup.py" afterDir="false" />
+    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="Altered json request so it holds the data and role of user">
+      <change beforePath="$PROJECT_DIR$/Backend/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/backend.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -189,7 +188,7 @@
       <workItem from="1715597242448" duration="542000" />
       <workItem from="1715597816249" duration="506000" />
       <workItem from="1715943131201" duration="5952000" />
-      <workItem from="1716817697146" duration="3449000" />
+      <workItem from="1716817697146" duration="3843000" />
     </task>
     <task id="LOCAL-00001" summary="adding docker compose functionality">
       <created>1715344045965</created>
@@ -324,7 +323,21 @@
       <option name="project" value="LOCAL" />
       <updated>1716820970882</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="Altered json request so it holds the data and role of user">
+      <created>1716822051664</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716822051664</updated>
+    </task>
+    <task id="LOCAL-00021" summary="Altered json request so it holds the data and role of user">
+      <created>1716822066343</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1716822066343</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,14 +386,15 @@
     <MESSAGE value="added line" />
     <MESSAGE value="old yml file" />
     <MESSAGE value="Changes to logout function" />
-    <option name="LAST_COMMIT_MESSAGE" value="Changes to logout function" />
+    <MESSAGE value="Altered json request so it holds the data and role of user" />
+    <option name="LAST_COMMIT_MESSAGE" value="Altered json request so it holds the data and role of user" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1716820642108" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_progress.coverage" NAME="wellness_progress Coverage Results" MODIFIED="1715944319384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$requestest.coverage" NAME="requestest Coverage Results" MODIFIED="1716820866663" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend test" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$pytest_in_Test_request_py.coverage" NAME="pytest in Test request.py Coverage Results" MODIFIED="1715859018807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend test" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716821545580" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716822132390" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1715848511139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715851729783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$.coverage" NAME=" Coverage Results" MODIFIED="1715616005766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
