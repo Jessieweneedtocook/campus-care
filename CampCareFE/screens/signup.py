@@ -1,14 +1,12 @@
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 import requests
-from kivy.uix.boxlayout import BoxLayout
-from users.form import (username_checker,
-                        password_checker,
-                        phone_checker,
-                        dob_checker,
-                        confirm_password_checker,
-                        email_checker)
-from kivy.app import App
+from Backend.form import (username_checker,
+                          password_checker,
+                          phone_checker,
+                          dob_checker,
+                          confirm_password_checker,
+                          email_checker)
 
 Builder.load_file('kv/signupscreen.kv')
 

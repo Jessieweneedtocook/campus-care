@@ -1,13 +1,11 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-import mysql.connector
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity, get_jwt
 import os
 from dotenv import load_dotenv
-from datetime import datetime, timedelta
+from datetime import timedelta
 from models import db, User
-from users.form import email_checker
-from datetime import datetime
+from form import email_checker
 
 load_dotenv()
 
