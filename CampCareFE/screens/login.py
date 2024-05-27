@@ -22,6 +22,6 @@ class LoginScreen(Screen):
         response = requests.post(url, json={"action": "login_user", "username": username, "password": password})
 
         if response.status_code == 200:
-            self.manager.current = 'initial_options'
+            self.manager.current = 'initialoptions'
         else:
             self.ids.error_message.text = response.json().get('message')

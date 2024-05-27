@@ -45,7 +45,7 @@ class SignupScreen(Screen):
         json_data.update(data)
         response = requests.post(url, json=json_data)
         if response.status_code == 201:
-            self.manager.current = 'initial_options'
+            self.manager.current = 'initialoptions'
             print('User registered successfully')
         else:
            print('Registration failed:', response.json().get('message'))
