@@ -6,6 +6,8 @@ import os
 from dotenv import load_dotenv
 from datetime import datetime, timedelta
 from models import db, User
+from users.form import email_checker
+from datetime import datetime
 
 load_dotenv()
 
@@ -53,7 +55,8 @@ def register_user(data):
 
         role = data.get("role")
 
-        print("processed data:",username, password, email, DateOfBirth, role,flush=True)
+        print("processed data:",username, password, email, DateOfBirth, role, flush=True)
+
         if not all([username, password, email, DateOfBirth, role]):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
         # Create a new User object
@@ -89,8 +92,21 @@ def login_user(data):
 @jwt_required()
 @app.route("/change_email", methods=["POST"])
 def change_email(data):
-    pass
-    return
+    try:
+        current_user = get_jwt_identity()['username']
+        new_email = data.get('new_email')
+        is_valid, message = email_checker(new_email)
+        if not is_valid:
+            return jsonify({"status": "error", "message": message}), 400
+
+        user = db.session.query(User).filter(User.username == current_user).first()
+        user.email = new_email
+        db.session.commit()
+        return jsonify({"status": "success", "message": "Email updated successfully"}), 200
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 @jwt_required()
 @app.route("/change_account", methods=["POST"])
 def change_password(data):
@@ -115,10 +131,19 @@ def change_password(data):
 
     return jsonify({"status": "success", "message": "Password updated successfully"}), 200
 @jwt_required()
-@app.route("/delete_account", methods=["POST"])
+@app.route("/delete_account", methods=["DELETE"])
 def delete_account(data):
-    pass
-    return
+    try:
+        current_user = get_jwt_identity()['username']
+        user = db.session.query(User).filter(User.username == current_user).first()
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+            return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
+        else:
+            return jsonify({"status": "error", "message": "User not found"}), 404
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 @app.route("/logout", methods=["POST"])
 @jwt_required()
