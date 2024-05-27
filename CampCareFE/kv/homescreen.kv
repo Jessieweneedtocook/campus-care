@@ -66,4 +66,7 @@
             height: 50
             Button:
                 text: "Daily Quiz"
-                on_release: root.go_to_daily_quiz()
+                on_release: root.manager.current = 'dailyquiz'
+            Button:
+                text: "Admin menu"
+                on_release: root.manager.current = 'admin'
