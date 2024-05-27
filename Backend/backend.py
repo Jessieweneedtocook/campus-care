@@ -22,11 +22,12 @@ db.init_app(app)
 
 blacklist = set()
 
-#from users.views import users_blueprint
-#from admin.views import admin_blueprint
 
-#app.register_blueprint(users_blueprint)
-#app.register_blueprint(admin_blueprint)
+# from users.views import users_blueprint
+# from admin.views import admin_blueprint
+
+# app.register_blueprint(users_blueprint)
+# app.register_blueprint(admin_blueprint)
 
 @jwt.token_in_blocklist_loader
 def check_if_token_revoked(jwt_header, jwt_payload):
@@ -55,12 +56,13 @@ def register_user(data):
 
         phone = data.get("phone")
 
-        print("processed data:",username, password, email, DateOfBirth,phone, role, flush=True)
+        print("processed data:", username, password, email, DateOfBirth, phone, role, flush=True)
 
         if not all([username, password, email, DateOfBirth, phone, role]):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
         # Create a new User object
-        new_user = User(username=username, password=password, email=email, DateOfBirth=DateOfBirth, phone=phone, role=role)
+        new_user = User(username=username, password=password, email=email, DateOfBirth=DateOfBirth, phone=phone,
+                        role=role)
 
         # Add the new User object to the session
         db.session.add(new_user)
@@ -71,6 +73,7 @@ def register_user(data):
         return jsonify({"status": "success"}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @app.route("/login_user", methods=["GET"])
 def login_user(data):
@@ -90,6 +93,7 @@ def login_user(data):
 
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
+
 
 @jwt_required()
 @app.route("/change_email", methods=["POST"])
@@ -132,6 +136,8 @@ def change_password(data):
     db.session.commit()
 
     return jsonify({"status": "success", "message": "Password updated successfully"}), 200
+
+
 @jwt_required()
 @app.route("/delete_account", methods=["DELETE"])
 def delete_account(data):
@@ -147,40 +153,43 @@ def delete_account(data):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+
 @app.route("/logout", methods=["POST"])
 @jwt_required()
 def logout(data):
+    print("Received data:",data)
     jti = get_jwt()['jti']
+    print("JWT:",jti)
     blacklist.add(jti)
     return jsonify({"status": "success", "message": "Successfully logged out"}), 200
 
-#Dictionary acting like switch statement for our different request handling functions
+
+# Dictionary acting like switch statement for our different request handling functions
 actions = {
     "register_user": register_user,
     "login_user": login_user,
     "logout": logout,
-    "change_email":change_email,
+    "change_email": change_email,
     "change_password": change_password,
     "delete_account": delete_account,
 
-
 }
-@app.route("/api", methods=["POST","GET"])
+
+
+@app.route("/api", methods=["POST", "GET"])
 def api():
-    #Pulls data from request
+    # Pulls data from request
     data = request.json
-    print ("received data:",data, flush=True)
-    #Action held within json file determines what action server performs
+    print("received data:", data, flush=True)
+    # Action held within json file determines what action server performs
     action = data.get("action")
 
-    #Calls functions
+    # Calls functions
     if action in actions:
         return actions[action](data)
     else:
         return jsonify({'status': 'error', 'message': 'Invalid action'}), 400
 
 
-
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5001, debug=True)
-

@@ -38,7 +38,10 @@ def login():
 def logout(token):
     url = 'http://localhost:5001/api'
     headers = {'Authorization': f'Bearer {token}'}
-    response = requests.post(url, headers=headers)
+    data = {
+        "action": "logout"
+    }
+    response = requests.post(url, headers=headers, json=data)
     if response.status_code == 200:
         print(response.json())
     else:
