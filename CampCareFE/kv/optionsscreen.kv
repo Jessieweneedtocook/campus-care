@@ -1,4 +1,4 @@
-<InitialOptionsScreen>:
+<OptionsScreen>:
     BoxLayout:
         orientation: 'vertical'
         padding: [10, 10]
@@ -11,7 +11,17 @@
             Rectangle:
                 pos: self.pos
                 size: self.size
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'top'
+            size_hint_y: None
+            height: dp(50)
 
+            Button:
+                text: 'Back >'
+                size_hint: None, None
+                size: dp(100), dp(50)
+                on_release: app.sm.current = 'home'
         Label:
             text: "Activity Options"
             font_size: '40sp'
@@ -84,5 +94,5 @@
             size_hint_y: None
             height: 50
             Button:
-                text: "Daily Quiz"
-                on_release: root.manager.current = 'dailyquiz'
+                text: "Pause Daily Quizzes"
+                on_release: root.manager.current = 'home'

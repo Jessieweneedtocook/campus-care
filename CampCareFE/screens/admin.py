@@ -1,8 +1,8 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 
-Builder.load_file('kv/homescreen.kv')
+Builder.load_file('kv/adminscreen.kv')
 
-class HomeScreen(Screen):
 
+class AdminScreen(Screen):
     pass

@@ -1,0 +1,86 @@
+<WellnessProgressScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        spacing: 10
+        size_hint: (1, 1)  # Fill the entire screen
+
+        canvas.before:
+            Color:
+                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        AnchorLayout:
+            anchor_x: 'right'
+            anchor_y: 'top'
+            size_hint_y: None
+            height: dp(50)
+            Button:
+                text: 'Back >'
+                size_hint: None, None
+                size: dp(100), dp(50)
+                on_release: app.sm.current = 'home'
+
+        Label:
+            text: "Wellness Progress"
+            font_size: '40sp'
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+
+        Widget:
+            size_hint_y: 0.1
+
+        BoxLayout:
+            size_hint_y: None
+            height: 200
+            Image:
+                source: 'assets/health.png'
+
+        Widget:
+            size_hint_y: 0.1
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(100)
+            spacing: 20
+
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.384, 0.588, 0.5
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: root.most_improved_output
+                    color: 1, 1, 1, 1  # White text for better contrast
+                    halign: 'center'
+                    valign: 'middle'
+                    text_size: self.size
+                    size_hint_y: None
+                    height: dp(100)
+
+
+            BoxLayout:
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.384, 0.588, 0.5
+                    Rectangle:
+                        pos: self.pos
+                        size: self.size
+                Label:
+                    text: root.needs_improvement_output
+                    color: 1, 1, 1, 1  # White text for better contrast
+                    halign: 'center'
+                    valign: 'middle'
+                    text_size: self.size
+                    size_hint_y: None
+                    height: dp(100)
+
+        Widget:
+            size_hint_y: 0.1
