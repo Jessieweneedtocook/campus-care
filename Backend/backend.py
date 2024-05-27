@@ -53,12 +53,14 @@ def register_user(data):
 
         role = data.get("role")
 
-        print("processed data:",username, password, email, DateOfBirth, role, flush=True)
+        phone = data.get("phone")
 
-        if not all([username, password, email, DateOfBirth, role]):
+        print("processed data:",username, password, email, DateOfBirth,phone, role, flush=True)
+
+        if not all([username, password, email, DateOfBirth, phone, role]):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
         # Create a new User object
-        new_user = User(username=username, password=password, email=email, DateOfBirth=DateOfBirth, role=role)
+        new_user = User(username=username, password=password, email=email, DateOfBirth=DateOfBirth, phone=phone, role=role)
 
         # Add the new User object to the session
         db.session.add(new_user)

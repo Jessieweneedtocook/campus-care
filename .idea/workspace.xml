@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="Added web tokens and login user functionality">
+    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="Relocating files for ease of running">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend test/requestest.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend test/requestest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/backend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/signup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/form.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/form.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/users/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/db-connection.py" beforeDir="false" afterPath="$PROJECT_DIR$/db/db-connection.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,7 +64,12 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+    "settings.editor.selected.configurable": "database.query.execution"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -316,7 +319,14 @@
       <option name="project" value="LOCAL" />
       <updated>1716564575522</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="Relocating files for ease of running">
+      <created>1716814837934</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716814837934</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -363,14 +373,15 @@
     <MESSAGE value="homescreen now displays graph correctly, and graph (output.png) stored in assets" />
     <MESSAGE value="fixing quiz completed pop-up" />
     <MESSAGE value="added line" />
-    <option name="LAST_COMMIT_MESSAGE" value="added line" />
+    <MESSAGE value="Relocating files for ease of running" />
+    <option name="LAST_COMMIT_MESSAGE" value="Relocating files for ease of running" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1716221642745" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_progress.coverage" NAME="wellness_progress Coverage Results" MODIFIED="1715944319384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$requestest.coverage" NAME="requestest Coverage Results" MODIFIED="1716385280287" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend test" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$requestest.coverage" NAME="requestest Coverage Results" MODIFIED="1716814778198" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend test" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$pytest_in_Test_request_py.coverage" NAME="pytest in Test request.py Coverage Results" MODIFIED="1715859018807" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend test" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716813814240" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716815289643" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1715848511139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715851729783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$.coverage" NAME=" Coverage Results" MODIFIED="1715616005766" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />

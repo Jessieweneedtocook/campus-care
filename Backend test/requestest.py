@@ -1,25 +1,29 @@
 import requests
+
+
 def register():
     url = 'http://localhost:5001/api'
     data = {
         "action": "register_user",
-        'username': "user1",
+        'username': "user2",
         'password': "password",
         'email': "blahblah@gmail.com",
         'DateOfBirth': "2000-01-01 00:00:00",
+        'phone': "07722824206",
         'role': "user"
     }
     response = requests.post(url, json=data)
     if response.status_code == 201:
-        print (response.json())
+        print(response.json())
     else:
         print(response.json())
+
 
 def login():
     url = 'http://localhost:5001/api'
     data = {
         "action": "login_user",
-        'username': "user1",
+        'username': "user2",
         'password': "password"
     }
     response = requests.post(url, json=data)
@@ -30,6 +34,7 @@ def login():
     else:
         print(response.json())
 
+
 def logout(token):
     url = 'http://localhost:5001/api'
     headers = {'Authorization': f'Bearer {token}'}
@@ -38,6 +43,7 @@ def logout(token):
         print(response.json())
     else:
         print(response.json())
+
 
 register()
 token = login()
