@@ -165,6 +165,21 @@ def logout(data):
     blacklist.add(jti)
     return jsonify({"status": "success", "message": "Successfully logged out"}), 200
 
+@jwt_required()
+@app.route("/delete_account", methods=["DELETE"])
+def admin_delete_account(data):
+    try:
+        current_user = get_jwt_identity()['username']
+        user = db.session.query(User).filter(User.username == current_user).first()
+        if user:
+            db.session.delete(user)
+            db.session.commit()
+            return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
+        else:
+            return jsonify({"status": "error", "message": "User not found"}), 404
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
 
 # Dictionary acting like switch statement for our different request handling functions
 actions = {
@@ -174,6 +189,7 @@ actions = {
     "change_email": change_email,
     "change_password": change_password,
     "delete_account": delete_account,
+    "admin_delete_account": admin_delete_account,
 
 }
 
