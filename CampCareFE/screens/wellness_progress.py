@@ -21,7 +21,25 @@ class WellnessProgressScreen(Screen):
     def on_enter(self):
         self.update_most_improved_text()
         self.update_needs_improvement_text()
-    def get_data_for_period(self, data):
+
+    def get_data_for_period(self, days):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        # Get activities for the past 'days' days
+        cursor.execute(f"""
+                    SELECT * FROM UserActivities
+                    WHERE ActivityDate >= date('now', '-{days} days')
+                        AND ActivityDate < date('now')
+                """)
+
+        data = cursor.fetchall()
+        conn.close()
+
+        return self.data_by_activity_type(data)
+
+    def data_by_activity_type(self, data):
+
         # Initialize an empty dictionary to store the data
         data_by_activity_type = {}
 
@@ -131,26 +149,57 @@ class WellnessProgressScreen(Screen):
         return data
 
     def most_improved(self):
-        data_past_week = self.get_data_for_period(self.get_last_week())
-        data_week_before = self.get_data_for_period(self.get_week_before())
+        data_past_week = self.data_by_activity_type(self.get_last_week())
+        data_week_before = self.data_by_activity_type(self.get_week_before())
 
         current_stats = self.calculate_stats(data_past_week)
         prev_stats = self.calculate_stats(data_week_before)
 
         most_improved = max(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
-        print(most_improved)
         return most_improved
 
     def needs_improvement(self):
-        data_past_week = self.get_data_for_period(self.get_last_week())
-        data_week_before = self.get_data_for_period(self.get_week_before())
+        data_past_week = self.data_by_activity_type(self.get_last_week())
+        data_week_before = self.data_by_activity_type(self.get_week_before())
 
         current_stats = self.calculate_stats(data_past_week)
         prev_stats = self.calculate_stats(data_week_before)
 
         needs_improvement = min(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
-        print(needs_improvement)
         return needs_improvement
+
+    def overall_progress(self):
+        conn = sqlite3.connect(db_path)
+        cursor = conn.cursor()
+
+        cursor.execute(f"""
+                    SELECT * FROM UserActivities
+                """)
+
+        data = cursor.fetchall()
+        conn.close()
+
+        stats_by_activity_type = self.calculate_stats(self.data_by_activity_type(data))
+        # Create a figure and a set of subplots
+        fig, ax = plt.subplots()
+
+        # Plot the data
+        activities = list(stats_by_activity_type.keys())
+        times = list(stats_by_activity_type.values())
+        y_pos = np.arange(len(activities))
+
+        ax.barh(y_pos, times, align='center')
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(activities, fontsize=10)  # Increase font size
+        ax.invert_yaxis()  # labels read top-to-bottom
+        ax.set_xlabel('Time Spent (Hours)', fontsize=12)  # Increase font size
+        ax.set_title('Overall Progress', fontsize=14)  # Increase font size
+
+        plt.tight_layout()  # Adjust layout to fit labels
+        plt.savefig('assets/overall_progress.png')
+
+
+
 
     def update_needs_improvement_text(self):
         needs_improvement_activity = self.needs_improvement()
@@ -168,6 +217,41 @@ class WellnessProgressScreen(Screen):
         else:
             self.most_improved_output = "Most Improved:\n- No data from previous week"
 
+from kivy.uix.button import Button
+import webbrowser
+class ShareTwitter(Button):
+    def on_release(self):
+        screen = self.get_screen()  # Find the screen that this button is part of
+        text = f'{screen.most_improved_output}\n{screen.needs_improvement_output}'
 
+        # The URL for sharing on Twitter
+        share_url = f'https://twitter.com/intent/tweet?text={text}'
 
+        webbrowser.open(share_url)
 
+    def get_screen(self):
+        # Traverse up the widget tree to find the WellnessProgressScreen
+        parent = self.parent
+        while parent:
+            if isinstance(parent, WellnessProgressScreen):
+                return parent
+            parent = parent.parent
+        return None
+
+class ShareFacebook(Button):
+    def on_release(self):
+        screen = self.get_screen()  # Find the screen that this button is part of
+        text = f'{screen.most_improved_output}\n{screen.needs_improvement_output}'
+
+        share_url = f'https://www.facebook.com/sharer/sharer.php?text={text}'
+
+        webbrowser.open(share_url)
+
+    def get_screen(self):
+        # Traverse up the widget tree to find the WellnessProgressScreen
+        parent = self.parent
+        while parent:
+            if isinstance(parent, WellnessProgressScreen):
+                return parent
+            parent = parent.parent
+        return None

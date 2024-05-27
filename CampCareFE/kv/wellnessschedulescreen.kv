@@ -1,0 +1,105 @@
+<WellnessScheduleScreen>:
+    BoxLayout:
+        orientation: 'vertical'
+        padding: [10, 10]
+        spacing: 10
+        size_hint: (1, 1)
+
+        canvas.before:
+            Color:
+                rgba: 0.145, 0.596, 0.922, 0.7
+            Rectangle:
+                pos: self.pos
+                size: self.size
+
+        BoxLayout:
+            orientation: 'horizontal'
+            size_hint_y: None
+            height: dp(50)
+            padding: [10, 0]
+
+            Button:
+                text: 'Clear All'
+                size_hint: None, None
+                size: dp(100), dp(50)
+                on_release: root.clear_all_activities()
+
+            Widget:
+
+            Button:
+                text: 'Back >'
+                size_hint: None, None
+                size: dp(100), dp(50)
+                on_release: app.sm.current = 'home'
+
+
+        Label:
+            text: "Wellness Scheduler"
+            font_size: '40sp'
+            color: 1, 1, 1, 1
+            size_hint_y: None
+            height: dp(50)
+            pos_hint: {'center_x': 0.5}
+
+        ScrollView:
+            size_hint: (1, None)
+            height: dp(400)
+            GridLayout:
+                id: calendar_days
+                cols: 7
+                spacing: 5
+                padding: 5
+
+        Widget:
+
+        Label:
+            text: "Activity menu"
+            font_size: '20sp'
+            color: 1, 1, 1, 1
+
+        GridLayout:
+            cols: 4
+            padding: 10
+            spacing: 10
+
+            Button:
+                id: exercise_btn
+                text: "Exercise"
+                background_color: 0, 1, 0, 1
+                on_release: root.select_activity('Exercise', self)
+            Button:
+                id: socialisation_btn
+                text: "Socialisation"
+                background_color: 0, 0, 1, 1
+                on_release: root.select_activity('Socialisation', self)
+            Button:
+                id: studying_btn
+                text: "Studying"
+                background_color: 1, 1, 0, 1
+                on_release: root.select_activity('Studying', self)
+            Button:
+                id: hobbies_btn
+                text: "Hobbies"
+                background_color: 1, 0.5, 0, 1
+                on_release: root.select_activity('Hobbies', self)
+
+
+<ActivityPopup>:
+    title: "Activity Log"
+    size_hint: 0.8, 0.6
+    auto_dismiss: False
+    BoxLayout:
+        orientation: 'vertical'
+        padding: 10
+        spacing: 10
+        Label:
+            text: "Logged Activities:"
+        BoxLayout:
+            id: logged_activities_box
+            orientation: 'vertical'
+        BoxLayout:
+            size_hint_y: None
+            height: dp(40)
+            Button:
+                text: "Close"
+                on_release: root.dismiss()
