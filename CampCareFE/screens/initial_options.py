@@ -12,14 +12,11 @@ class InitialOptionsScreen(Screen):
         self.selected_activities = self.fetch_selected_activities()
 
     def fetch_selected_activities(self):
-        # You need to replace UserID with the actual user ID
-        user_id = 1  # Replace this with the actual user ID
-
         # Establish a connection to the database
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
         cursor.execute("""
-            SELECT Activities FROM UserActivityPreferences WHERE UserID = ?""", (user_id,))
+            SELECT Activities FROM UserActivityPreferences""")
         result = cursor.fetchone()
         conn.close()
 
@@ -45,7 +42,7 @@ class InitialOptionsScreen(Screen):
         from kivy.app import App
         app = App.get_running_app()
         app.selected_activities = self.get_selected_activities()
-        app.save_preferences(user_id=1)
+        app.save_preferences()
 
 
 

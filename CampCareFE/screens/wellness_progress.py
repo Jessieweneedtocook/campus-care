@@ -46,7 +46,7 @@ class WellnessProgressScreen(Screen):
         # Loop through the data
         for row in data:
             # Assume the activity type is in the third column
-            activity_type = row[2]
+            activity_type = row[1]
 
             # If this activity type is not in the dictionary yet, add it
             if activity_type not in data_by_activity_type:

@@ -27,4 +27,4 @@ class OptionsScreen(Screen):
         from kivy.app import App
         app = App.get_running_app()
         app.selected_activities = self.get_selected_activities()
-        app.update_preferences(user_id=1)
+        app.update_preferences()

@@ -58,7 +58,7 @@ class TestMyApp(unittest.TestCase):
         mock_cursor = mock_conn.cursor.return_value
         mock_cursor.fetchone.return_value = None
         app = MyApp()
-        result = app.daily_quiz_comp(user_id=1)
+        result = app.daily_quiz_comp()
         self.assertTrue(result)
 
     @patch('sqlite3.connect')
@@ -67,7 +67,7 @@ class TestMyApp(unittest.TestCase):
         mock_cursor = mock_conn.cursor.return_value
         mock_cursor.fetchone.return_value = None
         app = MyApp()
-        result = app.fetch_preferences(user_id=1)
+        result = app.fetch_preferences()
         self.assertEqual(result, [])
 
     @patch('sqlite3.connect')
@@ -92,7 +92,7 @@ class TestMyApp(unittest.TestCase):
         mock_cursor = mock_conn.cursor.return_value
         mock_cursor.fetchone.return_value = None
         app = MyApp()
-        result = app.fetch_preferences(user_id=999)
+        result = app.fetch_preferences()
         self.assertEqual(result, [])
 
     def test_no_selected_activities_for_quiz(self): #passes
@@ -157,7 +157,7 @@ class TestDailyQuizScreen(unittest.TestCase):
             screen = DailyQuizScreen()
             screen.manager = MagicMock()
             screen.on_enter()
-            mock_app.return_value.daily_quiz_comp.assert_called_once_with(1)
+            mock_app.return_value.daily_quiz_comp.assert_called_once_with()
             mock_app.return_value.show_popup.assert_called_once_with("You have already completed the quiz today.")
             self.assertEqual(screen.manager.current, 'home')
 
