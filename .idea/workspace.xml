@@ -4,16 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="can now access admin screen from home">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/backend.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/homescreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/kv/homescreen.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/userinfoscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/kv/userinfoscreen.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/signup.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/user_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/user_info.py" afterDir="false" />
-    </list>
+    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="xml file changes" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -365,7 +356,63 @@
       <option name="project" value="LOCAL" />
       <updated>1716844042819</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL-00026" summary="added access token to app">
+      <created>1716859770820</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1716859770820</updated>
+    </task>
+    <task id="LOCAL-00027" summary="correct error messages, corrected delete admin account action name">
+      <created>1716859875403</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1716859875403</updated>
+    </task>
+    <task id="LOCAL-00028" summary="daily quiz pop up now works">
+      <created>1716859941715</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1716859941715</updated>
+    </task>
+    <task id="LOCAL-00029" summary="errors now appear as popups">
+      <created>1716859969418</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1716859969418</updated>
+    </task>
+    <task id="LOCAL-00030" summary="errors now appear as popups">
+      <created>1716859986467</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1716859986467</updated>
+    </task>
+    <task id="LOCAL-00031" summary="added user info screen functions">
+      <created>1716860004609</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1716860004609</updated>
+    </task>
+    <task id="LOCAL-00032" summary="added user info screen function gui">
+      <created>1716860034627</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1716860034627</updated>
+    </task>
+    <task id="LOCAL-00033" summary="xml file changes">
+      <created>1716860054935</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1716860054935</updated>
+    </task>
+    <option name="localTasksCounter" value="34" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -395,12 +442,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adding docker compose functionality" />
-    <MESSAGE value="progress on database connection. may need to revert" />
-    <MESSAGE value="set up database and some tests to make sure everything is working" />
-    <MESSAGE value="Added instructions on how to connect to the database" />
-    <MESSAGE value="changing file names" />
-    <MESSAGE value="adding functionality to the quiz, answers now save to the UserASctivitys DB" />
     <MESSAGE value="adding quiz functionality" />
     <MESSAGE value="quiz function works fully with the main app now but gets stuck and crashes after last question is asked." />
     <MESSAGE value="removing unneeded imports" />
@@ -417,10 +458,16 @@
     <MESSAGE value="home now calls go_to_daily_quiz when daily quiz button pressed" />
     <MESSAGE value="login goes to home instead of initial options" />
     <MESSAGE value="quiz preferences now update when user changes them in options" />
-    <MESSAGE value="xml file changes" />
     <MESSAGE value="deleted graph image" />
     <MESSAGE value="can now access admin screen from home" />
-    <option name="LAST_COMMIT_MESSAGE" value="can now access admin screen from home" />
+    <MESSAGE value="added access token to app" />
+    <MESSAGE value="correct error messages, corrected delete admin account action name" />
+    <MESSAGE value="daily quiz pop up now works" />
+    <MESSAGE value="errors now appear as popups" />
+    <MESSAGE value="added user info screen functions" />
+    <MESSAGE value="added user info screen function gui" />
+    <MESSAGE value="xml file changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml file changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1715848511139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
