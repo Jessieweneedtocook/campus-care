@@ -139,7 +139,6 @@ class MyApp(App):
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS UserActivities (
                 ActivityID INTEGER PRIMARY KEY AUTOINCREMENT,
-                UserID INTEGER NOT NULL,
                 ActivityType TEXT NOT NULL,
                 TimeSpent INTEGER,
                 ActivityDate DATETIME NOT NULL
