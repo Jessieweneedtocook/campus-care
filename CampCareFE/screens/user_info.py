@@ -184,8 +184,8 @@ class UserInfoScreen(Screen):
     def show_confirm_delete(self):
         ConfirmDeletePopup().open()
 
-    def logout(self):
-        url = 'http://localhost:5001/api'
+    def handle_logout(self):
+        url = 'http://localhost:5001/api/logout'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
         response = requests.post(url, json={"action": "logout"}, headers=headers)
