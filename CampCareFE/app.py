@@ -125,7 +125,6 @@ class MyApp(App):
         query = """
                 UPDATE UserActivityPreferences
                 SET Activities = ?
-                WHERE UserID = ?
                 """
         data = (str(self.selected_activities),)
         cursor.execute(query, data)

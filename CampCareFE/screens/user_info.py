@@ -146,12 +146,13 @@ class ConfirmDeletePopup(Popup):
         self.add_widget(layout)
 
     def delete_user(self, instance):
-        url = 'http://localhost:5001/api/delete_account'
+        url = 'http://localhost:5001/api'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
-
+        json_data = {"action": "delete_account"}
+        print("Data to be sent ",headers,json_data)
         try:
-            response = requests.delete(url, headers=headers)
+            response = requests.post(url, headers=headers, json=json_data)
 
             try:
                 response_json = response.json()
