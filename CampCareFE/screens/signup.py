@@ -1,3 +1,4 @@
+from kivy.app import App
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from kivy.uix.popup import Popup
@@ -74,7 +75,9 @@ class SignupScreen(Screen):
         response = requests.post(url, json=json_data)
         if response.status_code == 201:
             self.manager.current = 'initialoptions'
-            print('User registered successfully')
+            response_json = response.json()
+            App.get_running_app().access_token = response_json.get('access_token')
+            self.manager.current = 'home'
         else:
             error_message = response.json().get('message', 'Registration failed')
             ErrorPopup([error_message]).open()
