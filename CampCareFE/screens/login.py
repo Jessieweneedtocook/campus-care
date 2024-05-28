@@ -56,3 +56,4 @@ class LoginScreen(Screen):
         else:
             error_message = response_json.get('message', 'Login failed')
             ErrorPopup([error_message]).open()
+
