@@ -37,15 +37,7 @@ class MyApp(App):
         self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
-        wellness_progress_screen = WellnessProgressScreen(name='wellnessprogress')
-
-        # Get and print the most improved activity
-        most_improved_activity = wellness_progress_screen.most_improved()
-        print("Most Improved Activity:", most_improved_activity)
-
-        # Get and print the activity that needs the most improvement
-        needs_improvement_activity = wellness_progress_screen.needs_improvement()
-        print("Activity Needing Improvement:", needs_improvement_activity)
+        self.plot_graph()
 
         self.sm.add_widget(SignupScreen(name='signup'))
         self.sm.add_widget(ResetPasswordScreen(name='resetpassword'))

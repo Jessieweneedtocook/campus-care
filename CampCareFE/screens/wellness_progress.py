@@ -39,10 +39,8 @@ class WellnessProgressScreen(Screen):
         return self.data_by_activity_type(data)
 
     def data_by_activity_type(self, data):
-
         # Initialize an empty dictionary to store the data
         data_by_activity_type = {}
-
         # Loop through the data
         for row in data:
             # Assume the activity type is in the third column
@@ -66,7 +64,7 @@ class WellnessProgressScreen(Screen):
 
             # Convert each time spent string to its corresponding numerical value
             for row in data:
-                time_spent_str = row[3]  # Assuming time_spent is the third column
+                time_spent_str = row[2]  # Assuming time_spent is the third column
                 if time_spent_str == "Less than 1":
                     total_value += 0
                 elif time_spent_str == "1-3":

@@ -7,12 +7,12 @@ from kivy.base import EventLoop
 from kivy.app import App
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.button import Button
-from CampCareFE.app import MyApp
-from CampCareFE.screens.signup import SignupScreen
-from CampCareFE.screens.wellness_progress import WellnessProgressScreen
-from CampCareFE.quiz_questions import questions
-from CampCareFE.screens.daily_quiz import DailyQuizScreen
-from CampCareFE.screens.home import HomeScreen
+from CampCareFE.app import MyApp  # Assuming the MyApp class is the main app class
+from CampCareFE.screens.signup import SignupScreen  # Signup screen class
+from CampCareFE.screens.wellness_progress import WellnessProgressScreen  # Wellness progress screen class
+from CampCareFE.quiz_questions import questions  # Questions for the quiz
+from CampCareFE.screens.daily_quiz import DailyQuizScreen  # Daily quiz screen class
+from CampCareFE.screens.home import HomeScreen  # Home screen class
 
 # Set the working directory to the root of your project
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
@@ -22,7 +22,7 @@ if not App.get_running_app():
     EventLoop.ensure_window()
 
 class TestMyApp(unittest.TestCase):
-    def test_increment_current_question_index(self): #passes
+    def test_increment_current_question_index(self):  # Test to increment question index
         my_app = MyApp()
         my_app.selected_activities = ['Socialisation', 'Sleeping']
         my_app.sm = ScreenManager()
@@ -32,7 +32,7 @@ class TestMyApp(unittest.TestCase):
         my_app.sm.current_question_index = 0
         my_app.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
 
-    def test_question_index_resets(self): #passes
+    def test_question_index_resets(self):  # Test to check question index resets
         app = MyApp()
         app.sm = ScreenManager()  # Initialize the screen manager
         app.selected_activities = ['Socialisation', 'Sleeping']
@@ -44,7 +44,7 @@ class TestMyApp(unittest.TestCase):
         # Set the current_question_index to the last question
         app.sm.current_question_index = len(selected_questions) - 1
 
-    def test_screen_transitions(self): #passes
+    def test_screen_transitions(self):  # Test screen transitions
         app = MyApp()
         app.build()
         app.sm.current = 'login'
@@ -53,7 +53,7 @@ class TestMyApp(unittest.TestCase):
         self.assertEqual(app.sm.current, 'home')
 
     @patch('sqlite3.connect')
-    def test_daily_quiz_completion_check(self, mock_connect): #passes
+    def test_daily_quiz_completion_check(self, mock_connect):  # Test daily quiz completion check
         mock_conn = mock_connect.return_value
         mock_cursor = mock_conn.cursor.return_value
         mock_cursor.fetchone.return_value = None
@@ -62,7 +62,7 @@ class TestMyApp(unittest.TestCase):
         self.assertTrue(result)
 
     @patch('sqlite3.connect')
-    def test_handle_empty_user_preferences(self, mock_connect): #passes
+    def test_handle_empty_user_preferences(self, mock_connect):  # Test handling of empty user preferences
         mock_conn = mock_connect.return_value
         mock_cursor = mock_conn.cursor.return_value
         mock_cursor.fetchone.return_value = None
@@ -71,7 +71,7 @@ class TestMyApp(unittest.TestCase):
         self.assertEqual(result, [])
 
     @patch('sqlite3.connect')
-    def test_no_data_returned_from_db_queries(self, mock_connect): #passes
+    def test_no_data_returned_from_db_queries(self, mock_connect):  # Test when no data is returned from DB queries
         mock_conn = mock_connect.return_value
         mock_cursor = mock_conn.cursor.return_value
         mock_cursor.fetchall.return_value = []
@@ -80,14 +80,14 @@ class TestMyApp(unittest.TestCase):
         self.assertEqual(data_by_activity_type, {})
 
     @patch('requests.post', side_effect=requests.exceptions.RequestException)
-    def test_external_api_failure_during_signup(self, mock_post): #passes
+    def test_external_api_failure_during_signup(self, mock_post):  # Test external API failure during signup
         app = MyApp()
         screen = SignupScreen()
         result = screen.send_to_server(user_data={'username': 'testuser'})
         self.assertFalse(result)
 
     @patch('sqlite3.connect')
-    def test_handle_non_existent_user_ids(self, mock_connect): #passes
+    def test_handle_non_existent_user_ids(self, mock_connect):  # Test handling of non-existent user IDs
         mock_conn = mock_connect.return_value
         mock_cursor = mock_conn.cursor.return_value
         mock_cursor.fetchone.return_value = None
@@ -95,7 +95,7 @@ class TestMyApp(unittest.TestCase):
         result = app.fetch_preferences()
         self.assertEqual(result, [])
 
-    def test_no_selected_activities_for_quiz(self): #passes
+    def test_no_selected_activities_for_quiz(self):  # Test behavior when no activities are selected for quiz
         app = MyApp()
         app.selected_activities = []
         app.sm = MagicMock()
@@ -104,19 +104,20 @@ class TestMyApp(unittest.TestCase):
         self.assertEqual(question, {})
 
     @patch('kivy.uix.popup.Popup.open')
-    def test_popup_display_functionality(self, mock_open): #passes
+    def test_popup_display_functionality(self, mock_open):  # Test popup display functionality
         app = MyApp()
         app.show_popup("Test Message")
         mock_open.assert_called_once()
 
 
 class TestSignupScreen(unittest.TestCase):
-    def test_valid_user_data_sent_successfully(self):
+    def test_valid_user_data_sent_successfully(self):  # Test successful submission of valid user data
         sm = ScreenManager()
         signup_screen = SignupScreen(name='signup')
         sm.add_widget(signup_screen)
         sm.current = 'signup'
 
+        # Mocking the input fields
         signup_screen.ids = {
             'username_input': type('Mock', (object,), {'text': 'testuser'}),
             'email_input': type('Mock', (object,), {'text': 'test@example.com'}),
@@ -133,8 +134,7 @@ class TestSignupScreen(unittest.TestCase):
             self.assertNotEqual(sm.current, 'initialoptions')
             self.assertNotEqual(signup_screen.ids.error_message.text, '')
 
-    #  method returns True when server responds with status code 200
-    def test_send_to_server_success(self):
+    def test_send_to_server_success(self):  # Test send_to_server method for successful server response
         user_data = {
             "username": "test_user",
             "email": "test_user@example.com",
@@ -151,7 +151,7 @@ class TestSignupScreen(unittest.TestCase):
 
 
 class TestDailyQuizScreen(unittest.TestCase):
-    def test_on_enter_quiz_completion_check(self):
+    def test_on_enter_quiz_completion_check(self):  # Test on_enter method for quiz completion check
         with patch.object(App, 'get_running_app') as mock_app:
             mock_app.return_value.daily_quiz_comp.return_value = False
             screen = DailyQuizScreen()
@@ -161,7 +161,7 @@ class TestDailyQuizScreen(unittest.TestCase):
             mock_app.return_value.show_popup.assert_called_once_with("You have already completed the quiz today.")
             self.assertEqual(screen.manager.current, 'home')
 
-    def test_update_content_populates_correctly(self):
+    def test_update_content_populates_correctly(self):  # Test update_content method populates correctly
         screen = DailyQuizScreen()
         screen.ids = {'answers_container': MagicMock(), 'question_label': MagicMock()}
         screen.manager = MagicMock()
@@ -173,18 +173,16 @@ class TestDailyQuizScreen(unittest.TestCase):
             self.assertIsInstance(call[0][0], Button)
             self.assertEqual(call[0][0].text, answer)
 
-    def test_handle_corrupted_quiz_data(self):
+    def test_handle_corrupted_quiz_data(self):  # Test handling of corrupted quiz data
         screen = DailyQuizScreen()
         screen.ids = {'answers_container': MagicMock(), 'question_label': MagicMock()}
         screen.manager = MagicMock()
-        screen.manager.get_current_question.return_value = {'question': None,
-                                                            'answers': []}  # Change 'answers' to an empty list
+        screen.manager.get_current_question.return_value = {'question': None, 'answers': []}
         screen.update_content()
         self.assertIsNone(screen.ids.question_label.text)
         self.assertEqual(screen.ids.answers_container.add_widget.call_count, 0)
 
-    #  Test behavior when the user's ID is invalid or not found
-    def test_invalid_user_id_behavior(self):
+    def test_invalid_user_id_behavior(self):  # Test behavior when the user's ID is invalid or not found
         with patch.object(App, 'get_running_app') as mock_app:
             mock_app.return_value.daily_quiz_comp.return_value = True
             mock_app.return_value.update_activities.side_effect = Exception("Invalid user ID")

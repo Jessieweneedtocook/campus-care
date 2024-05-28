@@ -40,5 +40,3 @@ class DailyQuizScreen(Screen):
         self.manager.next_question()
         self.update_content()
 
-    def on_leave(self, *args):
-        App.get_running_app().plot_graph()
