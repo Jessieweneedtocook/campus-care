@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="removed old code interferring with buttons">
-      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/userinfoscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/kv/userinfoscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -366,6 +366,17 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+        <option value="Space.CommitStatus" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -421,9 +432,10 @@
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1715848511139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz__1_.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715617574822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/kv" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$.coverage" NAME=" Coverage Results" MODIFIED="1716832233560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716903344505" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716904954142" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$pytest_in_db_connection_py.coverage" NAME="pytest in db-connection.py Coverage Results" MODIFIED="1716832738733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$user_info.coverage" NAME="user_info Coverage Results" MODIFIED="1716899972360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$options.coverage" NAME="options Coverage Results" MODIFIED="1716904705323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection__1_.coverage" NAME="db-connection (1) Coverage Results" MODIFIED="1715856843718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_progress.coverage" NAME="wellness_progress Coverage Results" MODIFIED="1715944319384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$home.coverage" NAME="home Coverage Results" MODIFIED="1715794681228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
