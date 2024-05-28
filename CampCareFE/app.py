@@ -30,7 +30,7 @@ class MyApp(App):
 
         Window.size = (375, 667)
         self.questions = questions
-        self.selected_activities = self.fetch_preferences(user_id=1)
+        self.selected_activities = self.fetch_preferences()
         self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
@@ -62,14 +62,14 @@ class MyApp(App):
         self.all_questions_asked = False  # Flag to track if all questions have been asked
         return self.sm
 
-    def fetch_preferences(self, user_id):
+    def fetch_preferences(self):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         query = """
-                SELECT Activities FROM UserActivityPreferences WHERE UserID = ?
+                SELECT Activities FROM UserActivityPreferences
                 """
-        cursor.execute(query, (user_id,))
+        cursor.execute(query)
         result = cursor.fetchone()
         conn.close()
 
@@ -86,8 +86,7 @@ class MyApp(App):
         print(f"Filtered questions: {filtered_questions}")
         if self.sm.current_question_index < len(filtered_questions):
             question = filtered_questions[self.sm.current_question_index]
-            question[
-                'index'] = self.sm.current_question_index  # Add the current question index to the question dictionary
+            question['index'] = self.sm.current_question_index  # Add the current question index to the question dictionary
             return question
         return {}
 
@@ -101,29 +100,28 @@ class MyApp(App):
             self.sm.current = 'home'
             self.sm.current_question_index = 0  # Reset the question index for the next quiz
 
-    def save_preferences(self, user_id):
+    def save_preferences(self):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         query = """
-                INSERT INTO UserActivityPreferences (UserID, Activities)
-                VALUES (?, ?)
+                INSERT INTO UserActivityPreferences (Activities)
+                VALUES (?)
                 """
-        data = (user_id, str(self.selected_activities))
+        data = (str(self.selected_activities),)
         cursor.execute(query, data)
         conn.commit()
         conn.close()
 
-    def update_preferences(self, user_id):
+    def update_preferences(self):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         query = """
                 UPDATE UserActivityPreferences
                 SET Activities = ?
-                WHERE UserID = ?
                 """
-        data = (str(self.selected_activities), user_id)
+        data = (str(self.selected_activities),)
         cursor.execute(query, data)
         conn.commit()
         conn.close()
@@ -135,7 +133,6 @@ class MyApp(App):
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS UserActivities (
                 ActivityID INTEGER PRIMARY KEY AUTOINCREMENT,
-                UserID INTEGER NOT NULL,
                 ActivityType TEXT NOT NULL,
                 TimeSpent INTEGER,
                 ActivityDate DATETIME NOT NULL
@@ -145,33 +142,31 @@ class MyApp(App):
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS UserActivityPreferences (
                 PreferenceID INTEGER PRIMARY KEY AUTOINCREMENT,
-                UserID INTEGER,
-                Activities TEXT,
-                FOREIGN KEY(UserID) REFERENCES Users(UserID)
+                Activities TEXT
             )
         """)
 
-        activities_alice = [
-            (1, 'Drinking', '1-3', datetime.now() - timedelta(days=2)),
-            (1, 'Socialisation', 'Less than 1', datetime.now() - timedelta(days=2)),
-            (1, 'Drinking', 'More than 4', datetime.now() - timedelta(days=8)),
-            (1, 'Socialisation', 'More than 4', datetime.now() - timedelta(days=8)),
+        activities = [
+            ('Drinking', '1-3', datetime.now() - timedelta(days=2)),
+            ('Socialisation', 'Less than 1', datetime.now() - timedelta(days=2)),
+            ('Drinking', 'More than 4', datetime.now() - timedelta(days=8)),
+            ('Socialisation', 'More than 4', datetime.now() - timedelta(days=8)),
         ]
         cursor.executemany(
-            "INSERT INTO UserActivities (UserID, ActivityType, TimeSpent, ActivityDate) VALUES (?, ?, ?, ?)",
-            activities_alice)
+            "INSERT INTO UserActivities (ActivityType, TimeSpent, ActivityDate) VALUES (?, ?, ?)",
+            activities)
         conn.commit()
         conn.close()
 
-    def update_activities(self, user_id, activity_type, user_answer):
+    def update_activities(self, activity_type, user_answer):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         query = """
-        INSERT INTO UserActivities (UserID, ActivityType, TimeSpent, ActivityDate)
-        VALUES (?, ?, ?, ?)
+        INSERT INTO UserActivities (ActivityType, TimeSpent, ActivityDate)
+        VALUES (?, ?, ?)
         """
-        data = (user_id, activity_type, user_answer, datetime.now())
+        data = (activity_type, user_answer, datetime.now())
         cursor.execute(query, data)
         conn.commit()
         conn.close()
@@ -183,15 +178,16 @@ class MyApp(App):
         screen.plot_stats(stats_by_activity_type)
         screen.overall_progress()
 
-    def daily_quiz_comp(self, user_id):
+    def daily_quiz_comp(self):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
         query = """
             SELECT * FROM UserActivities
-            WHERE UserID = ? AND Date(ActivityDate) = ?
+            WHERE Date(ActivityDate) = ?
             """
-        cursor.execute(query, (user_id, datetime.now().date()))
+        current_date = datetime.now().date().isoformat()
+        cursor.execute(query, (current_date,))
         entry = cursor.fetchone()
         conn.close()
 
