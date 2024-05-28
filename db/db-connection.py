@@ -1,7 +1,10 @@
 import mysql.connector
+
+
 def create_database(cursor):
     cursor.execute("CREATE DATABASE IF NOT EXISTS campus_care")
     cursor.execute("USE campus_care")  # Switch to the new database
+
 
 def create_table(cursor):
     cursor.execute("""
@@ -11,18 +14,20 @@ def create_table(cursor):
         Password VARCHAR(255) NOT NULL,
         Email VARCHAR(255) NOT NULL,
         DateOfBirth DATETIME NOT NULL,
+        phone VARCHAR(255) NOT NULL,
         Role ENUM('User', 'Admin') DEFAULT 'User'
     )
     """)
 
 
 def insert_initial_data(cursor):
-    query = "INSERT INTO Users (Username, Password, Email, DateOfBirth, Role) VALUES (%s, %s, %s, %s, %s)"
+    query = "INSERT INTO Users (Username, Password, Email, DateOfBirth, phone, Role) VALUES (%s, %s, %s, %s, %s, %s)"
     data = [
-        ('user1', 'password1', 'user1@example.com', '2000-01-01', 'User'),
+        ('user1', 'password1', 'user1@example.com', '2000-01-01', '07722824206', 'User'),
         # Add more users as needed
     ]
     cursor.executemany(query, data)
+
 
 def test_database(cursor):
     cursor.execute("SHOW DATABASES")
@@ -34,7 +39,6 @@ def test_table(cursor):
     cursor.execute("SHOW TABLES")
     tables = cursor.fetchall()
     assert ('Users',) in tables, "Table 'Users' not found"
-    assert ('UserActivityPreferences',) in tables, "Table 'UserActivityPreferences' not found"
 
 
 def test_data(cursor):
@@ -42,9 +46,6 @@ def test_data(cursor):
     users = cursor.fetchall()
     assert len(users) > 0, "No data found in 'Users' table"
 
-    cursor.execute("SELECT * FROM UserActivityPreferences")
-    preferences = cursor.fetchall()
-    assert len(preferences) >= 0, "Error occurred while fetching data from 'UserActivityPreferences' table"
 
 
 def main():

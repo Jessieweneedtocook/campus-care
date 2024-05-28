@@ -7,33 +7,64 @@ from wtforms.validators import Length
 from wtforms.validators import DataRequired
 
 # makes sure that the password contains a number, uppercase and lower case letter and one symbol
-def password_checker(form, field):
-    p = re.compile(r'(?=.*\d)(?=.*[a-zA-Z])(?=.*\W)')
-    if not p.match(field.data):
-        raise ValidationError()
+def password_checker(password):
+    if len(password) < 6 or len(password) > 12:
+        return False, "Password must be minimum 6 characters in length"
+    if not re.search(r'(?=.*\d)', password):
+        return False, "Password must contain at least one digit"
+    if not re.search(r'(?=.*[a-zA-Z])', password):
+        return False, "Password must contain at least one uppercase and one lowercase character"
+    if not re.search(r'(?=.*\W)', password):
+        return False, "Password must contain a symbol"
+    return True, ''
+
 
 # makes sure the phone number is in Uk number format
-def phone_checker(form, field):
+def phone_checker(phone):
     p = re.compile(r'^(?:(?:\+|00)44|0) '
                    r'?(?:\d{4} ?\d{3} '
                    r'?\d{3}|\d{3} ?\d{4} '
                    r'?\d{4}|\d{5} '
                    r'?\d{4} '
                    r'?\d{2})$')
-    if not p.match(field.data):
-        raise ValidationError()
+    if not p.match(phone):
+        return False, "invalid phone number"
+    return True, ''
 
-# makes sure the username cannot contain these symbols
-def symbol_checker(form, field):
+# makes sure the username cannot contain these symbols and is present
+def username_checker(username):
     excluded_symbol = r'[!@#$%^&*()+=\[\]{};:\'"\\|,.<>?]'
 
-    for char in field.data:
-        if char in excluded_symbol:
-            raise ValidationError()
+    if any(char in excluded_symbol for char in username):
+        return False, "invalid symbols"
+    if not username:
+        return False, "Please fill in this field"
+    return True, ''
+
+# makes sure that the email input is in the format of an email
+def email_checker(email):
+    p = re.compile(r'(?=.*[a-zA-Z0-9_.+-])'
+                   r'(?=.*[@])(?=.*[a-zA-Z0-9-])'
+                   r'(?=.*[.])(?=.*[a-zA-Z0-9-.])')
+    if not p.match(email):
+        return False, "invalid email"
+    return True, ''
+# checks to make sure the password and confirm password field are equal
+def confirm_password_checker (password, confirm_password):
+    if password != confirm_password:
+        return False, "Passwords do not match."
+    return True, ''
+
+# checks to make sure the date of birth is entered in the format dd/mm/yyyy
+def dob_checker(dob):
+    p = re.compile(r'^(0[1-9]|[12][0-9]|3[01])/(0[1-9]|1[0-2])/[0-9]{4}$')
+    if not p.match(dob):
+        return False, "invalid phone number format try dd/mm/yyyy"
+    return True, ''
 
 # form for the register page
 class SignupForm(FlaskForm):
-    username = StringField('Username', validators=[DataRequired(), symbol_checker])
+    username = StringField('Username', validators=[DataRequired()])
     email = StringField('Email', validators=[DataRequired(), Email()])
     phone = StringField('Phone', validators=[DataRequired(), phone_checker])
     dob = DateField('Date of Birth', validators=[DataRequired()])

@@ -1,55 +1,80 @@
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
+from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+from kivy.metrics import dp
 import requests
-# import validation functions
+from Backend.form import (username_checker,
+                          password_checker,
+                          phone_checker,
+                          dob_checker,
+                          confirm_password_checker,
+                          email_checker)
 
 Builder.load_file('kv/signupscreen.kv')
 
+class ErrorPopup(Popup):
+    def __init__(self, errors, **kwargs):
+        super().__init__(**kwargs)
+        self.title = "Signup Errors"
+        self.size_hint = (0.8, 0.5)
+
+        layout = BoxLayout(orientation='vertical', padding=dp(10), spacing=dp(10))
+
+        for error in errors:
+            label = Label(text=error, size_hint_y=None, height=dp(30), halign='left', valign='middle')
+            label.bind(size=label.setter('text_size'))  # Enable text wrapping
+            layout.add_widget(label)
+
+        close_button = Button(text="Close", size_hint_y=None, height=dp(40))
+        close_button.bind(on_release=self.dismiss)
+        layout.add_widget(close_button)
+
+        self.add_widget(layout)
 
 class SignupScreen(Screen):
-    def submit_signup_data(self):
-        # Clear previous error messages
-        self.ids.error_message.text = ""
 
-        # Collect user data
-        user_data = {
-            "username": self.ids.username_input.text,
-            "email": self.ids.email_input.text,
-            "phone": self.ids.number_input.text,
-            "dob": self.ids.dob_input.text,
-            "password": self.ids.password_input.text,
-            "confirm_password": self.ids.confirm_password_input.text
+    def sign_up(self):
+        data = {
+            'username': self.ids.username.text,
+            'email': self.ids.email.text,
+            'phone': self.ids.phone.text,
+            'DateOfBirth': self.ids.DateOfBirth.text,
+            'password': self.ids.password.text,
+            'confirm_password': self.ids.confirm_password.text
         }
 
-        # Perform validations
+        # Check if all fields are filled
+        if not all(data.values()):
+            ErrorPopup(["Please fill in all fields."]).open()
+            return
+
+        # Perform validations only if all fields are filled
         validations = [
-            #username_validation(user_data["username"]),
-            #email_validation(user_data["email"]),
-            #phone_validation(user_data["phone"]),
-            #password_validation(user_data["password"]),
-            #confirm_password_validation(user_data["password"], user_data["confirm_password"])
+            username_checker(data["username"]),
+            email_checker(data["email"]),
+            phone_checker(data["phone"]),
+            dob_checker(data["DateOfBirth"]),
+            password_checker(data["password"]),
+            confirm_password_checker(data["password"], data["confirm_password"])
         ]
 
-        # Check for validation errors
-        for valid, message in validations:
-            if not valid:
-                self.ids.error_message.text = message
-                return
+        errors = [message for valid, message in validations if not valid]
 
-        # Send data to server if all validations pass
-        if self.send_to_server(user_data):
-            print("Success in sending data!")
+        if errors:
+            error_popup = ErrorPopup(errors)
+            error_popup.open()
+            return
+
+        url = 'http://localhost:5001/api'
+        json_data = {"action": "register_user", "role": "user"}
+        json_data.update(data)
+        response = requests.post(url, json=json_data)
+        if response.status_code == 201:
             self.manager.current = 'initialoptions'
+            print('User registered successfully')
         else:
-            self.ids.error_message.text = 'Failed to send data'
-
-
-    def send_to_server(self, user_data):
-        url = "https://yourapiendpoint.com/signup"
-        headers = {"Content-Type": "application/json"}
-        try:
-            response = requests.post(url, json=user_data, headers=headers)
-            return response.status_code == 200
-        except requests.exceptions.RequestException as e:
-            print(f"Error sending data to server: {e}")
-            return False
+            error_message = response.json().get('message', 'Registration failed')
+            ErrorPopup([error_message]).open()

@@ -57,7 +57,7 @@
                         pos: self.pos
                         size: self.size
                 Label:
-                    text: "Most improved:\n- Hours spent sleeping\n- Hours spent drinking\n- Hours spent socializing"
+                    text: root.most_improved_output
                     color: 1, 1, 1, 1  # White text for better contrast
                     halign: 'center'
                     valign: 'middle'
@@ -74,13 +74,27 @@
                         pos: self.pos
                         size: self.size
                 Label:
-                    text: "In need of improving:\n- Hours spent touching grass\n- Hours spent exercising\n- Hours spent studying"
+                    text: root.needs_improvement_output
                     color: 1, 1, 1, 1  # White text for better contrast
                     halign: 'center'
                     valign: 'middle'
                     text_size: self.size
                     size_hint_y: None
                     height: dp(100)
+        BoxLayout:
+            size_hint_y: None
+            height: dp(50)
+            spacing: 20
+
+            ShareTwitter:
+                text: 'Share on Twitter'
+                size_hint: None, None
+                size: dp(175), dp(50)
+
+            ShareFacebook:
+                text: 'Share on Facebook'
+                size_hint: None, None
+                size: dp(175), dp(50)
 
         Widget:
             size_hint_y: 0.1

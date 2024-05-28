@@ -11,3 +11,6 @@ Connecting to database:
 
 
 **Git Repository**: https://github.com/newcastleuniversity-computing/CSC2033_Team37_23_24.git
+First run docker-compose.yml
+Then if database not initialised, run db-connection.py
+Then run CampCareFE/utils/main.py

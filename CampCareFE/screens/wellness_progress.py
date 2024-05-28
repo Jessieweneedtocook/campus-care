@@ -3,6 +3,7 @@ import numpy as np
 import matplotlib
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
+from kivy.properties import StringProperty
 
 from math import pi
 from kivy.uix.screenmanager import ScreenManager, Screen
@@ -13,6 +14,14 @@ from CampCareFE.screens.daily_quiz import db_path
 Builder.load_file('kv/wellnessprogressscreen.kv')
 
 class WellnessProgressScreen(Screen):
+
+    needs_improvement_output = StringProperty('')
+    most_improved_output = StringProperty('')
+
+    def on_enter(self):
+        self.update_most_improved_text()
+        self.update_needs_improvement_text()
+
     def get_data_for_period(self, days):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -192,7 +201,57 @@ class WellnessProgressScreen(Screen):
 
 
 
+    def update_needs_improvement_text(self):
+        needs_improvement_activity = self.needs_improvement()
+        if needs_improvement_activity:
+            self.needs_improvement_output = f"Needs Improvement:\n- {needs_improvement_activity}"
+        else:
+            self.needs_improvement_output = "Needs Improvement:\n- No data from previous week"
 
+    def update_most_improved_text(self):
+        most_improved_activity = self.most_improved()
 
+        if most_improved_activity:
+            self.most_improved_output = f"Most Improved:\n- {most_improved_activity}"
 
+        else:
+            self.most_improved_output = "Most Improved:\n- No data from previous week"
 
+from kivy.uix.button import Button
+import webbrowser
+class ShareTwitter(Button):
+    def on_release(self):
+        screen = self.get_screen()  # Find the screen that this button is part of
+        text = f'{screen.most_improved_output}\n{screen.needs_improvement_output}'
+
+        # The URL for sharing on Twitter
+        share_url = f'https://twitter.com/intent/tweet?text={text}'
+
+        webbrowser.open(share_url)
+
+    def get_screen(self):
+        # Traverse up the widget tree to find the WellnessProgressScreen
+        parent = self.parent
+        while parent:
+            if isinstance(parent, WellnessProgressScreen):
+                return parent
+            parent = parent.parent
+        return None
+
+class ShareFacebook(Button):
+    def on_release(self):
+        screen = self.get_screen()  # Find the screen that this button is part of
+        text = f'{screen.most_improved_output}\n{screen.needs_improvement_output}'
+
+        share_url = f'https://www.facebook.com/sharer/sharer.php?text={text}'
+
+        webbrowser.open(share_url)
+
+    def get_screen(self):
+        # Traverse up the widget tree to find the WellnessProgressScreen
+        parent = self.parent
+        while parent:
+            if isinstance(parent, WellnessProgressScreen):
+                return parent
+            parent = parent.parent
+        return None

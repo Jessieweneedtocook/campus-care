@@ -1,4 +1,4 @@
-<HomeScreen>:
+<AdminScreen>:
     BoxLayout:
         orientation: 'vertical'
         padding: [10, 10]
@@ -17,13 +17,8 @@
             size_hint_y: None
             height: dp(50)
 
-            Button:
-                text: 'User Info'
-                size_hint: None, None
-                size: dp(100), dp(50)
-                on_release: app.sm.current = 'userinfo'
         Label:
-            text: "CampusCare"
+            text: "Admin menu"
             font_size: '40sp'
             color: 1, 1, 1, 1
             size_hint_y: None
@@ -31,12 +26,12 @@
             pos_hint: {'center_x': 0.5}
 
 
-        # Radar diagram area (Placeholder for now)
+        # User log area
         BoxLayout:
             size_hint_y: None
             height: 400
             Image:
-                source: 'assets/output.png'  # Replace with dynamic image generation
+                source: 'assets/output.png'  # Where user logs will be displayed
                 size: dp(400), dp(400)
 
         # Statistics and options buttons
@@ -48,25 +43,23 @@
             padding: 10
 
             Button:
-                text: "Wellness Progress"
-                on_release: root.manager.current = 'wellnessprogress'
+                text: "Add admin"
+                on_release: root.manager.current = 'admin' # replace with function linking to add admin screen
             Button:
-                text: "Wellness Scheduler"
-                on_release: root.manager.current = 'wellnessschedule'
+                text: "Delete user"
+                on_release: root.manager.current = 'admin' # replace with function linking to add admin screen
             Button:
-                text: "Wellness Help"
-                on_release: root.manager.current = 'wellnesshelp'
+                text: "Other admin func"
+                on_release: root.manager.current = 'admin' # other admin function
             Button:
-                text: "Options Menu"
-                on_release: root.manager.current = 'options'
+                text: "Other admin func"
+                on_release: root.manager.current = 'admin' # other amin function
 
         # Footer or additional controls
         BoxLayout:
             size_hint_y: None
             height: 50
             Button:
-                text: "Daily Quiz"
-                on_release: root.go_to_daily_quiz()
-            Button:
-                text: "Admin menu"
-                on_release: root.manager.current = 'admin'
+                text: "Return to home"
+                on_release: root.manager.current = 'home'
+

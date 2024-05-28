@@ -1,0 +1,12 @@
+Flask
+flask_sqlalchemy
+flask_login
+flask_wtf
+WTForms
+mysql-connector-python
+flask_cors
+flask_jwt_extended
+python-dotenv
+PyMySQL
+cryptography
+kivy
