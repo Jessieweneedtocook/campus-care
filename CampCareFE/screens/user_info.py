@@ -68,18 +68,15 @@ class ChangeEmailPopup(Popup):
             ErrorPopup(["Please provide a new email address."]).open()
             return
 
-        url = 'http://localhost:5001/api/change_email'
+        url = 'http://localhost:5001/api'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
-        response = requests.post(url, json={"new_email": new_email}, headers=headers)
+        response = requests.post(url, json={"action": "change_email", "new_email": new_email}, headers=headers)
 
         if response.status_code == 200:
             SuccessPopup("Email updated successfully.").open()
         else:
-            try:
-                error_message = response.json().get('message', 'Error updating email')
-            except requests.exceptions.JSONDecodeError:
-                error_message = "Error updating email"
+            error_message = response.json().get('message', 'Error updating email')
             ErrorPopup([error_message]).open()
         self.dismiss()
 
@@ -114,22 +111,15 @@ class ChangePasswordPopup(Popup):
             ErrorPopup(["Please fill in all fields."]).open()
             return
 
-        url = 'http://localhost:5001/api/change_account'
+        url = 'http://localhost:5001/api'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
-        response = requests.post(url, json={
-            "current_password": current_password,
-            "new_password": new_password,
-            "confirm_new_password": confirm_new_password
-        }, headers=headers)
+        response = requests.post(url, json={"action": "change_password", "current_password": current_password, "new_password": new_password, "confirm_new_password": confirm_new_password}, headers=headers)
 
         if response.status_code == 200:
             SuccessPopup("Password updated successfully.").open()
         else:
-            try:
-                error_message = response.json().get('message', 'Error updating password')
-            except requests.exceptions.JSONDecodeError:
-                error_message = "Error updating password"
+            error_message = response.json().get('message', 'Error updating password')
             ErrorPopup([error_message]).open()
         self.dismiss()
 
@@ -163,15 +153,21 @@ class ConfirmDeletePopup(Popup):
         try:
             response = requests.delete(url, headers=headers)
 
+            try:
+                response_json = response.json()
+            except requests.exceptions.JSONDecodeError:
+                error_message = "Error deleting account"
+                ErrorPopup([error_message]).open()
+                self.dismiss()
+                return
+
             if response.status_code == 200:
                 SuccessPopup("Account deleted successfully.").open()
                 App.get_running_app().logout()
             else:
-                try:
-                    error_message = response.json().get('message', 'Error deleting account')
-                except requests.exceptions.JSONDecodeError:
-                    error_message = "Error deleting account"
+                error_message = response_json.get('message', 'Error deleting account')
                 ErrorPopup([error_message]).open()
+
         except Exception as e:
             ErrorPopup([str(e)]).open()
 
@@ -188,16 +184,13 @@ class UserInfoScreen(Screen):
         ConfirmDeletePopup().open()
 
     def logout(self):
-        url = 'http://localhost:5001/api/logout'
+        url = 'http://localhost:5001/api'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
-        response = requests.post(url, headers=headers)
+        response = requests.post(url, json={"action": "logout"}, headers=headers)
 
         if response.status_code == 200:
             App.get_running_app().logout()
         else:
-            try:
-                error_message = response.json().get('message', 'Error logging out')
-            except requests.exceptions.JSONDecodeError:
-                error_message = "Error logging out"
+            error_message = response.json().get('message', 'Error logging out')
             ErrorPopup([error_message]).open()
