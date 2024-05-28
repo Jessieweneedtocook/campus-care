@@ -20,7 +20,7 @@
       <jdbc-url>jdbc:mysql://localhost:32001</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="UserActivities" uuid="43eed3e1-f76a-49fb-a223-39611604c7e7">
+    <data-source source="LOCAL" name="UserActivities" uuid="9a968f93-e78c-4a7d-bbfa-b5548c6d9e38">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
