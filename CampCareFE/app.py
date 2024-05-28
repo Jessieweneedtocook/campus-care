@@ -29,6 +29,7 @@ class MyApp(App):
     def __init__(self, **kwargs):
         super(MyApp, self).__init__(**kwargs)
         self.questions = questions
+        self.access_token = None
 
     def build(self):
         self.create_database()
@@ -213,5 +214,11 @@ class MyApp(App):
                       size_hint=(None, None), size=(400, 200))
         popup.open()
 
+    def set_access_token(self, token):
+        self.access_token = token
+
+    def logout(self):
+        self.access_token = None
+        self.sm.current = 'login'
 
 
