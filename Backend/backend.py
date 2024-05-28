@@ -86,9 +86,9 @@ def login_user(data):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
         user = db.session.query(User).filter(User.username == username).first()
         if not user:
-            return jsonify({"status": "error", "message": "Username not found"}), 400
+            return jsonify({"status": "error", "message": "Username not found, please signup"}), 400
         if user.password != password:
-            return jsonify({"status": "error", "message": "Username or Password incorrect"}), 400
+            return jsonify({"status": "error", "message": "Password incorrect"}), 400
         else:
             access_token = create_access_token(identity={'username': username})
             return jsonify({"status": "success", "access_token": access_token}), 200
@@ -142,7 +142,7 @@ def change_password(data):
 
 @jwt_required()
 @app.route("/delete_account", methods=["DELETE"])
-def delete_account(data):
+def delete_account():
     try:
         current_user = get_jwt_identity()['username']
         user = db.session.query(User).filter(User.username == current_user).first()
@@ -166,7 +166,7 @@ def logout(data):
     return jsonify({"status": "success", "message": "Successfully logged out"}), 200
 
 @jwt_required()
-@app.route("/delete_account", methods=["DELETE"])
+@app.route("/admin_delete_account", methods=["DELETE"])
 def admin_delete_account(data):
     try:
         current_user = get_jwt_identity()['username']
