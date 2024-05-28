@@ -71,8 +71,8 @@ def register_user(data):
 
         # Commit the session to save the changes to the database
         db.session.commit()
-
-        return jsonify({"status": "success"}), 201
+        access_token = create_access_token(identity={'username': username})
+        return jsonify({"status": "success", "access_token": access_token}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
