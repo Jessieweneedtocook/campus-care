@@ -35,7 +35,6 @@
         BoxLayout:
             orientation: 'vertical'
             spacing: dp(10)
-            padding: [dp(10), dp(10), dp(10), dp(10)]
 
             Button:
                 text: "Change Email"
@@ -55,91 +54,5 @@
 
             Button:
                 text: "Logout"
-                on_release: root.logout()
+                on_release:  root.handle_logout()
 
-        BoxLayout:
-            id: change_email_layout
-            orientation: 'vertical'
-            spacing: dp(10)
-            padding: [dp(10), dp(10), dp(10), dp(10)]
-            size_hint_y: None
-            height: 0  # Hidden by default
-            opacity: 0  # Hidden by default
-
-            TextInput:
-                id: new_email
-                hint_text: "New Email"
-                multiline: False
-                size_hint_y: None
-                height: dp(40)
-
-            Button:
-                text: "Submit"
-                on_release: root.change_email()
-
-        BoxLayout:
-            id: change_password_layout
-            orientation: 'vertical'
-            spacing: dp(10)
-            padding: [dp(10), dp(10), dp(10), dp(10)]
-            size_hint_y: None
-            height: 0  # Hidden by default
-            opacity: 0  # Hidden by default
-
-            TextInput:
-                id: current_password
-                hint_text: "Current Password"
-                multiline: False
-                password: True
-                size_hint_y: None
-                height: dp(40)
-
-            TextInput:
-                id: new_password
-                hint_text: "New Password"
-                multiline: False
-                password: True
-                size_hint_y: None
-                height: dp(40)
-
-            TextInput:
-                id: confirm_new_password
-                hint_text: "Confirm New Password"
-                multiline: False
-                password: True
-                size_hint_y: None
-                height: dp(40)
-
-            Button:
-                text: "Submit"
-                size_hint_y: None
-                height: dp(40)
-                on_release: root.change_password()
-
-        BoxLayout:
-            id: confirm_delete_layout
-            orientation: 'vertical'
-            spacing: dp(10)
-            padding: [dp(10), dp(10), dp(10), dp(10)]
-            size_hint_y: None
-            height: 0  # Hidden by default
-            opacity: 0  # Hidden by default
-
-            Label:
-                text: "Are you sure you want to delete your account?"
-                size_hint_y: None
-                height: dp(40)
-
-            BoxLayout:
-                orientation: 'horizontal'
-                spacing: dp(10)
-                size_hint_y: None
-                height: dp(40)
-
-                Button:
-                    text: "Yes"
-                    on_release: root.delete_user()
-
-                Button:
-                    text: "No"
-                    on_release: root.hide_all()
