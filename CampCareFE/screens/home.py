@@ -9,8 +9,7 @@ class HomeScreen(Screen):
         pass  # Your existing code
 
     def go_to_daily_quiz(self):
-        user_id = 1  # Replace with actual user ID
-        if App.get_running_app().daily_quiz_comp(user_id):
+        if App.get_running_app().daily_quiz_comp():
             self.manager.current = 'dailyquiz'
         else:
             App.get_running_app().show_popup("You have already completed the quiz today.")
