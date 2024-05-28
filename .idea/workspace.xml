@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="files">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_12_58__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_13_05_2024_12_58__Changes_.xml" afterDir="false" />
+    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="can now access admin screen from home">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/backend.py" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/backend.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CampCareFE/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/assets/output.png" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/assets/output.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/schedule_activities.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/schedule_activities.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/home.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/homescreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/kv/homescreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/userinfoscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/kv/userinfoscreen.kv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CampCareFE/screens/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/login.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/signup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/user_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/user_info.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -309,7 +309,63 @@
       <option name="project" value="LOCAL" />
       <updated>1716564575522</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="removed unnecessary daily quiz screen instance">
+      <created>1716841587183</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1716841587183</updated>
+    </task>
+    <task id="LOCAL-00019" summary="added go_to_daily_quiz function to home screen">
+      <created>1716841618649</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1716841618649</updated>
+    </task>
+    <task id="LOCAL-00020" summary="home now calls go_to_daily_quiz when daily quiz button pressed">
+      <created>1716841646977</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716841646977</updated>
+    </task>
+    <task id="LOCAL-00021" summary="login goes to home instead of initial options">
+      <created>1716841689562</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1716841689562</updated>
+    </task>
+    <task id="LOCAL-00022" summary="quiz preferences now update when user changes them in options">
+      <created>1716841722673</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1716841722673</updated>
+    </task>
+    <task id="LOCAL-00023" summary="xml file changes">
+      <created>1716841749922</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1716841749922</updated>
+    </task>
+    <task id="LOCAL-00024" summary="deleted graph image">
+      <created>1716841805208</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1716841805208</updated>
+    </task>
+    <task id="LOCAL-00025" summary="can now access admin screen from home">
+      <created>1716844042819</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1716844042819</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -356,21 +412,30 @@
     <MESSAGE value="homescreen now displays graph correctly, and graph (output.png) stored in assets" />
     <MESSAGE value="fixing quiz completed pop-up" />
     <MESSAGE value="added line" />
-    <option name="LAST_COMMIT_MESSAGE" value="added line" />
+    <MESSAGE value="removed unnecessary daily quiz screen instance" />
+    <MESSAGE value="added go_to_daily_quiz function to home screen" />
+    <MESSAGE value="home now calls go_to_daily_quiz when daily quiz button pressed" />
+    <MESSAGE value="login goes to home instead of initial options" />
+    <MESSAGE value="quiz preferences now update when user changes them in options" />
+    <MESSAGE value="xml file changes" />
+    <MESSAGE value="deleted graph image" />
+    <MESSAGE value="can now access admin screen from home" />
+    <option name="LAST_COMMIT_MESSAGE" value="can now access admin screen from home" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1715848511139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz__1_.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715617574822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/kv" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$.coverage" NAME=" Coverage Results" MODIFIED="1716832233560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716841251856" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716859682945" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$pytest_in_db_connection_py.coverage" NAME="pytest in db-connection.py Coverage Results" MODIFIED="1716832738733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$user_info.coverage" NAME="user_info Coverage Results" MODIFIED="1716856753476" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection__1_.coverage" NAME="db-connection (1) Coverage Results" MODIFIED="1715856843718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_progress.coverage" NAME="wellness_progress Coverage Results" MODIFIED="1715944319384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$home.coverage" NAME="home Coverage Results" MODIFIED="1715794681228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$signup.coverage" NAME="signup Coverage Results" MODIFIED="1716214738965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715851729783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$app.coverage" NAME="app Coverage Results" MODIFIED="1716731313767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1716832824806" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1716859677249" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$backend.coverage" NAME="backend Coverage Results" MODIFIED="1716811565001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
   </component>
 </project>
