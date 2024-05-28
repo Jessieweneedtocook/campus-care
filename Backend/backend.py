@@ -141,10 +141,11 @@ def change_password(data):
 
 
 @jwt_required()
-@app.route("/delete_account", methods=["DELETE"])
-def delete_account():
+@app.route("/delete_account", methods=["POST"])
+def delete_account(data):
     try:
         current_user = get_jwt_identity()['username']
+        print("Current user extracted:", )
         user = db.session.query(User).filter(User.username == current_user).first()
         if user:
             db.session.delete(user)
