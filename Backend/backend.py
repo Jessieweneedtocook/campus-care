@@ -187,6 +187,15 @@ def admin_delete_account(data):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route("/view_users", methods = ["GET"])
+@jwt_required()
+def view_users(data):
+    try:
+        users = db.session.query(User.username).all()
+        usernames = [user.username for user in users]
+        return jsonify({"status": "success","usernames": usernames})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 # Dictionary acting like switch statement for our different request handling functions
 actions = {
@@ -197,7 +206,7 @@ actions = {
     "change_password": change_password,
     "delete_account": delete_account,
     "admin_delete_account": admin_delete_account,
-
+    "view_users": view_users,
 }
 
 

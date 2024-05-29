@@ -58,9 +58,19 @@ def delete_account(token):
     response = requests.post(url, headers=headers, json=data)
     print(response.json())
 
+def view_users(token):
+    url = 'http://localhost:5001/api'
+    headers = {'Authorization': f'Bearer {token}'}
+    data = {
+        "action": "view_users",
+    }
+    response = requests.post(url, headers=headers, json=data)
+    print(response.json())
+
 register()
 token = login()
-delete_account(token)
+#delete_account(token)
+view_users(token)
 
 #if token:
  #   logout(token)
