@@ -6,6 +6,7 @@ from dotenv import load_dotenv
 from datetime import timedelta, datetime
 from models import db, User
 from form import email_checker
+from werkzeug.security import generate_password_hash, check_password_hash
 
 load_dotenv()
 
@@ -87,7 +88,7 @@ def login_user(data):
         user = db.session.query(User).filter(User.username == username).first()
         if not user:
             return jsonify({"status": "error", "message": "Username not found, please signup"}), 400
-        if user.password != password:
+        if not user.check_password(password):
             return jsonify({"status": "error", "message": "Password incorrect"}), 400
         else:
             access_token = create_access_token(identity={'username': username})
@@ -131,7 +132,7 @@ def change_password(data):
 
     user = db.session.query(User).filter(User.username == current_user).first()
 
-    if not user or user.password != current_password:
+    if not user or not user.check_password(current_password):
         return jsonify({"status": "error", "message": "Current password is incorrect"}), 400
 
     user.password = new_password
