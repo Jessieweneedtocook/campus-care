@@ -1,60 +1,126 @@
 <LoginScreen>:
     BoxLayout:
         orientation: 'vertical'
-        padding: [10, 10]
-        spacing: 10
         size_hint: (1, 1)  # Fill the entire screen
 
         canvas.before:
             Color:
-                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+                rgba: 0.086, 0.341, 0.459, 1  # Light blue background
             Rectangle:
                 pos: self.pos
                 size: self.size
 
         Widget:
-            # Spacer to push content up, adjust size_hint_y to control space
-            size_hint_y: 0.1
+            size_hint_y: 0.1  # Spacer to push content up, adjust size_hint_y to control space
 
         BoxLayout:
             orientation: 'vertical'
             padding: [20, 5]
-            spacing: 10
+            spacing: 12
             size_hint_y: None
             height: self.minimum_height
 
             Label:
-                text: "CampusCare"
+                text: "Campus Care"
                 font_size: '40sp'
+                font_name: 'assets/font.ttf'
+                bold: True
                 color: 1, 1, 1, 1
                 size_hint_y: None
                 height: dp(50)
+                halign: 'center'
+                valign: 'middle'
                 pos_hint: {'center_x': 0.5}
+                text_size: self.size
 
-            Image:
-                source: 'assets/logo3.png'
+            FloatLayout:
                 size_hint: None, None
-                size: dp(110), dp(110)
-                pos_hint: {'center_x': 0.5}
+                size: dp(110), dp(115)
+                pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                canvas.before:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue circle
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+
+                Image:
+                    source: 'assets/logo3.png'
+                    size_hint: None, None
+                    size: dp(160), dp(170)
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.45}
 
 
-            TextInput:
-                id: username
-                hint_text: "Username"
-                multiline: False
+
+
+            Label:
+                text: "Username"
+                font_size: '16sp'
+                font_name: 'assets/font.ttf'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(20)
+                halign: 'left'
+                text_size: self.size
+
+            BoxLayout:
                 size_hint_y: None
                 height: dp(40)
-                background_color: 1, 1, 1, 1
-                foreground_color: 0, 0, 0, 1
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background for rounded rectangle
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
 
-            TextInput:
-                id: password
-                hint_text: "Password"
-                multiline: False
-                password: True
+                TextInput:
+                    id: username
+                    multiline: False
+                    font_name: 'assets/font2.ttf'
+                    font_size: '16sp'
+                    bold: True
+                    background_normal: ''  # Ensure no default background
+                    background_color: [0, 0, 0, 0]  # Fully transparent background
+                    foreground_color: 0, 0, 0, 1
+
+            Label:
+                text: "Password"
+                font_size: '16sp'
+                font_name: 'assets/font.ttf'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(20)
+                halign: 'left'
+                text_size: self.size
+
+            BoxLayout:
                 size_hint_y: None
                 height: dp(40)
-                background_color: 1, 1, 1, 1
+                canvas.before:
+                    Color:
+                        rgba: 1, 1, 1, 1  # White background for rounded rectangle
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+
+                TextInput:
+                    id: password
+                    multiline: False
+                    password: True
+                    font_name: 'assets/font2.ttf'
+                    font_size: '16sp'
+                    bold: True
+                    background_normal: ''  # Ensure no default background
+                    background_color: [0, 0, 0, 0]  # Fully transparent background
+                    foreground_color: 0, 0, 0, 1
+
+            Widget:
+                size_hint_y: None
+                height: dp(20)  # Adjust the spacing as needed
 
             Label:
                 id: error_message
@@ -63,48 +129,59 @@
 
             Button:
                 text: "Login"
+                font_size: '16sp'  # Make the login button text the same size as the other labels
+                font_name: 'assets/font.ttf'
+                bold: True
                 size_hint_y: None
                 height: dp(60)
-                #background_normal: ''
-                background_color: 0.1, 0.384, 0.588, 0.5
+                background_normal: ''
+                background_color: 0.569, 0.796, 0.902, 1  # Light blue button
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3  # Thicker border
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.login()
 
-        #Label:
-        #    text: "Forgot password?"
-        #    markup: True
-        #    size_hint_y: None
-        #    height: dp(30)
-        #    color: 1, 1, 1, 1
-        #    pos_hint: {'center_x': 0.5}
+            Widget:
+                size_hint_y: None
+                height: dp(20)  # Adjust the spacing as needed
 
-        Button:
-            text: "Forgot password?"
-            background_normal: ''
-            background_color: 0, 0, 0, 0
-            color: 1, 1, 1, 1
-            size_hint_y: None
-            height: dp(30)
-            pos_hint: {'center_x': 0.5}
-            on_release: app.sm.current = 'resetpassword'
+            Button:
+                text: "Forgot password?"
+                font_size: '16sp'
+                font_name: 'assets/font2.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(30)
+                pos_hint: {'center_x': 0.5}
+                on_release: app.sm.current = 'resetpassword'
 
-        #Label:
-        #    text: "Sign up"
-        #    markup: True
-        #    size_hint_y: None
-        #    height: dp(30)
-        #    color: 1, 1, 1, 1
-        #    pos_hint: {'center_x': 0.5}
-        #    on_release: app.sm.current = 'signup'
-        Button:
-            text: "Sign up"
-            background_normal: ''
-            background_color: 0, 0, 0, 0
-            color: 1, 1, 1, 1
-            size_hint_y: None
-            height: dp(30)
-            pos_hint: {'center_x': 0.5}
-            on_release: app.sm.current = 'signup'
+            Button:
+                text: "Sign up"
+                font_size: '16sp'
+                font_name: 'assets/font2.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0, 0, 0, 0
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(30)
+                pos_hint: {'center_x': 0.5}
+                on_release: app.sm.current = 'signup'
 
         Widget:
-            # Another spacer at the bottom, adjust size_hint_y as needed
             size_hint_y: 0.1
