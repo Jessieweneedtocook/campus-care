@@ -8,7 +8,6 @@ from kivy.properties import StringProperty
 from math import pi
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-
 from CampCareFE.screens.daily_quiz import db_path
 
 Builder.load_file('kv/wellnessprogressscreen.kv')
@@ -21,6 +20,10 @@ class WellnessProgressScreen(Screen):
     def on_enter(self):
         self.update_most_improved_text()
         self.update_needs_improvement_text()
+        data_by_activity_type = self.get_data_for_period(7)
+        stats_by_activity_type = self.calculate_stats(data_by_activity_type)
+        self.plot_stats(stats_by_activity_type)
+        self.overall_progress()
 
     def get_data_for_period(self, days):
         conn = sqlite3.connect(db_path)
