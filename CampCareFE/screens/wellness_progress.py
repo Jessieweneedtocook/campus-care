@@ -88,12 +88,16 @@ class WellnessProgressScreen(Screen):
         return stats_by_activity_type
 
     def plot_stats(self, stats_by_activity_type):
-        # Define the labels of your chart
-        labels = np.array(list(stats_by_activity_type.keys()))
-        num_vars = len(labels)
+        # Check if stats_by_activity_type is empty
+        if not stats_by_activity_type:
+            labels = np.array(['No Data'])
+            data = np.array([0])
+        else:
+            # Define the labels of your chart
+            labels = np.array(list(stats_by_activity_type.keys()))
+            data = np.array(list(stats_by_activity_type.values()))
 
-        # Add data
-        data = np.array(list(stats_by_activity_type.values()))
+        num_vars = len(labels)
 
         # Compute angle of each axis
         angles = np.linspace(0, 2 * pi, num_vars, endpoint=False).tolist()
@@ -158,7 +162,13 @@ class WellnessProgressScreen(Screen):
         current_stats = self.calculate_stats(data_past_week)
         prev_stats = self.calculate_stats(data_week_before)
 
-        most_improved = max(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
+        # Check if current_stats is empty
+        if not current_stats:
+            return None  # or return "No data available", or another appropriate value
+
+        most_improved = max(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x,
+                                                                                           0) if x != 'Drinking' else prev_stats.get(
+            x, 0) - current_stats[x])
         return most_improved
 
     def needs_improvement(self):
@@ -167,6 +177,10 @@ class WellnessProgressScreen(Screen):
 
         current_stats = self.calculate_stats(data_past_week)
         prev_stats = self.calculate_stats(data_week_before)
+
+        # Check if current_stats is empty
+        if not current_stats:
+            return None  # or return "No data available", or another appropriate value
 
         needs_improvement = min(current_stats, key=lambda x: current_stats[x] - prev_stats.get(x, 0) if x != 'Drinking' else prev_stats.get(x, 0) - current_stats[x])
         return needs_improvement

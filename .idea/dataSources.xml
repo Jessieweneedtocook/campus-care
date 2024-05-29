@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="identifier" uuid="cbda4e0e-10b4-40e6-b1cf-ad5ffd8631cb">
-      <driver-ref>sqlite.xerial</driver-ref>
+      <driver-ref>33e07119-7ac8-4e43-9659-7a56eb7320d1</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\harri\PycharmProjects\CSC2033_Team37_23_24\identifier.sqlite</jdbc-url>
@@ -20,11 +20,11 @@
       <jdbc-url>jdbc:mysql://localhost:32001</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="UserActivities" uuid="9a968f93-e78c-4a7d-bbfa-b5548c6d9e38">
-      <driver-ref>f21b819f-65b3-4951-8020-3ed9d6c38fb8</driver-ref>
+    <data-source source="LOCAL" name="UserActivities" uuid="5845ecee-a09e-48fd-b1bd-bace9ed8463f">
+      <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\jessi\PycharmProjects\CSC2033_Team37_23_24\db\UserActivities.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\db\UserActivities.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
@@ -34,27 +34,6 @@
           <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/Xerial SQLiteJDBC/3.45.1/org/slf4j/slf4j-api/1.7.36/slf4j-api-1.7.36.jar</url>
         </library>
       </libraries>
-    </data-source>
-    <data-source source="LOCAL" name="@localhost [2]" uuid="6e4ff5e7-74ff-460a-a08c-783eacdb581f">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:32001</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="@localhost [3]" uuid="2c1b8554-3690-4919-980f-af53dcb2e8e3">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:32001</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
-    </data-source>
-    <data-source source="LOCAL" name="@localhost [4]" uuid="d4a95fe1-2597-4307-b4c0-0bb48e288200">
-      <driver-ref>mysql.8</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:32001</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>

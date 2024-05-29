@@ -37,7 +37,7 @@ class MyApp(App):
         self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
         self.sm = ScreenManager()
         self.sm.add_widget(LoginScreen(name='login'))
-        self.plot_graph()
+        #self.plot_graph()
 
         self.sm.add_widget(SignupScreen(name='signup'))
         self.sm.add_widget(ResetPasswordScreen(name='resetpassword'))
@@ -143,15 +143,15 @@ class MyApp(App):
             )
         """)
 
-        activities = [
-            ('Drinking', '1-3', datetime.now() - timedelta(days=2)),
-            ('Socialisation', 'Less than 1', datetime.now() - timedelta(days=2)),
-            ('Drinking', 'More than 4', datetime.now() - timedelta(days=8)),
-            ('Socialisation', 'More than 4', datetime.now() - timedelta(days=8)),
-        ]
-        cursor.executemany(
-            "INSERT INTO UserActivities (ActivityType, TimeSpent, ActivityDate) VALUES (?, ?, ?)",
-            activities)
+        # activities = [
+        #     ('Drinking', '1-3', datetime.now() - timedelta(days=2)),
+        #     ('Socialisation', 'Less than 1', datetime.now() - timedelta(days=2)),
+        #     ('Drinking', 'More than 4', datetime.now() - timedelta(days=8)),
+        #     ('Socialisation', 'More than 4', datetime.now() - timedelta(days=8)),
+        # ]
+        # cursor.executemany(
+        #     "INSERT INTO UserActivities (ActivityType, TimeSpent, ActivityDate) VALUES (?, ?, ?)",
+        #     activities)
         conn.commit()
         conn.close()
 
