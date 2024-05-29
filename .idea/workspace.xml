@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="new icons added">
+    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="removed old code interferring with buttons">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/dailyquizscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/kv/dailyquizscreen.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/initialoptionsscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/kv/initialoptionsscreen.kv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/daily_quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/screens/daily_quiz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/assets/health.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,27 +50,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python tests.Python tests in testing.py.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "User__Stats",
-    "last_opened_file_path": "C:/Users/jessi/PycharmProjects/CSC2033_Team37_23_24/CampCareFE/kv/optionsscreen.kv",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable",
-    "two.files.diff.last.used.file": "C:/Users/jessi/PycharmProjects/CSC2033_Team37_23_24/CampCareFE/kv/optionsscreen.kv"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python tests.Python tests in testing.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;User__Stats&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\jessi\PycharmProjects\CSC2033_Team37_23_24\CampCareFE\assets" />
       <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\CampCareFE" />
       <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24" />
       <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\db" />
@@ -129,21 +125,6 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in C:/Users/jessi/PycharmProjects/CSC2033_Team37_23_24/CampCareFE/tests.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="CSC2033_Team37_23_24" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CampCareFE" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/CampCareFE/tests.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
     <configuration name="Python tests in testing.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CSC2033_Team37_23_24" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -159,12 +140,27 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests in tests.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="CSC2033_Team37_23_24" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CampCareFE" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/CampCareFE/tests.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
         <item itemvalue="Python tests.Python tests in testing.py" />
-        <item itemvalue="Python tests.Python tests in C:/Users/jessi/PycharmProjects/CSC2033_Team37_23_24/CampCareFE/tests.py" />
+        <item itemvalue="Python tests.Python tests in tests.py" />
         <item itemvalue="Python tests.Python tests for tests.TestWellnessProgressScreen.test_get_last_week_data" />
       </list>
     </recent_temporary>
@@ -172,7 +168,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="xml file changes" />
+      <changelist id="04a5c43f-d18e-4df1-bcaa-8a41f193927e" name="Changes" comment="" />
       <created>1715251779786</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -182,7 +178,6 @@
       <workItem from="1715597242448" duration="542000" />
       <workItem from="1715597816249" duration="506000" />
       <workItem from="1715943131201" duration="5952000" />
-      <workItem from="1716919861911" duration="50958000" />
     </task>
     <task id="LOCAL-00001" summary="adding docker compose functionality">
       <created>1715344045965</created>
@@ -367,113 +362,11 @@
       <option name="project" value="LOCAL" />
       <updated>1716902455334</updated>
     </task>
-    <task id="LOCAL-00027" summary="xml file changes">
-      <created>1716905841096</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1716905841096</updated>
-    </task>
-    <task id="LOCAL-00028" summary="updated home gui">
-      <created>1716973884424</created>
-      <option name="number" value="00028" />
-      <option name="presentableId" value="LOCAL-00028" />
-      <option name="project" value="LOCAL" />
-      <updated>1716973884424</updated>
-    </task>
-    <task id="LOCAL-00029" summary="updated options screens gui">
-      <created>1716973916373</created>
-      <option name="number" value="00029" />
-      <option name="presentableId" value="LOCAL-00029" />
-      <option name="project" value="LOCAL" />
-      <updated>1716973916373</updated>
-    </task>
-    <task id="LOCAL-00030" summary="updated login gui">
-      <created>1716973937264</created>
-      <option name="number" value="00030" />
-      <option name="presentableId" value="LOCAL-00030" />
-      <option name="project" value="LOCAL" />
-      <updated>1716973937264</updated>
-    </task>
-    <task id="LOCAL-00031" summary="updated reset password gui">
-      <created>1716973956880</created>
-      <option name="number" value="00031" />
-      <option name="presentableId" value="LOCAL-00031" />
-      <option name="project" value="LOCAL" />
-      <updated>1716973956880</updated>
-    </task>
-    <task id="LOCAL-00032" summary="updated signup gui">
-      <created>1716973972106</created>
-      <option name="number" value="00032" />
-      <option name="presentableId" value="LOCAL-00032" />
-      <option name="project" value="LOCAL" />
-      <updated>1716973972106</updated>
-    </task>
-    <task id="LOCAL-00033" summary="updated wellness progress gui">
-      <created>1716974001653</created>
-      <option name="number" value="00033" />
-      <option name="presentableId" value="LOCAL-00033" />
-      <option name="project" value="LOCAL" />
-      <updated>1716974001653</updated>
-    </task>
-    <task id="LOCAL-00034" summary="updated wellness schedule gui">
-      <created>1716974018185</created>
-      <option name="number" value="00034" />
-      <option name="presentableId" value="LOCAL-00034" />
-      <option name="project" value="LOCAL" />
-      <updated>1716974018185</updated>
-    </task>
-    <task id="LOCAL-00035" summary="updated user info gui">
-      <created>1716974041340</created>
-      <option name="number" value="00035" />
-      <option name="presentableId" value="LOCAL-00035" />
-      <option name="project" value="LOCAL" />
-      <updated>1716974041340</updated>
-    </task>
-    <task id="LOCAL-00036" summary="updated wellness help gui">
-      <created>1716974054852</created>
-      <option name="number" value="00036" />
-      <option name="presentableId" value="LOCAL-00036" />
-      <option name="project" value="LOCAL" />
-      <updated>1716974054852</updated>
-    </task>
-    <task id="LOCAL-00037" summary="xml file changes">
-      <created>1716974070458</created>
-      <option name="number" value="00037" />
-      <option name="presentableId" value="LOCAL-00037" />
-      <option name="project" value="LOCAL" />
-      <updated>1716974070458</updated>
-    </task>
-    <task id="LOCAL-00038" summary="new fonts added">
-      <created>1716974129665</created>
-      <option name="number" value="00038" />
-      <option name="presentableId" value="LOCAL-00038" />
-      <option name="project" value="LOCAL" />
-      <updated>1716974129665</updated>
-    </task>
-    <task id="LOCAL-00039" summary="new icons added">
-      <created>1716974156412</created>
-      <option name="number" value="00039" />
-      <option name="presentableId" value="LOCAL-00039" />
-      <option name="project" value="LOCAL" />
-      <updated>1716974156412</updated>
-    </task>
-    <option name="localTasksCounter" value="40" />
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.History.Properties">
-    <option name="COLUMN_ID_ORDER">
-      <list>
-        <option value="Default.Root" />
-        <option value="Default.Author" />
-        <option value="Default.Date" />
-        <option value="Default.Subject" />
-        <option value="Space.CommitStatus" />
-      </list>
-    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -499,6 +392,18 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <MESSAGE value="set up database and some tests to make sure everything is working" />
+    <MESSAGE value="Added instructions on how to connect to the database" />
+    <MESSAGE value="changing file names" />
+    <MESSAGE value="adding functionality to the quiz, answers now save to the UserASctivitys DB" />
+    <MESSAGE value="adding quiz functionality" />
+    <MESSAGE value="quiz function works fully with the main app now but gets stuck and crashes after last question is asked." />
+    <MESSAGE value="removing unneeded imports" />
+    <MESSAGE value="Adding preference table to docker." />
+    <MESSAGE value="working on implementing wellness progress and initial options" />
+    <MESSAGE value="User progress is now made into a png that can be displayed on the app." />
+    <MESSAGE value="deleting old output.png" />
+    <MESSAGE value="moving create database above graph creation" />
     <MESSAGE value="homescreen now displays graph correctly, and graph (output.png) stored in assets" />
     <MESSAGE value="fixing quiz completed pop-up" />
     <MESSAGE value="made a graph function for overall progress" />
@@ -512,35 +417,22 @@
     <MESSAGE value="access token stored at signup" />
     <MESSAGE value="change name of logout function" />
     <MESSAGE value="removed old code interferring with buttons" />
-    <MESSAGE value="updated home gui" />
-    <MESSAGE value="updated options screens gui" />
-    <MESSAGE value="updated login gui" />
-    <MESSAGE value="updated reset password gui" />
-    <MESSAGE value="updated signup gui" />
-    <MESSAGE value="updated wellness progress gui" />
-    <MESSAGE value="updated wellness schedule gui" />
-    <MESSAGE value="updated user info gui" />
-    <MESSAGE value="updated wellness help gui" />
-    <MESSAGE value="xml file changes" />
-    <MESSAGE value="new fonts added" />
-    <MESSAGE value="new icons added" />
-    <option name="LAST_COMMIT_MESSAGE" value="new icons added" />
+    <option name="LAST_COMMIT_MESSAGE" value="removed old code interferring with buttons" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1715848511139" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz__1_.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715617574822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/kv" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$.coverage" NAME=" Coverage Results" MODIFIED="1716832233560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716975405835" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1716902489288" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$pytest_in_db_connection_py.coverage" NAME="pytest in db-connection.py Coverage Results" MODIFIED="1716832738733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$user_info.coverage" NAME="user_info Coverage Results" MODIFIED="1716899972360" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$options.coverage" NAME="options Coverage Results" MODIFIED="1716904705323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection__1_.coverage" NAME="db-connection (1) Coverage Results" MODIFIED="1715856843718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_progress.coverage" NAME="wellness_progress Coverage Results" MODIFIED="1715944319384" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$home.coverage" NAME="home Coverage Results" MODIFIED="1715794681228" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$signup.coverage" NAME="signup Coverage Results" MODIFIED="1716942769113" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$signup.coverage" NAME="signup Coverage Results" MODIFIED="1716214738965" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715851729783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1716898242573" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$app.coverage" NAME="app Coverage Results" MODIFIED="1716898780073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1716942737983" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$backend.coverage" NAME="backend Coverage Results" MODIFIED="1716811565001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
   </component>
 </project>
