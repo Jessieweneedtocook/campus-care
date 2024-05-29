@@ -172,12 +172,17 @@ def admin_delete_account(data):
     try:
         current_user = get_jwt_identity()['username']
         user = db.session.query(User).filter(User.username == current_user).first()
-        if user:
-            db.session.delete(user)
-            db.session.commit()
-            return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
+        if user.role == "Admin":
+            deleted_user = data.get("delete_username")
+            deleted_user = db.session.query(User).filter(User.username == deleted_user).first()
+            if deleted_user:
+                db.session.delete(deleted_user)
+                db.session.commit()
+                return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
+            else:
+                return jsonify({"status": "success", "message": "Account not found"}), 404
         else:
-            return jsonify({"status": "error", "message": "User not found"}), 404
+            return jsonify({"status": "error", "message": "Role required is admin"}), 404
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
