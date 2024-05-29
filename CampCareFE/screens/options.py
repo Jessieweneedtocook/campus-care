@@ -16,7 +16,7 @@ class OptionsScreen(Screen):
             if instance.text not in self.selected_activities:
                 self.selected_activities.append(instance.text)
         else:
-            instance.background_color = [0.8, 0.8, 0.8, 1]
+            instance.background_color = [0.086, 0.341, 0.459, 1]
             if instance.text in self.selected_activities:
                 self.selected_activities.remove(instance.text)
 

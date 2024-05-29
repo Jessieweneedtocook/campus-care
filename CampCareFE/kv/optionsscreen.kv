@@ -1,98 +1,283 @@
 <OptionsScreen>:
     BoxLayout:
         orientation: 'vertical'
-        padding: [10, 10]
-        spacing: 10
         size_hint: (1, 1)  # Fill the entire screen
 
         canvas.before:
             Color:
-                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+                rgba: 0.569, 0.796, 0.902, 1  # Light blue background
             Rectangle:
                 pos: self.pos
                 size: self.size
-        AnchorLayout:
-            anchor_x: 'right'
-            anchor_y: 'top'
-            size_hint_y: None
-            height: dp(50)
 
-            Button:
-                text: 'Back >'
-                size_hint: None, None
-                size: dp(100), dp(50)
-                on_release: app.sm.current = 'home'
-        Label:
-            text: "Activity Options"
-            font_size: '40sp'
-            color: 1, 1, 1, 1
+        BoxLayout:
+            orientation: 'horizontal'
             size_hint_y: None
             height: dp(50)
-            pos_hint: {'center_x': 0.5}
+            canvas.before:
+                Color:
+                    rgba: 0.086, 0.341, 0.459, 1 # Dark blue banner
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Activity Options"
+                font_size: '30sp'
+                font_name: 'assets/font.ttf'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint: (1, None)
+                height: dp(50)
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
+                padding_x: dp(10)
+
+            BoxLayout:
+                size_hint: None, None
+                size: dp(40), dp(40)
+                padding: dp(5)
+                pos_hint: {'center_y': 0.5}
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1 # Dark blue circle
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+
+                Button:
+                    background_normal: ''
+                    background_color: [0, 0, 0, 0]  # Fully transparent background
+                    on_release: app.sm.current = 'home'
+                    size_hint: None, None
+                    size: dp(30), dp(30)
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    Image:
+                        source: 'assets/arrow-55-24.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
 
         Widget:
+            size_hint_y: None
+            height: dp(20)
+
 
         BoxLayout:
             orientation: 'vertical'
             size_hint_y: None
             height: self.minimum_height
-            spacing: dp(10)
+            spacing: dp(25)
             padding: dp(10)
 
             ToggleButton:
                 text: "Studying"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
                 size_hint_y: None
                 height: dp(30)
                 width: dp(80)
                 on_press: root.toggle_activity(self)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
 
             ToggleButton:
                 text: "Exercise"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
                 size_hint_y: None
                 height: dp(30)
                 width: dp(80)
                 on_press: root.toggle_activity(self)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
 
             ToggleButton:
                 text: "Socialisation"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
                 size_hint_y: None
                 height: dp(30)
                 width: dp(80)
                 on_press: root.toggle_activity(self)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
 
             ToggleButton:
                 text: "Drinking"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
                 size_hint_y: None
                 height: dp(30)
                 width: dp(80)
                 on_press: root.toggle_activity(self)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
 
             ToggleButton:
                 text: "Sleeping"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
                 size_hint_y: None
                 height: dp(30)
                 width: dp(80)
                 on_press: root.toggle_activity(self)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
 
             ToggleButton:
                 text: "Hobbies"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
                 size_hint_y: None
                 height: dp(30)
                 width: dp(80)
                 on_press: root.toggle_activity(self)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
 
             ToggleButton:
                 text: "Outside time"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
                 size_hint_y: None
                 height: dp(30)
                 width: dp(80)
                 on_press: root.toggle_activity(self)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
 
         Widget:
 
         BoxLayout:
             size_hint_y: None
-            height: 50
+            height: dp(50)
+            padding: 10
             Button:
                 text: "Pause Daily Quizzes"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.1, 0.6, 0.8, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.manager.current = 'home'
+        Widget:

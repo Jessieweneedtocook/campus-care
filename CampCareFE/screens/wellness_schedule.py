@@ -50,6 +50,11 @@ class WellnessScheduleScreen(Screen):
         calendar_days = self.ids.calendar_days
         calendar_days.clear_widgets()
 
+        days_of_week = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+        for day in days_of_week:
+            lbl = Label(text=day, bold=True, color=(1, 1, 1, 1))
+            calendar_days.add_widget(lbl)
+
         today = datetime.today()
         _, num_days = calendar.monthrange(today.year, today.month)
 
@@ -81,14 +86,14 @@ class WellnessScheduleScreen(Screen):
                 color = self.get_activity_color(activity)
                 Color(*color)  # Set the color
                 y_offset = idx * 5
-                Rectangle(pos=(day_button.x, day_button.y + y_offset), size=(day_button.width, 5))
+                Rectangle(pos=(day_button.x, day_button.y + y_offset), size=(day_button.width, 10))
 
     def get_activity_color(self, activity):
         colors = {
-            'Exercise': (0, 1, 0, 1),
-            'Socialisation': (0, 0, 1, 1),
-            'Studying': (1, 1, 0, 1),
-            'Hobbies': (1, 0.5, 0, 1),
+            'Exercise': (0.941, 0.941, 0.553, 1),
+            'Socialisation': (0.816, 0.671, 0.961, 1),
+            'Studying': (0.643, 0.851, 0.655, 1),
+            'Hobbies': (0.929, 0.659, 0.71, 1),
         }
         return colors.get(activity, (1, 1, 1, 1))  # Default to white if not found
 
@@ -109,8 +114,9 @@ class WellnessScheduleScreen(Screen):
     def save_activities(self):
         activities = {}
         for day_button in self.ids.calendar_days.children:
-            day = day_button.text
-            activities[day] = day_button.logged_activities
+            if isinstance(day_button, Button):
+                day = day_button.text
+                activities[day] = day_button.logged_activities
 
         with open(SCHEDULE_FILE, 'w') as f:
             f.write('activities = ' + repr(activities) + '\n')
@@ -124,15 +130,17 @@ class WellnessScheduleScreen(Screen):
             activities = ast.literal_eval(content.split('= ')[1].strip())
 
         for day_button in self.ids.calendar_days.children:
-            day = day_button.text
-            if day in activities:
-                day_button.logged_activities = activities[day]
-                self.update_day_button(day_button)
+            if isinstance(day_button, Button):
+                day = day_button.text
+                if day in activities:
+                    day_button.logged_activities = activities[day]
+                    self.update_day_button(day_button)
 
     def clear_all_activities(self):
         for day_button in self.ids.calendar_days.children:
-            day_button.logged_activities = []
-            self.update_day_button(day_button)
+            if isinstance(day_button, Button):
+                day_button.logged_activities = []
+                self.update_day_button(day_button)
         self.save_activities()
 
     def add_activity(self):

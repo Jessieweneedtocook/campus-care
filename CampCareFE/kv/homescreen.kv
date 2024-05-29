@@ -1,72 +1,255 @@
 <HomeScreen>:
     BoxLayout:
         orientation: 'vertical'
-        padding: [10, 10]
-        spacing: 10
         size_hint: (1, 1)  # Fill the entire screen
 
         canvas.before:
             Color:
-                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+                rgba: 0.086, 0.341, 0.459, 1  # Light blue background
             Rectangle:
                 pos: self.pos
                 size: self.size
-        AnchorLayout:
-            anchor_x: 'right'
-            anchor_y: 'top'
-            size_hint_y: None
-            height: dp(50)
 
-            Button:
-                text: 'User Info'
-                size_hint: None, None
-                size: dp(100), dp(50)
-                on_release: app.sm.current = 'userinfo'
-        Label:
-            text: "CampusCare"
-            font_size: '40sp'
-            color: 1, 1, 1, 1
-            size_hint_y: None
-            height: dp(50)
-            pos_hint: {'center_x': 0.5}
-
-
-        # Radar diagram area (Placeholder for now)
         BoxLayout:
+            orientation: 'horizontal'
             size_hint_y: None
-            height: 400
-            Image:
-                source: 'assets/overall_progress.png'  # Replace with dynamic image generation
-                size: dp(400), dp(400)
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.569, 0.796, 0.902, 1  # Dark blue banner
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
 
-        # Statistics and options buttons
+            Label:
+                text: "CampusCare"
+                font_size: '40sp'
+                font_name: 'assets/font.ttf'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint: (1, None)
+                height: dp(50)
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
+                padding_x: dp(10)
+
+            BoxLayout:
+                size_hint: None, None
+                size: dp(40), dp(40)
+                padding: dp(5)
+                pos_hint: {'center_y': 0.5}
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1  # Dark blue circle
+                    Ellipse:
+                        size: self.size
+                        pos: self.pos
+
+                Button:
+                    background_normal: ''
+                    background_color: [0, 0, 0, 0]  # Fully transparent background
+                    on_release: app.sm.current = 'userinfo'
+                    size_hint: None, None
+                    size: dp(30), dp(30)
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    Image:
+                        source: 'assets/user-24.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+
+
+        Widget:
+        Widget:
+
+        BoxLayout:
+            orientation: 'vertical'
+            padding: [20, 5]
+            spacing: 12
+
+            Label:
+                text: "Overall wellness progress graph..."
+                font_size: '16sp'
+                font_name: 'assets/font.ttf'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(20)
+                halign: 'center'
+                text_size: self.size
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(300)
+                canvas.before:
+                    Color:
+                        rgba: 0.94, 0.97, 1.0, 1.0  # White background for rounded rectangle
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [20, 20, 20, 20]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 7
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 20, 20, 20, 20]
+
+                Image:
+                    source: 'assets/overall_progress.png'  # Replace with dynamic image generation
+                    size_hint: None, None
+                    size: dp(330), dp(300)
+                    pos_hint: {'center_x': 0.5}
+
+        Widget:
+            size_hint_y: None
+            height: dp(30)
+
         GridLayout:
             cols: 2
             row_force_default: True
-            row_default_height: 40
-            spacing: 10
-            padding: 10
+            row_default_height: dp(40)
+            spacing: 20
+            padding: 20
 
             Button:
                 text: "Wellness Progress"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.569, 0.796, 0.902, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.manager.current = 'wellnessprogress'
+
             Button:
                 text: "Wellness Scheduler"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.569, 0.796, 0.902, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.manager.current = 'wellnessschedule'
+
             Button:
                 text: "Wellness Help"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.569, 0.796, 0.902, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.manager.current = 'wellnesshelp'
+
             Button:
                 text: "Options Menu"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.569, 0.796, 0.902, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.manager.current = 'options'
 
-        # Footer or additional controls
-        BoxLayout:
-            size_hint_y: None
-            height: 50
             Button:
                 text: "Daily Quiz"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.569, 0.796, 0.902, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.go_to_daily_quiz()
+
             Button:
                 text: "Admin menu"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.569, 0.796, 0.902, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.manager.current = 'admin'
+
+            Widget:
+
+        Widget:
