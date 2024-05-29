@@ -34,29 +34,6 @@
                 text_size: self.size
                 padding_x: dp(10)
 
-            BoxLayout:
-                size_hint: None, None
-                size: dp(40), dp(40)
-                padding: dp(5)
-                pos_hint: {'center_y': 0.5}
-                canvas.before:
-                    Color:
-                        rgba: 0.1, 0.6, 0.8, 1 # Dark blue circle
-                    Ellipse:
-                        size: self.size
-                        pos: self.pos
-
-                Button:
-                    background_normal: ''
-                    background_color: [0, 0, 0, 0]  # Fully transparent background
-                    on_release: app.sm.current = 'home'
-                    size_hint: None, None
-                    size: dp(30), dp(30)
-                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
-                    Image:
-                        source: 'assets/arrow-55-24.png'
-                        center_x: self.parent.center_x
-                        center_y: self.parent.center_y
 
         Widget:
             size_hint_y: None
@@ -251,7 +228,6 @@
                     Line:
                         width: 3
                         rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
-
         Widget:
 
         BoxLayout:
@@ -260,4 +236,24 @@
             padding: 10
             Button:
                 text: "Daily Quiz"
+                font_name: 'assets/font.ttf'
+                bold: True
+                background_normal: ''
+                background_color: 0.1, 0.6, 0.8, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.manager.current = 'dailyquiz'
+        Widget:
