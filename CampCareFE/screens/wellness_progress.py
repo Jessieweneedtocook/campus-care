@@ -103,6 +103,8 @@ class WellnessProgressScreen(Screen):
         fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
 
         # Draw one axe per variable and add labels
+        fig.patch.set_facecolor('aliceblue')
+        ax.set_facecolor('aliceblue')
         plt.xticks(angles[:-1], labels, color='grey', size=12)
 
         # Draw ylabels
@@ -180,6 +182,8 @@ class WellnessProgressScreen(Screen):
         stats_by_activity_type = self.calculate_stats(self.data_by_activity_type(data))
         # Create a figure and a set of subplots
         fig, ax = plt.subplots()
+        fig.patch.set_facecolor('aliceblue')
+        ax.set_facecolor('aliceblue')
 
         # Plot the data
         activities = list(stats_by_activity_type.keys())

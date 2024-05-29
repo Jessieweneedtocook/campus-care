@@ -1,100 +1,223 @@
 <WellnessProgressScreen>:
     BoxLayout:
         orientation: 'vertical'
-        padding: [10, 10]
-        spacing: 10
         size_hint: (1, 1)  # Fill the entire screen
 
         canvas.before:
             Color:
-                rgba: 0.145, 0.596, 0.922, 0.7  # Light blue color
+                rgba: 0.569, 0.796, 0.902, 1 # Light blue background
             Rectangle:
                 pos: self.pos
                 size: self.size
 
-        AnchorLayout:
-            anchor_x: 'right'
-            anchor_y: 'top'
-            size_hint_y: None
-            height: dp(50)
-            Button:
-                text: 'Back >'
-                size_hint: None, None
-                size: dp(100), dp(50)
-                on_release: app.sm.current = 'home'
-
-        Label:
-            text: "Wellness Progress"
-            font_size: '40sp'
-            color: 1, 1, 1, 1
-            size_hint_y: None
-            height: dp(50)
-            pos_hint: {'center_x': 0.5}
-
-        Widget:
-            size_hint_y: 0.1
-
-        BoxLayout:
-            size_hint_y: None
-            height: 350
-            Image:
-                source: 'assets/output.png'
-
-        Widget:
-            size_hint_y: 0.1
-
         BoxLayout:
             orientation: 'horizontal'
             size_hint_y: None
-            height: dp(100)
-            spacing: 20
+            height: dp(50)
+            canvas.before:
+                Color:
+                    rgba: 0.086, 0.341, 0.459, 1 # Dark blue banner
+                Rectangle:
+                    pos: self.pos
+                    size: self.size
+
+            Label:
+                text: "Wellness Progress"
+                font_size: '30sp'
+                font_name: 'assets/font.ttf'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint: (1, None)
+                height: dp(50)
+                halign: 'left'
+                valign: 'middle'
+                text_size: self.size
+                padding_x: dp(10)
 
             BoxLayout:
+                size_hint: None, None
+                size: dp(40), dp(40)
+                padding: dp(5)
+                pos_hint: {'center_y': 0.5}
                 canvas.before:
                     Color:
-                        rgba: 0.1, 0.384, 0.588, 0.5
-                    Rectangle:
-                        pos: self.pos
+                        rgba: 0.1, 0.6, 0.8, 1  # Dark blue circle
+                    Ellipse:
                         size: self.size
-                Label:
-                    text: root.most_improved_output
-                    color: 1, 1, 1, 1  # White text for better contrast
-                    halign: 'center'
-                    valign: 'middle'
-                    text_size: self.size
-                    size_hint_y: None
-                    height: dp(100)
-
-
-            BoxLayout:
-                canvas.before:
-                    Color:
-                        rgba: 0.1, 0.384, 0.588, 0.5
-                    Rectangle:
                         pos: self.pos
-                        size: self.size
-                Label:
-                    text: root.needs_improvement_output
-                    color: 1, 1, 1, 1  # White text for better contrast
-                    halign: 'center'
-                    valign: 'middle'
-                    text_size: self.size
-                    size_hint_y: None
-                    height: dp(100)
+
+                Button:
+                    background_normal: ''
+                    background_color: [0, 0, 0, 0]  # Fully transparent background
+                    on_release: app.sm.current = 'home'
+                    size_hint: None, None
+                    size: dp(30), dp(30)
+                    pos_hint: {'center_x': 0.5, 'center_y': 0.5}
+                    Image:
+                        source: 'assets/arrow-55-24.png'
+                        center_x: self.parent.center_x
+                        center_y: self.parent.center_y
+
+        Widget:
+            size_hint_y: None
+            height: dp(120)
+
         BoxLayout:
+            orientation: 'vertical'
+            padding: [20, 5]
+            spacing: 12
+
+            Label:
+                text: "Weekly wellness graph..."
+                font_size: '16sp'
+                font_name: 'assets/font.ttf'
+                bold: True
+                color: 1, 1, 1, 1
+                size_hint_y: None
+                height: dp(20)
+                halign: 'center'
+                text_size: self.size
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(300)
+                canvas.before:
+                    Color:
+                        rgba: 0.94, 0.97, 1.0, 1.0  # Pale blue background for rounded rectangle
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [20, 20, 20, 20]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 7
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 20, 20, 20, 20]
+
+                Image:
+                    source: 'assets/output.png'  # Replace with dynamic image generation
+                    size_hint: None, None
+                    size: dp(330), dp(300)
+                    pos_hint: {'center_x': 0.5}
+
+        Widget:
             size_hint_y: None
             height: dp(50)
-            spacing: 20
+
+        GridLayout:
+            cols: 2
+            row_force_default: True
+            row_default_height: dp(40)
+            spacing: 40
+            padding: 20
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(90)
+                size_hint_x: None
+                width: dp(160)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1  # Dark blue background for rounded rectangle
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
+
+                Label:
+                    text: root.most_improved_output
+                    font_size: '16sp'
+                    font_name: 'assets/font2.ttf'
+                    bold: True
+                    color: 1, 1, 1, 1
+                    halign: 'center'
+                    valign: 'middle'
+                    text_size: self.size
+
+            BoxLayout:
+                size_hint_y: None
+                height: dp(90)
+                size_hint_x: None
+                width: dp(160)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1  # Dark blue background for rounded rectangle
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
+
+                Label:
+                    text: root.needs_improvement_output
+                    font_size: '16sp'
+                    font_name: 'assets/font2.ttf'
+                    bold: True
+                    color: 1, 1, 1, 1
+                    halign: 'center'
+                    valign: 'middle'
+                    text_size: self.size
+
+
+
 
             ShareTwitter:
                 text: 'Share on Twitter'
+                font_name: 'assets/font.ttf'
+                bold: True
                 size_hint: None, None
-                size: dp(175), dp(50)
+                size: dp(160), dp(50)
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
 
             ShareFacebook:
                 text: 'Share on Facebook'
+                font_name: 'assets/font.ttf'
+                bold: True
                 size_hint: None, None
-                size: dp(175), dp(50)
-
-        Widget:
-            size_hint_y: 0.1
+                size: dp(160), dp(50)
+                background_normal: ''
+                background_color: 0.086, 0.341, 0.459, 1
+                color: 1, 1, 1, 1
+                border: (4, 4, 4, 4)
+                canvas.before:
+                    Color:
+                        rgba: 0.1, 0.6, 0.8, 1
+                    RoundedRectangle:
+                        size: self.size
+                        pos: self.pos
+                        radius: [10, 10, 10, 10]
+                canvas.after:
+                    Color:
+                        rgba: 0.239, 0.514, 0.639, 1  # Medium blue border
+                    Line:
+                        width: 3
+                        rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
+            Widget:
