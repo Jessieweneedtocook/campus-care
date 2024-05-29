@@ -77,7 +77,6 @@ class SignupScreen(Screen):
             self.manager.current = 'initialoptions'
             response_json = response.json()
             App.get_running_app().access_token = response_json.get('access_token')
-            self.manager.current = 'home'
         else:
             error_message = response.json().get('message', 'Registration failed')
             ErrorPopup([error_message]).open()
