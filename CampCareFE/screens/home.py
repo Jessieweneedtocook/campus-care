@@ -29,15 +29,18 @@ class HomeScreen(Screen):
             # Show a popup if the quiz is already completed for the day
             App.get_running_app().show_popup("You have already completed the quiz today.")
 
+    '''
+    Shows Admin page button depending on the role of logged in user
+    '''
     def admin_screen(self):
         role = App.get_running_app().get_role()
         button = self.ids.AdminButton
         if role == "Admin":
             print(App.get_running_app().get_role())
-            button.opacity = 1
             button.disabled = False
+            button.opacity = 1
         else:
             print(App.get_running_app().get_role())
-            button.opacity = 0
             button.disabled = True
+            button.opacity = 0
 

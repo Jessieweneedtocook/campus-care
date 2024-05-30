@@ -4,7 +4,9 @@ from kivy.lang import Builder
 
 Builder.load_file('kv/optionsscreen.kv')
 
-
+'''
+Options screen, performs similar functionality to initial_options screen
+'''
 class OptionsScreen(Screen):
     def __init__(self, **kwargs):
         super(OptionsScreen, self).__init__(**kwargs)

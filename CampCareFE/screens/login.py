@@ -11,6 +11,10 @@ import requests
 
 Builder.load_file('kv/loginscreen.kv')
 
+
+'''
+Error popup describes how to create popup incase of error, same as in other functions
+'''
 class ErrorPopup(Popup):
     def __init__(self, errors, **kwargs):
         super().__init__(**kwargs)
@@ -29,6 +33,13 @@ class ErrorPopup(Popup):
         layout.add_widget(close_button)
 
         self.add_widget(layout)
+
+'''
+-Creates login Form
+-Verifies Login details are correct
+-Makes Request to server
+-Saves access token and role of user in App class
+'''
 
 class LoginScreen(Screen):
     def login(self):

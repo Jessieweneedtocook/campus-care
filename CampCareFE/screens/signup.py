@@ -16,6 +16,9 @@ from Backend.form import (username_checker,
 
 Builder.load_file('kv/signupscreen.kv')
 
+'''
+Error popup works like in admin.py
+'''
 class ErrorPopup(Popup):
     def __init__(self, errors, **kwargs):
         super().__init__(**kwargs)
@@ -35,6 +38,13 @@ class ErrorPopup(Popup):
 
         self.add_widget(layout)
 
+
+'''
+-Creates Form for inputting sign up data
+-Validates data before sending it to server
+-Makes request to server with data and waits for response
+-Handles response accordingly
+'''
 class SignupScreen(Screen):
 
     def sign_up(self):

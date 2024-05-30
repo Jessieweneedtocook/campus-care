@@ -5,12 +5,16 @@ import sqlite3
 
 Builder.load_file('kv/initialoptionsscreen.kv')
 
-
+'''
+After sign up, allows user to select which activities to track using the app, out of a select few
+'''
 class InitialOptionsScreen(Screen):
     def __init__(self, **kwargs):
         super(InitialOptionsScreen, self).__init__(**kwargs)
         self.selected_activities = self.fetch_selected_activities()
-
+    '''
+    Pulls selected activities from database
+    '''
     def fetch_selected_activities(self):
         # Establish a connection to the database
         conn = sqlite3.connect(db_path)
@@ -25,6 +29,10 @@ class InitialOptionsScreen(Screen):
             return result[0].strip('][').split(', ')
         else:
             return []
+
+    '''
+    Adds or removes activities based on if selected
+    '''
     def toggle_activity(self, instance):
         if instance.state == 'down':
             instance.background_color = [0.1, 0.5, 0.8, 1]
@@ -35,9 +43,14 @@ class InitialOptionsScreen(Screen):
             if instance.text in self.selected_activities:
                 self.selected_activities.remove(instance.text)
 
+    '''
+    Gets selected activities
+    '''
     def get_selected_activities(self):
         return self.selected_activities
-
+    '''
+    Confirms selected activities
+    '''
     def on_pre_leave(self):
         from kivy.app import App
         app = App.get_running_app()

@@ -41,29 +41,36 @@ def check_if_token_revoked(jwt_header, jwt_payload):
 def register_user(data):
     print("Received data:", data, flush=True)
     try:
-
+        # Retrieve the username from the data
         username = data.get("username")
+        # Checks if the username is already in use, if it is throw an error 400
         if db.session.query(User.username).filter(User.username == username).first():
             return jsonify({"status": "error", "message": "Username already in use"}), 400
 
+        # Retrieve the password from the data
         password = data.get("password")
 
+        # Retrieve the email from the data
         email = data.get("email")
+        # Checks if the email is already in use, if it is throw an error 400
         if db.session.query(User.email).filter(User.email == email).first():
             return jsonify({"status": "error", "message": "Email already in use"}), 400
 
+        # Retrieve the date of birth from the data and convert into datetime object
         DateOfBirth = data.get("DateOfBirth")
-
         DateOfBirth = datetime.strptime(DateOfBirth, "%d/%m/%Y")
 
+        # Retrieve the role from the data
         role = data.get("role")
-
+        # Retrieve the phone number from the data
         phone = data.get("phone")
 
+        # Prints the processed data
         print("processed data:", username, password, email, DateOfBirth, phone, role, flush=True)
-
+        # If a field is missing, throw an error 400
         if not all([username, password, email, DateOfBirth, phone, role]):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
+
         # Create a new User object
         new_user = User(username=username, password=password, email=email, DateOfBirth=DateOfBirth, phone=phone,
                         role=role)
@@ -82,16 +89,26 @@ def register_user(data):
 @app.route("/login_user", methods=["GET"])
 def login_user(data):
     try:
+        # Retrieve the username from the data
         username = data.get("username")
+
+        # Retrieve the password from the data
         password = data.get("password")
+
+        # Checks to make sure the username and password are provided, if not it throws an error 400
         if not all([username, password]):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
+
+        # Checks database for matching username, if username not found, throws an error 400 and directs the user to signup
         user = db.session.query(User).filter(User.username == username).first()
         if not user:
             return jsonify({"status": "error", "message": "Username not found, please signup"}), 400
+
+        # Checks if the password matches the password linked to the username in the database, if not then throw an error 400
         if not user.check_password(password):
             return jsonify({"status": "error", "message": "Password incorrect"}), 400
         else:
+            # If the password is correct log the user in and assign access token
             print(user.role)
             additional_claims = {"role": user.role}
             access_token = create_access_token(identity={"username": username}, additional_claims=additional_claims)
@@ -107,12 +124,14 @@ def login_user(data):
 @app.route("/change_email", methods=["POST"])
 def change_email(data):
     try:
+        # Retrieve the current user's username
         current_user = get_jwt_identity()['username']
+        # Retrieve and validate the new email from the data
         new_email = data.get('new_email')
         is_valid, message = email_checker(new_email)
         if not is_valid:
             return jsonify({"status": "error", "message": message}), 400
-
+        # Find the current user in the database and replace the old email with the new email
         user = db.session.query(User).filter(User.username == current_user).first()
         user.email = new_email
         db.session.commit()
@@ -124,22 +143,30 @@ def change_email(data):
 @jwt_required()
 @app.route("/change_account", methods=["POST"])
 def change_password(data):
+    # Retrieve the current user's username
     current_user = get_jwt_identity()['username']
+    # Retrieve the current password from the data
     current_password = data.get('current_password')
+    # Retrieve the new password from the data
     new_password = data.get('new_password')
+    # Retrieve the confirmation of the new password from the data
     confirm_new_password = data.get('confirm_new_password')
 
+    # If any fields are blank throw an error 400
     if not all([current_password, new_password, confirm_new_password]):
         return jsonify({"status": "error", "message": "All fields are required"}), 400
 
+    # If the new password does not match with the confirmation of the new password then throw an error 400
     if new_password != confirm_new_password:
         return jsonify({"status": "error", "message": "New passwords do not match"}), 400
 
+    # Check if the current user's password matches the inputted current password, throw an error 400 if not
     user = db.session.query(User).filter(User.username == current_user).first()
 
     if not user or not user.check_password(current_password):
         return jsonify({"status": "error", "message": "Current password is incorrect"}), 400
 
+    # Update the password and commit to the database
     user.password = new_password
     db.session.commit()
 
@@ -150,14 +177,19 @@ def change_password(data):
 @app.route("/delete_account", methods=["POST"])
 def delete_account(data):
     try:
+        # Retrieve the current user's username
         current_user = get_jwt_identity()['username']
         print("Current user extracted:", )
+
+        # Find the current user in the database
         user = db.session.query(User).filter(User.username == current_user).first()
+        # If the user is found, delete the user from the database
         if user:
             db.session.delete(user)
             db.session.commit()
             return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
         else:
+            # If the user is not found throw error 400
             return jsonify({"status": "error", "message": "User not found"}), 404
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
@@ -166,6 +198,7 @@ def delete_account(data):
 @app.route("/logout", methods=["POST"])
 @jwt_required()
 def logout(data):
+    # Gets the user's token and invalidates it to log the user out
     print("Received data:",data)
     jti = get_jwt()['jti']
     print("JWT:",jti)
