@@ -223,10 +223,13 @@
             halign: 'center'
             valign: 'middle'
             text_size: self.size
+        Widget:
+            size_hint_y: None
+            height: dp(20)
         GridLayout:
             cols: 4
-            padding: 10
-            spacing: 10
+            padding: 0
+            spacing: 0
 
             Button:
                 id: exercise_btn
@@ -235,12 +238,12 @@
                 font_size: '16sp'
                 bold: True
                 background_normal: ''
-                background_color: 0.941, 0.941, 0.553, 1
+                background_color: 0.1, 0.6, 0.8, 1
                 color: 1, 1, 1, 1
                 border: (4, 4, 4, 4)
                 canvas.before:
                     Color:
-                        rgba: 0.941, 0.941, 0.553, 1
+                        rgba: 0.1, 0.6, 0.8, 1
                     RoundedRectangle:
                         size: self.size
                         pos: self.pos
@@ -324,7 +327,9 @@
                         width: 3
                         rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
                 on_release: root.select_activity('Hobbies', self)
-
+        Widget:
+            size_hint_y: None
+            height: dp(20)
 
 <ActivityPopup>:
     title: "Activity Log"
