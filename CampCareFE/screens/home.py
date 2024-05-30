@@ -34,10 +34,10 @@ class HomeScreen(Screen):
         button = self.ids.AdminButton
         if role == "Admin":
             print(App.get_running_app().get_role())
-            button.opacity = 1
             button.disabled = False
+            button.opacity = 1
         else:
             print(App.get_running_app().get_role())
-            button.opacity = 0
             button.disabled = True
+            button.opacity = 0
 
