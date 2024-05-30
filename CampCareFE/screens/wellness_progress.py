@@ -1,34 +1,37 @@
 import sqlite3
 import numpy as np
 import matplotlib
-from sqlalchemy import column
 
-matplotlib.use('Agg')
+matplotlib.use('Agg') # Use Agg backend to avoid showing plots interactively
+from math import pi
 import matplotlib.pyplot as plt
 from kivy.properties import StringProperty
-
-from math import pi
-from kivy.uix.screenmanager import ScreenManager, Screen
+from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
+
+# Import the database path from another module
 from CampCareFE.screens.daily_quiz import db_path
 
+# Load the Kivy language file
 Builder.load_file('kv/wellnessprogressscreen.kv')
 
 class WellnessProgressScreen(Screen):
-
+    # String properties for displaying text in the UI
     needs_improvement_output = StringProperty('')
     most_improved_output = StringProperty('')
 
     def on_enter(self):
+        # Method called when the screen is entered
         self.update_most_improved_text()
         self.update_needs_improvement_text()
 
 
     def get_data_for_period(self, days):
+        # Connect to the SQLite database
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        # Get activities for the past 'days' days
+        # Fetch activities for the specified period
         cursor.execute(f"""
                     SELECT * FROM UserActivities
                     WHERE ActivityDate > datetime('now', '-{days} days')
@@ -40,11 +43,12 @@ class WellnessProgressScreen(Screen):
         return self.data_by_activity_type(data)
 
     def data_by_activity_type(self, data):
-        # Initialize an empty dictionary to store the data
+        # Organize data by activity type
         data_by_activity_type = {}
         # Loop through the data
         for row in data:
-            activity_type = row[1]
+            activity_type = row[1] # Assuming activity type is in the second column
+
 
             # If this activity type is not in the dictionary yet, add it
             if activity_type not in data_by_activity_type:
@@ -214,9 +218,8 @@ class WellnessProgressScreen(Screen):
         plt.savefig('assets/overall_progress.png')
 
 
-
-
     def update_needs_improvement_text(self):
+        # Updates the needs improvement text displayed on the screen.
         needs_improvement_activity = self.needs_improvement()
         if needs_improvement_activity:
             self.needs_improvement_output = f"Needs Improvement:\n- {needs_improvement_activity}"
@@ -224,6 +227,7 @@ class WellnessProgressScreen(Screen):
             self.needs_improvement_output = "Needs Improvement:\n- No data from previous week"
 
     def update_most_improved_text(self):
+        # Updates the most improved text displayed on the screen.
         most_improved_activity = self.most_improved()
 
         if most_improved_activity:
@@ -232,10 +236,13 @@ class WellnessProgressScreen(Screen):
         else:
             self.most_improved_output = "Most Improved:\n- No data from previous week"
 
+
 from kivy.uix.button import Button
 import webbrowser
 class ShareTwitter(Button):
+    # Button class for sharing on Twitter.
     def on_release(self):
+        # Opens a web browser to share on Twitter.
         screen = self.get_screen()  # Find the screen that this button is part of
         text = f'{screen.most_improved_output}\n{screen.needs_improvement_output}'
 
@@ -254,7 +261,11 @@ class ShareTwitter(Button):
         return None
 
 class ShareFacebook(Button):
+    # Button class for sharing on Facebook.
     def on_release(self):
+        # Opens a web browser to share on Facebook.
+        # Doesn't work in the same way as Twitter as facebook removed the
+        # functionality but would run if the app was deployed
         screen = self.get_screen()  # Find the screen that this button is part of
         text = f'{screen.most_improved_output}\n{screen.needs_improvement_output}'
 
