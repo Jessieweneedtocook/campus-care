@@ -15,6 +15,7 @@ class HomeScreen(Screen):
         """
         Method called when the screen is entered.
         """
+        self.admin_screen()
         pass
 
     def go_to_daily_quiz(self):
@@ -27,3 +28,16 @@ class HomeScreen(Screen):
         else:
             # Show a popup if the quiz is already completed for the day
             App.get_running_app().show_popup("You have already completed the quiz today.")
+
+    def admin_screen(self):
+        role = App.get_running_app().get_role()
+        button = self.ids.AdminButton
+        if role == "Admin":
+            print(App.get_running_app().get_role())
+            button.opacity = 1
+            button.disabled = False
+        else:
+            print(App.get_running_app().get_role())
+            button.opacity = 0
+            button.disabled = True
+
