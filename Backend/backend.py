@@ -210,7 +210,7 @@ def delete_account(data):
 
 @app.route("/logout", methods=["POST"])
 @jwt_required()
-def logout(data)
+def logout(data):
     print("Received data:",data)
     jti = get_jwt()['jti']
     print("JWT:",jti)
