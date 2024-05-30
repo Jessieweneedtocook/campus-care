@@ -21,12 +21,18 @@ class WellnessProgressScreen(Screen):
     most_improved_output = StringProperty('')
 
     def on_enter(self):
-        # Method called when the screen is entered
+        """
+        Method called when the screen is entered.
+        Updates the text for most improved and needs improvement.
+        """
         self.update_most_improved_text()
         self.update_needs_improvement_text()
 
 
     def get_data_for_period(self, days):
+        """
+        Connects to the SQLite database and fetches activities for the specified period.
+        """
         # Connect to the SQLite database
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
@@ -43,7 +49,10 @@ class WellnessProgressScreen(Screen):
         return self.data_by_activity_type(data)
 
     def data_by_activity_type(self, data):
-        # Organize data by activity type
+        """
+        Organizes data by activity type.
+        """
+        # Initialize a dictionary to store data by activity type
         data_by_activity_type = {}
         # Loop through the data
         for row in data:
@@ -261,6 +270,7 @@ class ShareTwitter(Button):
         return None
 
 class ShareFacebook(Button):
+
     # Button class for sharing on Facebook.
     def on_release(self):
         # Opens a web browser to share on Facebook.
