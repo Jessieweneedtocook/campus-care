@@ -5,18 +5,18 @@ from unittest.mock import patch, MagicMock
 import requests
 from kivy.base import EventLoop
 from kivy.app import App
+from kivy.uix.label import Label
 from kivy.uix.screenmanager import ScreenManager
 from kivy.uix.button import Button
-from CampCareFE.app import MyApp
-from CampCareFE.screens.admin import SuccessPopup, DeleteAccountPopup
-from CampCareFE.screens.initial_options import InitialOptionsScreen
-from CampCareFE.screens.options import OptionsScreen
-from CampCareFE.screens.signup import SignupScreen
-from CampCareFE.screens.user_info import UserInfoScreen
-from CampCareFE.screens.wellness_progress import WellnessProgressScreen
-from CampCareFE.quiz_questions import questions
-from CampCareFE.screens.daily_quiz import DailyQuizScreen, db_path
-from CampCareFE.screens.home import HomeScreen
+
+from Frontend.app import MyApp
+from Frontend.screens.options import OptionsScreen
+from Frontend.screens.wellness_progress import WellnessProgressScreen
+from Frontend.quiz_questions import questions
+from Frontend.screens.daily_quiz import DailyQuizScreen
+from Frontend.screens.home import HomeScreen
+from Frontend.screens.admin import DeleteAccountPopup, SuccessPopup
+from Frontend.screens.initial_options import InitialOptionsScreen
 
 # Set the working directory to the root of your project
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
