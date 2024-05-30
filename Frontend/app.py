@@ -6,7 +6,7 @@ from datetime import datetime
 import sqlite3
 
 # Import screens
-from CampCareFE.screens.daily_quiz import db_path, DailyQuizScreen
+from Frontend.screens.daily_quiz import db_path, DailyQuizScreen
 from screens.login import LoginScreen
 from screens.signup import SignupScreen
 from screens.reset_password import ResetPasswordScreen

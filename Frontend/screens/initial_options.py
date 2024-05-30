@@ -1,6 +1,6 @@
 from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
-from CampCareFE.screens.daily_quiz import db_path
+from Frontend.screens.daily_quiz import db_path
 import sqlite3
 
 Builder.load_file('kv/initialoptionsscreen.kv')

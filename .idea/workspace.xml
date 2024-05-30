@@ -4,9 +4,54 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="removed old code interferring with buttons">
+    <list default="true" id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="xml file changes">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/dailyquizscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/CampCareFE/kv/dailyquizscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend test/requestest.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/assets/SystemsAdmin.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/assets/SystemsAdmin.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/assets/arrow-55-24.png" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/assets/arrow-55-24.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/assets/font.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/assets/font.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/assets/font2.ttf" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/assets/font2.ttf" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/assets/logo3.png" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/assets/logo3.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/assets/user-24.png" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/assets/user-24.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/aboutscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/aboutscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/adminscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/adminscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/dailyquizscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/dailyquizscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/homescreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/homescreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/initialoptionsscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/initialoptionsscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/loginscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/loginscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/optionsscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/optionsscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/resetpasswordscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/resetpasswordscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/signupscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/signupscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/userinfoscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/userinfoscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/wellnesshelpscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/wellnesshelpscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/wellnessprogressscreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/wellnessprogressscreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/kv/wellnessschedulescreen.kv" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/kv/wellnessschedulescreen.kv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/quiz_questions.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/quiz_questions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/schedule_activities.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/schedule_activities.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/about.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/about.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/admin.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/daily_quiz.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/daily_quiz.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/home.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/home.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/initial_options.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/initial_options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/login.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/login.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/options.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/options.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/reset_password.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/reset_password.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/signup.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/signup.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/user_info.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/user_info.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/wellness_help.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/wellness_help.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/wellness_progress.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/wellness_progress.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/screens/wellness_schedule.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/screens/wellness_schedule.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/testing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/testing.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CampCareFE/utils/database.py" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/utils/database.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/form.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/quiz/views.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/users/__init__.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/validation example/signuptemp.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/validation example/validationtemp.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,7 +117,7 @@
       <recent name="C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\db" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.main">
+  <component name="RunManager" selected="Docker.docker-compose.yml: Compose Deployment">
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="CSC2033_Team37_23_24" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -81,12 +126,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CampCareFE" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Frontend" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/CampCareFE/main.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Frontend/main.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -114,7 +159,7 @@
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CampCareFE" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Frontend" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -124,27 +169,12 @@
       <option name="_new_targetType" value="&quot;PYTHON&quot;" />
       <method v="2" />
     </configuration>
-    <configuration name="Python tests in testing.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+    <configuration name="Python tests in C:/Users/jessi/PycharmProjects/CSC2033_Team37_23_24/CampCareFE/tests.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
       <module name="CSC2033_Team37_23_24" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CampCareFE" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="_new_additionalArguments" value="&quot;&quot;" />
-      <option name="_new_target" value="&quot;$PROJECT_DIR$/CampCareFE/testing.py&quot;" />
-      <option name="_new_targetType" value="&quot;PATH&quot;" />
-      <method v="2" />
-    </configuration>
-    <configuration name="Python tests in tests.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
-      <module name="CSC2033_Team37_23_24" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/CampCareFE" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Frontend" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
@@ -154,12 +184,34 @@
       <option name="_new_targetType" value="&quot;PATH&quot;" />
       <method v="2" />
     </configuration>
+    <configuration name="Python tests in testing.py" type="tests" factoryName="Autodetect" temporary="true" nameIsGenerated="true">
+      <module name="CSC2033_Team37_23_24" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Frontend" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="_new_additionalArguments" value="&quot;&quot;" />
+      <option name="_new_target" value="&quot;$PROJECT_DIR$/Frontend/testing.py&quot;" />
+      <option name="_new_targetType" value="&quot;PATH&quot;" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python tests.Python tests for tests.TestWellnessProgressScreen.test_get_last_week_data" />
+      <item itemvalue="Python tests.Python tests in C:/Users/jessi/PycharmProjects/CSC2033_Team37_23_24/CampCareFE/tests.py" />
+      <item itemvalue="Python tests.Python tests in testing.py" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Python.main" />
-        <item itemvalue="Python tests.Python tests in testing.py" />
         <item itemvalue="Docker.docker-compose.yml: Compose Deployment" />
-        <item itemvalue="Python tests.Python tests in tests.py" />
+        <item itemvalue="Python tests.Python tests in testing.py" />
+        <item itemvalue="Python tests.Python tests in C:/Users/jessi/PycharmProjects/CSC2033_Team37_23_24/CampCareFE/tests.py" />
         <item itemvalue="Python tests.Python tests for tests.TestWellnessProgressScreen.test_get_last_week_data" />
       </list>
     </recent_temporary>
@@ -167,7 +219,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="04a5c43f-d18e-4df1-bcaa-8a41f193927e" name="Changes" comment="" />
+      <changelist id="0eceec08-2176-46fa-8b61-32b2045a6a9d" name="Changes" comment="xml file changes" />
       <created>1715251779786</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -177,6 +229,8 @@
       <workItem from="1715597242448" duration="542000" />
       <workItem from="1715597816249" duration="506000" />
       <workItem from="1715943131201" duration="5952000" />
+      <workItem from="1717086241722" duration="426000" />
+      <workItem from="1717086722213" duration="969000" />
     </task>
     <task id="LOCAL-00001" summary="adding docker compose functionality">
       <created>1715344045965</created>
@@ -361,7 +415,35 @@
       <option name="project" value="LOCAL" />
       <updated>1716902455334</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="about screen gui and classes added">
+      <created>1717083033490</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1717083033490</updated>
+    </task>
+    <task id="LOCAL-00028" summary="about screen added to screen manager">
+      <created>1717083071397</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1717083071397</updated>
+    </task>
+    <task id="LOCAL-00029" summary="about button connected to about screen">
+      <created>1717083125959</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1717083125959</updated>
+    </task>
+    <task id="LOCAL-00030" summary="xml file changes">
+      <created>1717083139300</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1717083139300</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -391,10 +473,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="set up database and some tests to make sure everything is working" />
-    <MESSAGE value="Added instructions on how to connect to the database" />
-    <MESSAGE value="changing file names" />
-    <MESSAGE value="adding functionality to the quiz, answers now save to the UserASctivitys DB" />
     <MESSAGE value="adding quiz functionality" />
     <MESSAGE value="quiz function works fully with the main app now but gets stuck and crashes after last question is asked." />
     <MESSAGE value="removing unneeded imports" />
@@ -416,7 +494,11 @@
     <MESSAGE value="access token stored at signup" />
     <MESSAGE value="change name of logout function" />
     <MESSAGE value="removed old code interferring with buttons" />
-    <option name="LAST_COMMIT_MESSAGE" value="removed old code interferring with buttons" />
+    <MESSAGE value="about screen gui and classes added" />
+    <MESSAGE value="about screen added to screen manager" />
+    <MESSAGE value="about button connected to about screen" />
+    <MESSAGE value="xml file changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="xml file changes" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$initial_options.coverage" NAME="initial_options Coverage Results" MODIFIED="1717071027159" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Frontend/screens" />
@@ -424,20 +506,20 @@
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$Unittests_for_testing_TestDailyQuizScreen_test_logout_when_current_screen_is_login.coverage" NAME="Unittests for testing.TestDailyQuizScreen.test_logout_when_current_screen_is_login Coverage Results" MODIFIED="1716983803599" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz__1_.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715617574822" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/kv" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$.coverage" NAME=" Coverage Results" MODIFIED="1716832233560" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1717074354156" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$main.coverage" NAME="main Coverage Results" MODIFIED="1717087498363" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Frontend" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$pytest_in_db_connection_py.coverage" NAME="pytest in db-connection.py Coverage Results" MODIFIED="1716832738733" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$user_info.coverage" NAME="user_info Coverage Results" MODIFIED="1717062223771" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$Unittests_for_testing_TestSignupScreen_test_valid_user_data_sent_successfully.coverage" NAME="Unittests for testing.TestSignupScreen.test_valid_user_data_sent_successfully Coverage Results" MODIFIED="1716983514567" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$options.coverage" NAME="options Coverage Results" MODIFIED="1716904705323" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection__1_.coverage" NAME="db-connection (1) Coverage Results" MODIFIED="1715856843718" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$requestest.coverage" NAME="requestest Coverage Results" MODIFIED="1716992406544" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend test" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_progress.coverage" NAME="wellness_progress Coverage Results" MODIFIED="1717012838477" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$home.coverage" NAME="home Coverage Results" MODIFIED="1717012597387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_progress.coverage" NAME="wellness_progress Coverage Results" MODIFIED="1717086420251" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Frontend/screens" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$home.coverage" NAME="home Coverage Results" MODIFIED="1717086406700" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Frontend/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$signup.coverage" NAME="signup Coverage Results" MODIFIED="1717061931924" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$Unittests_for_testing_TestSignupScreen_test_send_to_server_success.coverage" NAME="Unittests for testing.TestSignupScreen.test_send_to_server_success Coverage Results" MODIFIED="1716983554565" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$daily_quiz.coverage" NAME="daily_quiz Coverage Results" MODIFIED="1715851729783" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$app.coverage" NAME="app Coverage Results" MODIFIED="1716898780073" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE" />
-    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1717061629338" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
+    <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$db_connection.coverage" NAME="db-connection Coverage Results" MODIFIED="1717086905981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/db" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$backend.coverage" NAME="backend Coverage Results" MODIFIED="1716811565001" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Backend" />
     <SUITE FILE_PATH="coverage/CSC2033_Team37_23_24$wellness_schedule.coverage" NAME="wellness_schedule Coverage Results" MODIFIED="1717029664527" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/CampCareFE/screens" />
   </component>

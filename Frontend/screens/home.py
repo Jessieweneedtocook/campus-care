@@ -2,7 +2,7 @@ from kivy.uix.screenmanager import ScreenManager, Screen
 from kivy.lang import Builder
 from kivy.app import App
 
-from CampCareFE.screens.wellness_progress import WellnessProgressScreen
+from Frontend.screens.wellness_progress import WellnessProgressScreen
 
 # Load the corresponding KV file
 Builder.load_file('kv/homescreen.kv')

@@ -10,7 +10,7 @@ from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 
 # Import the database path from another module
-from CampCareFE.screens.daily_quiz import db_path
+from Frontend.screens.daily_quiz import db_path
 
 # Load the Kivy language file
 Builder.load_file('kv/wellnessprogressscreen.kv')
