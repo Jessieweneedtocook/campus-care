@@ -23,6 +23,8 @@ from quiz_questions import questions
 
 
 class MyApp(App):
+
+    role = None
     def __init__(self, **kwargs):
         super(MyApp, self).__init__(**kwargs)
         self.questions = questions
@@ -191,6 +193,12 @@ class MyApp(App):
     def set_access_token(self, token):
         # Set access token for authentication
         self.access_token = token
+
+    def set_role(self, role):
+        self.role = role
+
+    def get_role(self):
+        return self.role
 
     def logout(self):
         # Logout user
