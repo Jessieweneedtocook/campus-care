@@ -137,7 +137,7 @@
                 on_release: root.show_confirm_delete()
 
             Button:
-                text: "Help/About"
+                text: "About"
                 font_name: 'assets/font.ttf'
                 bold: True
                 background_normal: ''
@@ -157,7 +157,7 @@
                     Line:
                         width: 3
                         rounded_rectangle: [self.x, self.y, self.width, self.height, 10, 10, 10, 10]
-                on_release: root.manager.current = 'wellnesshelp'
+                on_release: root.manager.current = 'about'
 
             Button:
                 text: "Logout"
