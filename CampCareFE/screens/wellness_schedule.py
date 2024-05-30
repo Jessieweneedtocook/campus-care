@@ -10,10 +10,11 @@ from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
 from datetime import datetime
 import calendar
-
+# File path for saving and loading schedule activities
 SCHEDULE_FILE = 'schedule_activities.py'
-
+# Load the KV design file for the WellnessScheduleScreen
 Builder.load_file('kv/wellnessschedulescreen.kv')
+# Define the ActivityPopup class for displaying activities in a popup
 
 '''
 Creates calendar for activities
@@ -26,11 +27,14 @@ class ActivityPopup(Popup):
         self.screen = screen
         self.populate_activities()
 
+    # Method to populate activities in the popup
     '''
     Applies activities to the correct days.
     '''
     def populate_activities(self):
+        # Clear existing widgets
         self.ids.logged_activities_box.clear_widgets()
+        # Iterate through logged activities and create widgets for each
         for activity in self.day_button.logged_activities:
             box = BoxLayout(orientation='horizontal')
             label = Label(text=activity)
@@ -39,57 +43,68 @@ class ActivityPopup(Popup):
             box.add_widget(label)
             box.add_widget(remove_btn)
             self.ids.logged_activities_box.add_widget(box)
+
+    # Method to remove an activity
     '''
     Removes activity
     '''
     def remove_activity(self, activity):
+        # Remove the activity from the logged activities list
         self.day_button.logged_activities.remove(activity)
         self.screen.update_day_button(self.day_button)
         self.populate_activities()
+        # Save activities to file
         self.screen.save_activities()
-
+# Define the WellnessScheduleScreen class for managing the wellness schedule screen
 class WellnessScheduleScreen(Screen):
     selected_activity = None
 
     '''
     Generates calendar and loads activities
     '''
+    # Method called when the screen is entered
     def on_enter(self):
         self.generate_calendar()
         self.load_activities()
+
+    # Method to generate the calendar layout
     '''
     Creates the calendar for the app
     '''
     def generate_calendar(self):
         calendar_days = self.ids.calendar_days
         calendar_days.clear_widgets()
-
+        # Add labels for days of the week
         days_of_week = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
         for day in days_of_week:
             lbl = Label(text=day, bold=True, color=(1, 1, 1, 1))
             calendar_days.add_widget(lbl)
-
+        # Get the number of days in the current month
         today = datetime.today()
         _, num_days = calendar.monthrange(today.year, today.month)
-
+        # Add buttons for each day of the month
         for day in range(1, num_days + 1):
             btn = Button(text=str(day))
-            btn.logged_activities = []
+            btn.logged_activities = [] # Initialize logged activities list
+            # Bind button press event to handle_day_button_press method
             btn.bind(on_release=lambda btn: self.handle_day_button_press(btn))
             btn.bind(pos=self.update_day_button, size=self.update_day_button)
             calendar_days.add_widget(btn)
 
+    # Method to handle pressing of a day button
     '''
     Shows activities on day when button clicked
     '''
     def handle_day_button_press(self, day_button):
         if self.selected_activity:
             if self.selected_activity not in day_button.logged_activities:
+                # Add selected activity to the day's logged activities
                 day_button.logged_activities.append(self.selected_activity)
                 self.update_day_button(day_button)
                 self.save_activities()
         else:
             self.show_activity_popup(day_button)
+    # Method to show the activity popup
 
     '''
     Shows the activities on click
@@ -97,6 +112,7 @@ class WellnessScheduleScreen(Screen):
     def show_activity_popup(self, day_button):
         popup = ActivityPopup(day_button, self)
         popup.open()
+
 
     '''
     Updates the day
