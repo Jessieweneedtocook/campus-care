@@ -235,8 +235,10 @@ def admin_delete_account(data):
 @jwt_required()
 def view_users(data):
     try:
+        # Retrieve and extract all the usernames from the database
         users = db.session.query(User.username).all()
         usernames = [user.username for user in users]
+        # Return a list of all usernames
         return jsonify({"status": "success","usernames": usernames})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
