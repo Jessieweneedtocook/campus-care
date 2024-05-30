@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
     <data-source source="LOCAL" name="identifier" uuid="cbda4e0e-10b4-40e6-b1cf-ad5ffd8631cb">
-      <driver-ref>33e07119-7ac8-4e43-9659-7a56eb7320d1</driver-ref>
+      <driver-ref>d4ac7d86-144f-4024-84aa-4831098a7a70</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
       <jdbc-url>jdbc:sqlite:C:\Users\harri\PycharmProjects\CSC2033_Team37_23_24\identifier.sqlite</jdbc-url>
@@ -20,11 +20,11 @@
       <jdbc-url>jdbc:mysql://localhost:32001</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
-    <data-source source="LOCAL" name="UserActivities" uuid="5845ecee-a09e-48fd-b1bd-bace9ed8463f">
+    <data-source source="LOCAL" name="UserActivities [2]" uuid="6a5a0db7-f84d-448e-a425-037fc65275f7">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\44748\PycharmProjects\CSC2033_Team37_23_24\db\UserActivities.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:C:\Users\jessi\PycharmProjects\CSC2033_Team37_23_24\db\UserActivities.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
