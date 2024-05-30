@@ -177,14 +177,19 @@ def change_password(data):
 @app.route("/delete_account", methods=["POST"])
 def delete_account(data):
     try:
+        # Retrieve the current user's username
         current_user = get_jwt_identity()['username']
         print("Current user extracted:", )
+
+        # Find the current user in the database
         user = db.session.query(User).filter(User.username == current_user).first()
+        # If the user is found, delete the user from the database
         if user:
             db.session.delete(user)
             db.session.commit()
             return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
         else:
+            # If the user is not found throw error 400
             return jsonify({"status": "error", "message": "User not found"}), 404
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
