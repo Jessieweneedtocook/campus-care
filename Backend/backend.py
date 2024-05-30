@@ -124,12 +124,14 @@ def login_user(data):
 @app.route("/change_email", methods=["POST"])
 def change_email(data):
     try:
+        # Retrieve the current user's username
         current_user = get_jwt_identity()['username']
+        # Retrieve and validate the new email from the data
         new_email = data.get('new_email')
         is_valid, message = email_checker(new_email)
         if not is_valid:
             return jsonify({"status": "error", "message": message}), 400
-
+        # Find the current user in the database and replace the old email with the new email
         user = db.session.query(User).filter(User.username == current_user).first()
         user.email = new_email
         db.session.commit()
