@@ -11,6 +11,9 @@ from kivy.app import App
 
 Builder.load_file('kv/userinfoscreen.kv')
 
+'''
+Error popup, works like in admin.py
+'''
 class ErrorPopup(Popup):
     def __init__(self, errors, **kwargs):
         super().__init__(**kwargs)
@@ -29,6 +32,9 @@ class ErrorPopup(Popup):
 
         self.add_widget(layout)
 
+'''
+Success popup, works like in admin.py
+'''
 class SuccessPopup(Popup):
     def __init__(self, message, **kwargs):
         super().__init__(**kwargs)
@@ -46,6 +52,12 @@ class SuccessPopup(Popup):
 
         self.add_widget(layout)
 
+'''
+-Change email, creates popup
+-Popup gives text box for input and submit button
+-Client makes request to server and waits for server response
+-Handles server response respectively
+'''
 class ChangeEmailPopup(Popup):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)

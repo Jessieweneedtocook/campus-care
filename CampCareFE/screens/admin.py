@@ -14,6 +14,9 @@ import requests
 Builder.load_file('kv/adminscreen.kv')
 
 
+'''
+Error pop up class, describes how to create a popup for when the server returns an error message
+'''
 class ErrorPopup(Popup):
     def __init__(self, errors, **kwargs):
         super().__init__(**kwargs)
@@ -33,6 +36,9 @@ class ErrorPopup(Popup):
         self.add_widget(layout)
 
 
+'''
+Success popup with a similar function as error popup
+'''
 class SuccessPopup(Popup):
     def __init__(self, message, **kwargs):
         super().__init__(**kwargs)
@@ -51,6 +57,13 @@ class SuccessPopup(Popup):
         self.add_widget(layout)
 
 
+'''
+Delete account popup:
+- Shows popup with a scrollable list of users
+- Queries server-side to view users
+- Input text at bottom and delete button
+- Admin must enter username to delete
+'''
 class DeleteAccountPopup(Popup):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
@@ -124,6 +137,9 @@ class DeleteAccountPopup(Popup):
         self.dismiss()
 
 
+'''
+Runs delete account class when button pressed
+'''
 class AdminScreen(Screen):
     def show_delete_account(self):
         DeleteAccountPopup().open()
