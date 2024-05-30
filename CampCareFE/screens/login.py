@@ -1,3 +1,4 @@
+import jwt
 from kivy.app import App
 from kivy.uix.screenmanager import Screen
 from kivy.lang import Builder
@@ -51,7 +52,13 @@ class LoginScreen(Screen):
 
         if response.status_code == 200:
             response_json = response.json()
-            App.get_running_app().access_token = response_json.get('access_token')
+            token = response_json.get('access_token')
+            App.get_running_app().access_token = token
+            decoded_token = jwt.decode(token, options={"verify_signature": False})
+            role = decoded_token.get("role")
+            print(decoded_token, role)
+            App.get_running_app().set_role(role)
+
             self.manager.current = 'home'
         else:
             error_message = response_json.get('message', 'Login failed')
