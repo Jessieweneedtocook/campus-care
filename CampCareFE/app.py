@@ -18,6 +18,7 @@ from screens.wellness_help import WellnessHelpScreen
 from screens.options import OptionsScreen
 from screens.admin import AdminScreen
 from screens.wellness_schedule import WellnessScheduleScreen
+from screens.about import AboutScreen
 from kivy.core.window import Window
 from quiz_questions import questions
 
@@ -57,6 +58,7 @@ class MyApp(App):
         self.sm.add_widget(AdminScreen(name='admin'))
         self.sm.add_widget(WellnessScheduleScreen(name='wellnessschedule'))
         self.sm.add_widget(DailyQuizScreen(name='dailyquiz'))
+        self.sm.add_widget(AboutScreen(name='about'))
 
         # Initialize quiz related attributes
         self.sm.current_question_index = 0
@@ -75,7 +77,7 @@ class MyApp(App):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        query = "SELECT Activities FROM UserActivityPreferences"
+        query = """SELECT Activities FROM UserActivityPreferences"""
         cursor.execute(query)
         result = cursor.fetchone()
         conn.close()
@@ -216,3 +218,5 @@ class MyApp(App):
         # Logout user
         self.access_token = None
         self.sm.current = 'login'
+
+
