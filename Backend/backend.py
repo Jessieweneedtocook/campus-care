@@ -198,6 +198,7 @@ def delete_account(data):
 @app.route("/logout", methods=["POST"])
 @jwt_required()
 def logout(data):
+    # Gets the user's token and invalidates it to log the user out
     print("Received data:",data)
     jti = get_jwt()['jti']
     print("JWT:",jti)
