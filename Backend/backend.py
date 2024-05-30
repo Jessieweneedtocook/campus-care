@@ -14,6 +14,7 @@ app = Flask(__name__)
 CORS(app)
 
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
+app.config['JWT_ALGORITHM'] = os.getenv('JWT_ALGORITHM')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES', 3600)))
@@ -91,10 +92,14 @@ def login_user(data):
         if not user.check_password(password):
             return jsonify({"status": "error", "message": "Password incorrect"}), 400
         else:
-            access_token = create_access_token(identity={'username': username})
+            print(user.role)
+            additional_claims = {"role": user.role}
+            access_token = create_access_token(identity={"username": username}, additional_claims=additional_claims)
+            print(access_token)
             return jsonify({"status": "success", "access_token": access_token}), 200
 
     except Exception as e:
+        print(str(e))
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
