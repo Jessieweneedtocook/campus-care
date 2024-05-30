@@ -8,49 +8,54 @@ from kivy.uix.textinput import TextInput
 from kivy.metrics import dp
 import requests
 from kivy.app import App
-
+# Load the KV design file for the UserInfoScreen
 Builder.load_file('kv/userinfoscreen.kv')
 
+# Define a custom popup class to display errors
 '''
 Error popup, works like in admin.py
 '''
 class ErrorPopup(Popup):
     def __init__(self, errors, **kwargs):
         super().__init__(**kwargs)
-        self.title = "Error"
-        self.size_hint = (0.8, 0.5)
+        self.title = "Error" # Set the popup title
+        self.size_hint = (0.8, 0.5) # Set the size of the popup
         layout = BoxLayout(orientation='vertical', padding=dp(10), spacing=dp(10))
 
+        # Add error messages to the popup
         for error in errors:
             label = Label(text=error, size_hint_y=None, height=dp(30), halign='left', valign='middle')
-            label.bind(size=label.setter('text_size'))  # Enable text wrapping
+            label.bind(size=label.setter('text_size'))  # Enable text wrapping for the labels
             layout.add_widget(label)
 
+        # Add a close button to the popup
         close_button = Button(text="Close", size_hint_y=None, height=dp(40))
         close_button.bind(on_release=self.dismiss)
         layout.add_widget(close_button)
-
+        # Add the layout to the popup
         self.add_widget(layout)
 
+# Define a custom popup class to display success messages
 '''
 Success popup, works like in admin.py
 '''
 class SuccessPopup(Popup):
     def __init__(self, message, **kwargs):
         super().__init__(**kwargs)
-        self.title = "Success"
-        self.size_hint = (0.8, 0.5)
+        self.title = "Success" # Set the popup title
+        self.size_hint = (0.8, 0.5) # Set the size of the popup
         layout = BoxLayout(orientation='vertical', padding=dp(10), spacing=dp(10))
-
+        # Add the success message to the popup
         label = Label(text=message, size_hint_y=None, height=dp(30), halign='left', valign='middle')
         label.bind(size=label.setter('text_size'))  # Enable text wrapping
         layout.add_widget(label)
-
+        # Add a close button to the popup
         close_button = Button(text="Close", size_hint_y=None, height=dp(40))
         close_button.bind(on_release=self.dismiss)
         layout.add_widget(close_button)
-
+        # Add the layout to the popup
         self.add_widget(layout)
+# Define a custom popup class to change the email address
 
 '''
 -Change email, creates popup
@@ -61,44 +66,46 @@ class SuccessPopup(Popup):
 class ChangeEmailPopup(Popup):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.title = "Change Email"
-        self.size_hint = (0.8, 0.5)
+        self.title = "Change Email" # Set the popup title
+        self.size_hint = (0.8, 0.5) # Set the size of the popup
         layout = BoxLayout(orientation='vertical', padding=dp(10), spacing=dp(10))
 
+        # Add a text input for the new email address
         self.new_email_input = TextInput(hint_text="New Email", multiline=False, size_hint_y=None, height=dp(40))
         layout.add_widget(self.new_email_input)
-
+        # Add a submit button to the popup
         submit_button = Button(text="Submit", size_hint_y=None, height=dp(40))
         submit_button.bind(on_release=self.change_email)
         layout.add_widget(submit_button)
-
+        # Add the layout to the popup
         self.add_widget(layout)
 
+    # Method to handle the email change
     def change_email(self, instance):
         new_email = self.new_email_input.text
         if not new_email:
             ErrorPopup(["Please provide a new email address."]).open()
             return
-
+        # Prepare the data to send to the backend API
         url = 'http://localhost:5001/api'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
         response = requests.post(url, json={"action": "change_email", "new_email": new_email}, headers=headers)
-
+        # Handle the API response
         if response.status_code == 200:
             SuccessPopup("Email updated successfully.").open()
         else:
             error_message = response.json().get('message', 'Error updating email')
             ErrorPopup([error_message]).open()
         self.dismiss()
-
+# Define a custom popup class to change the password
 class ChangePasswordPopup(Popup):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.title = "Change Password"
-        self.size_hint = (0.8, 0.5)
+        self.title = "Change Password" # Set the popup title
+        self.size_hint = (0.8, 0.5) # Set the size of the popup
         layout = BoxLayout(orientation='vertical', padding=dp(10), spacing=dp(10))
-
+        # Add text inputs for the current and new passwords
         self.current_password_input = TextInput(hint_text="Current Password", multiline=False, password=True, size_hint_y=None, height=dp(40))
         layout.add_widget(self.current_password_input)
 
@@ -107,27 +114,28 @@ class ChangePasswordPopup(Popup):
 
         self.confirm_new_password_input = TextInput(hint_text="Confirm New Password", multiline=False, password=True, size_hint_y=None, height=dp(40))
         layout.add_widget(self.confirm_new_password_input)
-
+        # Add a submit button to the popup
         submit_button = Button(text="Submit", size_hint_y=None, height=dp(40))
         submit_button.bind(on_release=self.change_password)
         layout.add_widget(submit_button)
-
+        # Add the layout to the popup
         self.add_widget(layout)
 
+    # Method to handle the password change
     def change_password(self, instance):
         current_password = self.current_password_input.text
         new_password = self.new_password_input.text
         confirm_new_password = self.confirm_new_password_input.text
-
+        # Check if all fields are filled
         if not all([current_password, new_password, confirm_new_password]):
             ErrorPopup(["Please fill in all fields."]).open()
             return
-
+        # Prepare the data to send to the backend API
         url = 'http://localhost:5001/api'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
         response = requests.post(url, json={"action": "change_password", "current_password": current_password, "new_password": new_password, "confirm_new_password": confirm_new_password}, headers=headers)
-
+        # Handle the API response
         if response.status_code == 200:
             SuccessPopup("Password updated successfully.").open()
         else:
@@ -135,17 +143,17 @@ class ChangePasswordPopup(Popup):
             ErrorPopup([error_message]).open()
         self.dismiss()
 
-
+# Define a custom popup class to confirm account deletion
 class ConfirmDeletePopup(Popup):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.title = "Confirm Delete"
-        self.size_hint = (0.8, 0.5)
+        self.title = "Confirm Delete" # Set the popup title
+        self.size_hint = (0.8, 0.5) # Set the size of the popup
         layout = BoxLayout(orientation='vertical', padding=dp(10), spacing=dp(10))
-
+        # Add a label asking for confirmation
         label = Label(text="Are you sure you want to delete your account?", size_hint_y=None, height=dp(40))
         layout.add_widget(label)
-
+        # Add buttons for confirming or canceling the deletion
         button_layout = BoxLayout(orientation='horizontal', size_hint_y=None, height=dp(40))
         yes_button = Button(text="Yes")
         yes_button.bind(on_release=self.delete_user)
@@ -154,10 +162,12 @@ class ConfirmDeletePopup(Popup):
         button_layout.add_widget(yes_button)
         button_layout.add_widget(no_button)
         layout.add_widget(button_layout)
-
+        # Add the layout to the popup
         self.add_widget(layout)
 
+    # Method to handle account deletion
     def delete_user(self, instance):
+        # Prepare the data to send to the backend API
         url = 'http://localhost:5001/api'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
@@ -173,7 +183,7 @@ class ConfirmDeletePopup(Popup):
                 ErrorPopup([error_message]).open()
                 self.dismiss()
                 return
-
+            # Handle the API response
             if response.status_code == 200:
                 SuccessPopup("Account deleted successfully.").open()
                 App.get_running_app().logout()
@@ -185,23 +195,28 @@ class ConfirmDeletePopup(Popup):
             ErrorPopup([str(e)]).open()
 
         self.dismiss()
-
+# Define the UserInfoScreen class
 class UserInfoScreen(Screen):
+    # Method to show the ChangeEmailPopup
     def show_change_email(self):
         ChangeEmailPopup().open()
 
+    # Method to show the ChangePasswordPopup
     def show_change_password(self):
         ChangePasswordPopup().open()
 
+    # Method to show the ConfirmDeletePopup
     def show_confirm_delete(self):
         ConfirmDeletePopup().open()
 
+    # Method to handle user logout
     def handle_logout(self):
+        # Prepare the data to send to the backend API
         url = 'http://localhost:5001/api'
         token = App.get_running_app().access_token
         headers = {'Authorization': f'Bearer {token}'}
         response = requests.post(url, json={"action": "logout"}, headers=headers)
-
+        # Handle the API response
         if response.status_code == 200:
             App.get_running_app().logout()
         else:
