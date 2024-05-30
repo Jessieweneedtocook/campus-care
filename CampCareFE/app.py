@@ -36,14 +36,14 @@ class MyApp(App):
 
         # Set window size
         Window.size = (375, 667)
-
+        self.questions = questions
         # Fetch user preferences
         self.selected_activities = self.fetch_preferences()
         self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
 
         # Initialize ScreenManager
         self.sm = ScreenManager()
-
+        self.plot_graph()
         # Add screens to ScreenManager
         self.sm.add_widget(LoginScreen(name='login'))
         self.sm.add_widget(SignupScreen(name='signup'))
@@ -114,7 +114,10 @@ class MyApp(App):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        query = "INSERT INTO UserActivityPreferences (Activities) VALUES (?)"
+        query = """
+                INSERT INTO UserActivityPreferences (Activities)
+                VALUES (?)
+                """
         data = (str(self.selected_activities),)
         cursor.execute(query, data)
         conn.commit()
@@ -125,7 +128,10 @@ class MyApp(App):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        query = "UPDATE UserActivityPreferences SET Activities = ?"
+        query = """
+                UPDATE UserActivityPreferences
+                SET Activities = ?
+                """
         data = (str(self.selected_activities),)
         cursor.execute(query, data)
         conn.commit()
@@ -160,7 +166,10 @@ class MyApp(App):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        query = "INSERT INTO UserActivities (ActivityType, TimeSpent, ActivityDate) VALUES (?, ?, ?)"
+        query = """
+        INSERT INTO UserActivities (ActivityType, TimeSpent, ActivityDate)
+        VALUES (?, ?, ?)
+        """
         data = (activity_type, user_answer, datetime.now())
         cursor.execute(query, data)
         conn.commit()
@@ -177,7 +186,10 @@ class MyApp(App):
         conn = sqlite3.connect(db_path)
         cursor = conn.cursor()
 
-        query = "SELECT * FROM UserActivities WHERE Date(ActivityDate) = ?"
+        query = """
+            SELECT * FROM UserActivities
+            WHERE Date(ActivityDate) = ?
+            """
         current_date = datetime.now().date().isoformat()
         cursor.execute(query, (current_date,))
         entry = cursor.fetchone()
