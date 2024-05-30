@@ -5,24 +5,31 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta, datetime
 from models import db, User
-from form import email_checker
-from werkzeug.security import generate_password_hash, check_password_hash
+from form import email_checker, password_checker
+import logging
+from logging.handlers import RotatingFileHandler
+
 
 load_dotenv()
-
+# start the flask application
 app = Flask(__name__)
 CORS(app)
-
+# Configure the app with a secretkey, database uri, and jwt variable token
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
 app.config['JWT_ALGORITHM'] = os.getenv('JWT_ALGORITHM')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES', 3600)))
-
+# Initialize JWTManager with the Flask app
 jwt = JWTManager(app)
+# Initialize the database with the Flask app
 db.init_app(app)
-
+# Set for storing blacklisted (revoked) JWTs
 blacklist = set()
+
+# Print logging level and handlers for debugging
+print(f"Logging level: {app.logger.level}")
+print(f"Handlers: {app.logger.handlers}")
 
 
 # from users.views import users_blueprint
@@ -58,6 +65,7 @@ def register_user(data):
 
         # Retrieve the date of birth from the data and convert into datetime object
         DateOfBirth = data.get("DateOfBirth")
+
         DateOfBirth = datetime.strptime(DateOfBirth, "%d/%m/%Y")
 
         # Retrieve the role from the data
@@ -81,6 +89,8 @@ def register_user(data):
         # Commit the session to save the changes to the database
         db.session.commit()
         access_token = create_access_token(identity={'username': username})
+        app.logger.warning(f"User logged in: {username}")
+        app.logger.handlers[1].flush()
         return jsonify({"status": "success", "access_token": access_token}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
@@ -108,6 +118,8 @@ def login_user(data):
         if not user.check_password(password):
             return jsonify({"status": "error", "message": "Password incorrect"}), 400
         else:
+            access_token = create_access_token(identity={'username': username})
+            app.logger.warning(f"User Logged in: {username}")
             # If the password is correct log the user in and assign access token
             print(user.role)
             additional_claims = {"role": user.role}
@@ -116,7 +128,6 @@ def login_user(data):
             return jsonify({"status": "success", "access_token": access_token}), 200
 
     except Exception as e:
-        print(str(e))
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
@@ -135,6 +146,7 @@ def change_email(data):
         user = db.session.query(User).filter(User.username == current_user).first()
         user.email = new_email
         db.session.commit()
+        app.logger.warning(f"User changed email: {current_user}")
         return jsonify({"status": "success", "message": "Email updated successfully"}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
@@ -151,6 +163,9 @@ def change_password(data):
     new_password = data.get('new_password')
     # Retrieve the confirmation of the new password from the data
     confirm_new_password = data.get('confirm_new_password')
+    is_valid, message = password_checker(new_password)
+    if not is_valid:
+        return jsonify({"status": "success", "message": message}), 400
 
     # If any fields are blank throw an error 400
     if not all([current_password, new_password, confirm_new_password]):
@@ -169,36 +184,33 @@ def change_password(data):
     # Update the password and commit to the database
     user.password = new_password
     db.session.commit()
-
+    app.logger.warning(f"User changed password: {current_user}")
     return jsonify({"status": "success", "message": "Password updated successfully"}), 200
 
-
+# Route to delete user's individual account, requires JWT
 @jwt_required()
 @app.route("/delete_account", methods=["POST"])
 def delete_account(data):
     try:
+        # get user from the database
         # Retrieve the current user's username
         current_user = get_jwt_identity()['username']
         print("Current user extracted:", )
 
-        # Find the current user in the database
         user = db.session.query(User).filter(User.username == current_user).first()
-        # If the user is found, delete the user from the database
         if user:
             db.session.delete(user)
             db.session.commit()
+            app.logger.info(f"User deleted their account: {current_user}")
             return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
         else:
-            # If the user is not found throw error 400
             return jsonify({"status": "error", "message": "User not found"}), 404
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-
 @app.route("/logout", methods=["POST"])
 @jwt_required()
-def logout(data):
-    # Gets the user's token and invalidates it to log the user out
+def logout(data)
     print("Received data:",data)
     jti = get_jwt()['jti']
     print("JWT:",jti)
@@ -235,7 +247,6 @@ def view_users(data):
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
-# Dictionary acting like switch statement for our different request handling functions
 actions = {
     "register_user": register_user,
     "login_user": login_user,
@@ -247,16 +258,12 @@ actions = {
     "view_users": view_users,
 }
 
-
 @app.route("/api", methods=["POST", "GET"])
 def api():
-    # Pulls data from request
     data = request.json
     print("received data:", data, flush=True)
-    # Action held within json file determines what action server performs
     action = data.get("action")
 
-    # Calls functions
     if action in actions:
         return actions[action](data)
     else:
