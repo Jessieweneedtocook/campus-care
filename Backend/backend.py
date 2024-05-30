@@ -41,29 +41,36 @@ def check_if_token_revoked(jwt_header, jwt_payload):
 def register_user(data):
     print("Received data:", data, flush=True)
     try:
-
+        # Retrieve the username from the data
         username = data.get("username")
+        # Checks if the username is already in use, if it is throw an error 400
         if db.session.query(User.username).filter(User.username == username).first():
             return jsonify({"status": "error", "message": "Username already in use"}), 400
 
+        # Retrieve the password from the data
         password = data.get("password")
 
+        # Retrieve the email from the data
         email = data.get("email")
+        # Checks if the email is already in use, if it is throw an error 400
         if db.session.query(User.email).filter(User.email == email).first():
             return jsonify({"status": "error", "message": "Email already in use"}), 400
 
+        # Retrieve the date of birth from the data and convert into datetime object
         DateOfBirth = data.get("DateOfBirth")
-
         DateOfBirth = datetime.strptime(DateOfBirth, "%d/%m/%Y")
 
+        # Retrieve the role from the data
         role = data.get("role")
-
+        # Retrieve the phone number from the data
         phone = data.get("phone")
 
+        # Prints the processed data
         print("processed data:", username, password, email, DateOfBirth, phone, role, flush=True)
-
+        # If a field is missing, throw an error 400
         if not all([username, password, email, DateOfBirth, phone, role]):
             return jsonify({"status": "error", "message": "Missing required fields"}), 400
+
         # Create a new User object
         new_user = User(username=username, password=password, email=email, DateOfBirth=DateOfBirth, phone=phone,
                         role=role)
