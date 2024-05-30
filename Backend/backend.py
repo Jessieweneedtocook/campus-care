@@ -5,10 +5,8 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta, datetime
 from models import db, User
-from form import email_checker, password_checker
-import logging
-from logging.handlers import RotatingFileHandler
-
+from form import email_checker
+from werkzeug.security import generate_password_hash, check_password_hash
 
 load_dotenv()
 
@@ -16,6 +14,7 @@ app = Flask(__name__)
 CORS(app)
 
 app.config["JWT_SECRET_KEY"] = os.getenv('SECRET_KEY')
+app.config['JWT_ALGORITHM'] = os.getenv('JWT_ALGORITHM')
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv('DATABASE_URI')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config["JWT_ACCESS_TOKEN_EXPIRES"] = timedelta(seconds=int(os.getenv('JWT_ACCESS_TOKEN_EXPIRES', 3600)))
@@ -24,10 +23,6 @@ jwt = JWTManager(app)
 db.init_app(app)
 
 blacklist = set()
-
-
-print(f"Logging level: {app.logger.level}")
-print(f"Handlers: {app.logger.handlers}")
 
 
 # from users.views import users_blueprint
@@ -79,8 +74,6 @@ def register_user(data):
         # Commit the session to save the changes to the database
         db.session.commit()
         access_token = create_access_token(identity={'username': username})
-        app.logger.warning(f"User logged in: {username}")
-        app.logger.handlers[1].flush()
         return jsonify({"status": "success", "access_token": access_token}), 201
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
@@ -99,11 +92,14 @@ def login_user(data):
         if not user.check_password(password):
             return jsonify({"status": "error", "message": "Password incorrect"}), 400
         else:
-            access_token = create_access_token(identity={'username': username})
-            app.logger.warning(f"User Logged in: {username}")
+            print(user.role)
+            additional_claims = {"role": user.role}
+            access_token = create_access_token(identity={"username": username}, additional_claims=additional_claims)
+            print(access_token)
             return jsonify({"status": "success", "access_token": access_token}), 200
 
     except Exception as e:
+        print(str(e))
         return jsonify({"status": "error", "message": str(e)}), 500
 
 
@@ -120,7 +116,6 @@ def change_email(data):
         user = db.session.query(User).filter(User.username == current_user).first()
         user.email = new_email
         db.session.commit()
-        app.logger.warning(f"User changed email: {current_user}")
         return jsonify({"status": "success", "message": "Email updated successfully"}), 200
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
@@ -133,9 +128,6 @@ def change_password(data):
     current_password = data.get('current_password')
     new_password = data.get('new_password')
     confirm_new_password = data.get('confirm_new_password')
-    is_valid, message = password_checker(new_password)
-    if not is_valid:
-        return jsonify({"status": "success", "message": message}), 400
 
     if not all([current_password, new_password, confirm_new_password]):
         return jsonify({"status": "error", "message": "All fields are required"}), 400
@@ -150,7 +142,7 @@ def change_password(data):
 
     user.password = new_password
     db.session.commit()
-    app.logger.warning(f"User changed password: {current_user}")
+
     return jsonify({"status": "success", "message": "Password updated successfully"}), 200
 
 
@@ -164,7 +156,6 @@ def delete_account(data):
         if user:
             db.session.delete(user)
             db.session.commit()
-            app.logger.info(f"User deleted their account: {current_user}")
             return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
         else:
             return jsonify({"status": "error", "message": "User not found"}), 404
