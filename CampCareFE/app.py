@@ -36,6 +36,7 @@ class MyApp(App):
         self.selected_activities = self.fetch_preferences()
         self.selected_activities = [activity.strip("'") for activity in self.selected_activities]
         self.sm = ScreenManager()
+        self.plot_graph()
         self.sm.add_widget(LoginScreen(name='login'))
 
         self.sm.add_widget(SignupScreen(name='signup'))
@@ -160,9 +161,7 @@ class MyApp(App):
 
     def plot_graph(self):
         screen = WellnessProgressScreen()
-        data_by_activity_type = screen.get_data_for_period(7)
-        stats_by_activity_type = screen.calculate_stats(data_by_activity_type)
-        screen.plot_stats(stats_by_activity_type)
+        screen.plot_stats()
         screen.overall_progress()
 
     def daily_quiz_comp(self):
@@ -192,5 +191,4 @@ class MyApp(App):
     def logout(self):
         self.access_token = None
         self.sm.current = 'login'
-
 

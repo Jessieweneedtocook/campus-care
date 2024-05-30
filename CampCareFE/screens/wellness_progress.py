@@ -1,6 +1,8 @@
 import sqlite3
 import numpy as np
 import matplotlib
+from sqlalchemy import column
+
 matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 from kivy.properties import StringProperty
@@ -20,10 +22,7 @@ class WellnessProgressScreen(Screen):
     def on_enter(self):
         self.update_most_improved_text()
         self.update_needs_improvement_text()
-        data_by_activity_type = self.get_data_for_period(7)
-        stats_by_activity_type = self.calculate_stats(data_by_activity_type)
-        self.plot_stats(stats_by_activity_type)
-        self.overall_progress()
+
 
     def get_data_for_period(self, days):
         conn = sqlite3.connect(db_path)
@@ -32,8 +31,7 @@ class WellnessProgressScreen(Screen):
         # Get activities for the past 'days' days
         cursor.execute(f"""
                     SELECT * FROM UserActivities
-                    WHERE ActivityDate >= date('now', '-{days} days')
-                        AND ActivityDate < date('now')
+                    WHERE ActivityDate > datetime('now', '-{days} days')
                 """)
 
         data = cursor.fetchall()
@@ -46,7 +44,6 @@ class WellnessProgressScreen(Screen):
         data_by_activity_type = {}
         # Loop through the data
         for row in data:
-            # Assume the activity type is in the third column
             activity_type = row[1]
 
             # If this activity type is not in the dictionary yet, add it
@@ -87,13 +84,14 @@ class WellnessProgressScreen(Screen):
 
         return stats_by_activity_type
 
-    def plot_stats(self, stats_by_activity_type):
-        # Check if stats_by_activity_type is empty
+    def plot_stats(self):
+        data_by_activity_type = self.get_data_for_period(7)
+        stats_by_activity_type = self.calculate_stats(data_by_activity_type)
+
         if not stats_by_activity_type:
             labels = np.array(['No Data'])
             data = np.array([0])
         else:
-            # Define the labels of your chart
             labels = np.array(list(stats_by_activity_type.keys()))
             data = np.array(list(stats_by_activity_type.values()))
 
@@ -110,8 +108,6 @@ class WellnessProgressScreen(Screen):
         fig, ax = plt.subplots(figsize=(6, 6), subplot_kw=dict(polar=True))
 
         # Draw one axe per variable and add labels
-        fig.patch.set_facecolor('aliceblue')
-        ax.set_facecolor('aliceblue')
         plt.xticks(angles[:-1], labels, color='grey', size=12)
 
         # Draw ylabels
