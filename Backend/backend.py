@@ -143,22 +143,30 @@ def change_email(data):
 @jwt_required()
 @app.route("/change_account", methods=["POST"])
 def change_password(data):
+    # Retrieve the current user's username
     current_user = get_jwt_identity()['username']
+    # Retrieve the current password from the data
     current_password = data.get('current_password')
+    # Retrieve the new password from the data
     new_password = data.get('new_password')
+    # Retrieve the confirmation of the new password from the data
     confirm_new_password = data.get('confirm_new_password')
 
+    # If any fields are blank throw an error 400
     if not all([current_password, new_password, confirm_new_password]):
         return jsonify({"status": "error", "message": "All fields are required"}), 400
 
+    # If the new password does not match with the confirmation of the new password then throw an error 400
     if new_password != confirm_new_password:
         return jsonify({"status": "error", "message": "New passwords do not match"}), 400
 
+    # Check if the current user's password matches the inputted current password, throw an error 400 if not
     user = db.session.query(User).filter(User.username == current_user).first()
 
     if not user or not user.check_password(current_password):
         return jsonify({"status": "error", "message": "Current password is incorrect"}), 400
 
+    # Update the password and commit to the database
     user.password = new_password
     db.session.commit()
 
