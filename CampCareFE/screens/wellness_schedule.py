@@ -90,7 +90,7 @@ class WellnessScheduleScreen(Screen):
 
     def get_activity_color(self, activity):
         colors = {
-            'Exercise': (0.941, 0.941, 0.553, 1),
+            'Exercise': (0.1, 0.6, 0.8, 1),
             'Socialisation': (0.816, 0.671, 0.961, 1),
             'Studying': (0.643, 0.851, 0.655, 1),
             'Hobbies': (0.929, 0.659, 0.71, 1),
