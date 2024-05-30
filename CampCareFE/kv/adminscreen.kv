@@ -31,7 +31,7 @@
             size_hint_y: None
             height: 400
             Image:
-                source: 'assets/output.png'  # Where user logs will be displayed
+                source: 'assets/SystemsAdmin.jpg'  # Where user logs will be displayed
                 size: dp(400), dp(400)
 
         # Statistics and options buttons
@@ -47,7 +47,7 @@
                 on_release: root.manager.current = 'admin' # replace with function linking to add admin screen
             Button:
                 text: "Delete user"
-                on_release: root.manager.current = 'admin' # replace with function linking to add admin screen
+                on_release: root.manager.current = root.show_delete_account()
             Button:
                 text: "Other admin func"
                 on_release: root.manager.current = 'admin' # other admin function

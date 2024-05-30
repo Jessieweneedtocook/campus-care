@@ -187,15 +187,29 @@ def admin_delete_account(data):
     try:
         current_user = get_jwt_identity()['username']
         user = db.session.query(User).filter(User.username == current_user).first()
-        if user:
-            db.session.delete(user)
-            db.session.commit()
-            return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
+        if user.role == "Admin":
+            deleted_user = data.get("delete_username")
+            deleted_user = db.session.query(User).filter(User.username == deleted_user).first()
+            if deleted_user:
+                db.session.delete(deleted_user)
+                db.session.commit()
+                return jsonify({"status": "success", "message": "Account deleted successfully"}), 200
+            else:
+                return jsonify({"status": "success", "message": "Account not found"}), 404
         else:
-            return jsonify({"status": "error", "message": "User not found"}), 404
+            return jsonify({"status": "error", "message": "Role required is admin"}), 404
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
+@app.route("/view_users", methods = ["GET"])
+@jwt_required()
+def view_users(data):
+    try:
+        users = db.session.query(User.username).all()
+        usernames = [user.username for user in users]
+        return jsonify({"status": "success","usernames": usernames})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
 
 # Dictionary acting like switch statement for our different request handling functions
 actions = {
@@ -206,7 +220,7 @@ actions = {
     "change_password": change_password,
     "delete_account": delete_account,
     "admin_delete_account": admin_delete_account,
-
+    "view_users": view_users,
 }
 
 

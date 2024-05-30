@@ -8,9 +8,9 @@ def register():
         'username': "user2",
         'password': "password",
         'email': "blahblah@gmail.com",
-        'DateOfBirth': "2000-01-01 00:00:00",
+        'DateOfBirth': "14/04/2004",
         'phone': "07722824206",
-        'role': "user"
+        'role': "admin"
     }
     response = requests.post(url, json=data)
     if response.status_code == 201:
@@ -47,11 +47,33 @@ def logout(token):
     else:
         print(response.json())
 
+def delete_account(token):
+    url = 'http://localhost:5001/api'
+    headers = {'Authorization': f'Bearer {token}'}
+    data = {
+        "action": "admin_delete_account",
+        'delete_username': "user1"
+    }
+    print(headers,data)
+    response = requests.post(url, headers=headers, json=data)
+    print(response.json())
+
+def view_users(token):
+    url = 'http://localhost:5001/api'
+    headers = {'Authorization': f'Bearer {token}'}
+    data = {
+        "action": "view_users",
+    }
+    response = requests.post(url, headers=headers, json=data)
+    print(response.json())
 
 register()
 token = login()
-if token:
-    logout(token)
-    new_token = login()
-    if new_token:
-        print("Re-login successful, new token obtained.")
+#delete_account(token)
+view_users(token)
+
+#if token:
+ #   logout(token)
+  #  new_token = login()
+   # if new_token:
+    #    print("Re-login successful, new token obtained.")
