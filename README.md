@@ -10,9 +10,9 @@
 Campus Care is a student wellness application developed with the goal of promoting healthier habits and improve mental wellbeing among students by monitoring daily activities, delivering wellness quizzes, and providing personalized progress insights.
 
 The contributers to this project include:
-- 
--
--
+- cellis1912
+- imtheguy456
+- jessieweneedtocook
 -
 -
 
