@@ -1,8 +1,8 @@
 import os
 import unittest
+
 from unittest.mock import patch, MagicMock
 
-import requests
 from kivy.base import EventLoop
 from kivy.app import App
 from kivy.uix.label import Label
@@ -144,10 +144,6 @@ class TestDailyQuizScreen(unittest.TestCase):
 class TestInitialOptionsScreen(unittest.TestCase):
 #  fetch_selected_activities retrieves activities for a valid user ID
     def test_fetch_selected_activities_valid(self):
-        import sqlite3
-        from unittest.mock import patch, MagicMock
-        from CampCareFE.screens.initial_options import InitialOptionsScreen
-
         # Mock the database connection and cursor
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
@@ -161,9 +157,6 @@ class TestInitialOptionsScreen(unittest.TestCase):
 
     #  fetch_selected_activities handles with no activities
     def test_fetch_selected_activities_no_activities(self):
-        from unittest.mock import patch, MagicMock
-        from CampCareFE.screens.initial_options import InitialOptionsScreen
-
         # Mock the database connection and cursor
         mock_conn = MagicMock()
         mock_cursor = MagicMock()
@@ -177,14 +170,12 @@ class TestInitialOptionsScreen(unittest.TestCase):
 
 class TestOptionsScreen(unittest.TestCase):
     def test_toggle_activity_adds_activity(self):
-        from kivy.uix.button import Button
         screen = OptionsScreen()
         button = Button(text='Activity1', state='down')
         screen.toggle_activity(button)
         self.assertIn('Activity1', screen.get_selected_activities())
 
     def test_toggle_activity_remove_activity(self):
-        from kivy.uix.button import Button
         screen = OptionsScreen()
         button = Button(text='Activity1', state='down')
         screen.toggle_activity(button)
@@ -195,17 +186,12 @@ class TestOptionsScreen(unittest.TestCase):
 
 class TestingAdmin(unittest.TestCase):
     def test_popup_displays_with_correct_title(self):
-        from kivy.uix.label import Label
         message = "Test message"
         popup = SuccessPopup(message)
         self.assertEqual(popup.title, "Success")
         self.assertIn(message, [child.text for child in popup.content.children if isinstance(child, Label)])
 
     def test_successfully_deletes_user(self):
-        from kivy.app import App
-        from unittest.mock import patch, MagicMock
-        from CampCareFE.screens.admin import DeleteAccountPopup, SuccessPopup
-
         class MockApp(App):
             access_token = "mock_token"
             def logout(self):
