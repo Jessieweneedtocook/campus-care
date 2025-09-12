@@ -11,9 +11,9 @@ Campus Care is a student wellness application developed with the goal of promoti
 
 The contributers to this project include:
 - cellis1912
-- imtheguy456
-- jessieweneedtocook
-- fszcz92
+- ImTheGuy456
+- Jessieweneedtocook
+- fszcz2
 - jamessaxby
 
 
