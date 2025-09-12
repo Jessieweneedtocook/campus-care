@@ -13,8 +13,8 @@ The contributers to this project include:
 - cellis1912
 - imtheguy456
 - jessieweneedtocook
--
--
+- fszcz92
+- jamessaxby
 
 
 The application was built using:
