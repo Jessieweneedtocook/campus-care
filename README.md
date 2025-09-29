@@ -37,7 +37,7 @@ I was mostly responsible for leading the **frontend development** of Campus Care
 
 - **Frontend design & prototyping**
   - Designed initial GUI prototypes in Figma.
-  - ![Figma Prototypes](assets/screens.jpg)
+    ![Figma Prototypes](assets/screens.jpg)
   - Specified functional and non-functional UI requirements in the design document.
   - Produced UML diagrams for class interactions and user flows.
 
