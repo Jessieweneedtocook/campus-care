@@ -18,7 +18,7 @@ The contributers to this project include:
 
 
 The application was built using:
-- **Frontend:** [Kivy](https://kivy.org/) for cross-platform GUI development.  
+- **Frontend:** [Kivy](https://kivy.org/) for cross-platform GUI development.
 - **Backend:** [Flask](https://flask.palletsprojects.com/) with Docker for containerized database services.  
 - **Database:** Local SQLite for activity/user preferences + Dockerized user database for authentication.  
 
@@ -37,6 +37,8 @@ I was mostly responsible for leading the **frontend development** of Campus Care
 
 - **Frontend design & prototyping**
   - Designed initial GUI prototypes in Figma.
+  - Figma Prototypes:
+(assets/screens.jpg)
   - Specified functional and non-functional UI requirements in the design document.
   - Produced UML diagrams for class interactions and user flows.
 
